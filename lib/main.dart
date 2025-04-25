@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 import 'dart:ui'; // For BackdropFilter
-import 'chatbot_page.dart'; // Import the new ChatbotPage
+import 'package:firebase_core/firebase_core.dart'; // Firebase Core
+import 'package:cloud_firestore/cloud_firestore.dart'; // Firestore (optional, for writing to Firestore)
+import 'chatbot_page.dart';
+import 'firebase_options.dart'; // If you use FlutterFire CLI to generate this
 
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform, // Use this if firebase_options.dart is available
+  );
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -23,11 +32,9 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
   late AnimationController _controller;
   late Animation<double> _fadeAnimation;
 
-  // Text controllers for email and password
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  // Temporary email and password
   final String tempEmail = "test@rita.com";
   final String tempPassword = "password123";
 
@@ -50,7 +57,6 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
     super.dispose();
   }
 
-  // Navigate to the chatbot page
   void _navigateToChatbot() {
     Navigator.push(
       context,
@@ -58,12 +64,12 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
     );
   }
 
-  // Validate login credentials
   void _handleLogin() {
     String enteredEmail = _emailController.text.trim();
     String enteredPassword = _passwordController.text.trim();
 
     if (enteredEmail == tempEmail && enteredPassword == tempPassword) {
+      _saveLoginToFirestore(enteredEmail); // Save to Firebase
       _navigateToChatbot();
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -75,6 +81,18 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
     }
   }
 
+  // Save login info to Firestore
+  void _saveLoginToFirestore(String email) async {
+    try {
+      await FirebaseFirestore.instance.collection('logins').add({
+        'email': email,
+        'timestamp': Timestamp.now(),
+      });
+    } catch (e) {
+      print("Error saving login to Firestore: $e");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,7 +101,7 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
         height: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/bg.png"), // Replace with your background image
+            image: AssetImage("assets/bg.png"),
             fit: BoxFit.cover,
           ),
         ),
@@ -110,7 +128,6 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                   ),
                 ),
                 const SizedBox(height: 40),
-                // Glass-like effect container
                 ClipRRect(
                   borderRadius: BorderRadius.circular(24),
                   child: BackdropFilter(
@@ -138,9 +155,8 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                           const SizedBox(height: 24),
                           _buildButton(context, 'Log In'),
                           const SizedBox(height: 12),
-                          // Continue as Guest button
                           TextButton(
-                            onPressed: _navigateToChatbot, // Navigate to chatbot page
+                            onPressed: _navigateToChatbot,
                             child: const Text(
                               'Continue as Guest',
                               style: TextStyle(color: Colors.white70),
@@ -187,7 +203,7 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
           borderRadius: BorderRadius.circular(16),
         ),
       ),
-      onPressed: _handleLogin, // Call the login handler
+      onPressed: _handleLogin,
       child: Text(label),
     );
   }
