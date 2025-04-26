@@ -1,0 +1,566 @@
+[
+  {
+    "instruction": "What is the full name of RIT Chennai?",
+    "output": "Rajalakshmi Institute of Technology"
+  },
+  {
+    "instruction": "When was RIT Chennai established?",
+    "output": "2008"
+  },
+  {
+    "instruction": "Is RIT Chennai affiliated with any university?",
+    "output": "Yes, it is affiliated with Anna University, Chennai."
+  },
+  {
+    "instruction": "What accreditation does RIT Chennai have?",
+    "output": "It is accredited with A++ grade by NAAC and has NBA-accredited courses."
+  },
+  {
+    "instruction": "What courses are offered at RIT Chennai?",
+    "output": "RIT Chennai offers B.E., B.Tech., M.E., and Ph.D. programs in various engineering disciplines."
+  },
+  {
+    "instruction": "How can I apply for admission to RIT Chennai?",
+    "output": "Admissions are through Tamil Nadu Engineering Admissions (TNEA) counseling based on 12th standard marks."
+  },
+  {
+    "instruction": "What is the eligibility criteria for B.E./B.Tech programs?",
+    "output": "Candidates must have passed 10+2 with Physics, Chemistry, and Mathematics."
+  },
+  {
+    "instruction": "Does RIT Chennai offer scholarships?",
+    "output": "Yes, scholarships are available for meritorious students and those with financial need."
+  },
+  {
+    "instruction": "What are the placement statistics for RIT Chennai?",
+    "output": "In 2022-2023, 275 students were placed with a 97.5% placement rate."
+  },
+  {
+    "instruction": "Who are some of the top recruiters at RIT Chennai?",
+    "output": "Top recruiters include Infosys, Wipro, TCS, Amazon, and Zoho."
+  },
+  {
+    "instruction": "What facilities are available on campus?",
+    "output": "Facilities include a library, hostels, cafeteria, sports facilities, and modern labs."
+  },
+  {
+    "instruction": "Is there a hostel facility at RIT Chennai?",
+    "output": "Yes, there are separate hostels for boys and girls with modern amenities."
+  },
+  {
+    "instruction": "What is the official website of RIT Chennai?",
+    "output": "The official website is https://www.ritchennai.org/."
+  },
+  {
+    "instruction": "Does RIT Chennai have any social media presence?",
+    "output": "Yes, RIT Chennai has an Instagram account (@ritchennai) and a YouTube channel."
+  },
+  {
+    "instruction": "What is the contact number for RIT Chennai?",
+    "output": "The contact numbers are 044-67181600 and 67181601."
+  },
+  {
+    "instruction": "What is the address of RIT Chennai?",
+    "output": "RIT Chennai is located in Kuthambakkam, near Poonamallee, Chennai - 600124, Tamil Nadu."
+  },
+  {
+    "instruction": "Is RIT Chennai an autonomous institution?",
+    "output": "Yes, RIT Chennai is an autonomous institution."
+  },
+  {
+    "instruction": "What is the motto of RIT Chennai?",
+    "output": "The motto of RIT Chennai is 'Believe In The Possibilities.'"
+  },
+  {
+    "instruction": "Are there any Ph.D. programs at RIT Chennai?",
+    "output": "Yes, Ph.D. programs are offered across Engineering, Technology, Science, and Humanities disciplines."
+  },
+  {
+    "instruction": "What is the duration of B.E./B.Tech programs?",
+    "output": "The duration of B.E./B.Tech programs is 4 years."
+  },
+  {
+    "instruction": "What specializations are available in B.Tech at RIT Chennai?",
+    "output": "Specializations include Artificial Intelligence & Data Science, Computer Science and Business Systems, and Bio Technology."
+  },
+  {
+    "instruction": "Is there a choice-based credit system at RIT Chennai?",
+    "output": "Yes, RIT Chennai follows a choice-based credit system for its programs."
+  },
+  {
+    "instruction": "Are there any interdisciplinary courses offered?",
+    "output": "RIT Chennai offers interdisciplinary courses like AI & ML and Computer Science & Business Systems."
+  },
+  {
+    "instruction": "What is the admission process for lateral entry at RIT Chennai?",
+    "output": "Lateral entry admissions are for diploma holders through TNEA counseling."
+  },
+  {
+    "instruction": "Are there any management quota seats at RIT Chennai?",
+    "output": "Yes, RIT Chennai offers admissions through management quota, subject to eligibility."
+  },
+  {
+    "instruction": "What documents are required for admission to RIT Chennai?",
+    "output": "Required documents include 10th and 12th mark sheets, TNEA counseling letter, and identity proofs."
+  },
+  {
+    "instruction": "When does the admission process start at RIT Chennai?",
+    "output": "The admission process typically starts in May/June, aligned with TNEA counseling."
+  },
+  {
+    "instruction": "What is TNEA and how does it relate to RIT Chennai admissions?",
+    "output": "TNEA is Tamil Nadu Engineering Admissions, the counseling process for RIT Chennai admissions."
+  },
+  {
+    "instruction": "Can I get admission through sports quota at RIT Chennai?",
+    "output": "Sports quota admissions may be available, subject to Anna University guidelines."
+  },
+  {
+    "instruction": "How many faculty members are there at RIT Chennai?",
+    "output": "RIT Chennai has 157 faculty members."
+  },
+  {
+    "instruction": "How many faculty members at RIT Chennai hold Ph.D. degrees?",
+    "output": "53 faculty members at RIT Chennai hold Ph.D. degrees."
+  },
+  {
+    "instruction": "Are there any visiting faculty or guest lecturers at RIT Chennai?",
+    "output": "Yes, RIT Chennai invites guest lecturers to enhance student learning."
+  },
+  {
+    "instruction": "What is the student-to-faculty ratio at RIT Chennai?",
+    "output": "The student-to-faculty ratio is approximately 15:1, based on enrollment and faculty numbers."
+  },
+  {
+    "instruction": "What is the highest salary package offered at RIT Chennai?",
+    "output": "The highest salary package offered in 2023 was 44 LPA."
+  },
+  {
+    "instruction": "What is the average salary package at RIT Chennai?",
+    "output": "The average salary package in 2023 was around 6-12 LPA."
+  },
+  {
+    "instruction": "Are there internship opportunities at RIT Chennai?",
+    "output": "Yes, 90%-93% of students secure internships with reputed organizations."
+  },
+  {
+    "instruction": "Does RIT Chennai provide placement training?",
+    "output": "Yes, RIT Chennai offers placement training, including aptitude and soft skills."
+  },
+  {
+    "instruction": "How does the placement cell assist students at RIT Chennai?",
+    "output": "The placement cell organizes campus drives, training, and industry interactions."
+  },
+  {
+    "instruction": "Does RIT Chennai have a library? What are its features?",
+    "output": "Yes, the library has over 18,328 volumes, journals, and digital resources."
+  },
+  {
+    "instruction": "What sports facilities are available at RIT Chennai?",
+    "output": "Sports facilities include cricket, football, basketball, volleyball, and indoor games."
+  },
+  {
+    "instruction": "Is there a cafeteria on campus at RIT Chennai?",
+    "output": "Yes, the cafeteria serves hygienic food with a seating capacity of over 500."
+  },
+  {
+    "instruction": "Are there any medical facilities on campus at RIT Chennai?",
+    "output": "Yes, RIT Chennai has a medical center with 24/7 facilities."
+  },
+  {
+    "instruction": "Is the RIT Chennai campus Wi-Fi enabled?",
+    "output": "Yes, the campus is Wi-Fi enabled for students and faculty."
+  },
+  {
+    "instruction": "What are the laboratory facilities like at RIT Chennai?",
+    "output": "RIT Chennai has over 40 labs for electronics, computer science, and more."
+  },
+  {
+    "instruction": "What student clubs are there at RIT Chennai?",
+    "output": "Clubs include STEAM Club, IoT Club, CAM Club, and Women Empowerment Club."
+  },
+  {
+    "instruction": "How can I join a student club at RIT Chennai?",
+    "output": "Students can join clubs by registering through the student affairs office."
+  },
+  {
+    "instruction": "What events are organized at RIT Chennai?",
+    "output": "Events include technical workshops, cultural festivals, and sports tournaments."
+  },
+  {
+    "instruction": "Is there a cultural festival at RIT Chennai?",
+    "output": "Yes, RIT Chennai organizes cultural festivals with student participation."
+  },
+  {
+    "instruction": "Is there a technical symposium at RIT Chennai?",
+    "output": "Yes, technical symposiums like Quantum Week are held annually."
+  },
+  {
+    "instruction": "Are there any sports tournaments at RIT Chennai?",
+    "output": "Yes, RIT Chennai hosts inter-college and intra-college sports tournaments."
+  },
+  {
+    "instruction": "What is the dress code for students at RIT Chennai?",
+    "output": "The dress code is formal, with specific guidelines provided by the institute."
+  },
+  {
+    "instruction": "Are there any restrictions on campus at RIT Chennai?",
+    "output": "Restrictions include anti-ragging policies and campus conduct rules."
+  },
+  {
+    "instruction": "How is the campus security at RIT Chennai?",
+    "output": "The campus has 24/7 security with CCTV and trained personnel."
+  },
+  {
+    "instruction": "What is the anti-ragging policy at RIT Chennai?",
+    "output": "RIT Chennai has a strict anti-ragging policy as per UGC guidelines."
+  },
+  {
+    "instruction": "What is the placement percentage for CSE students at RIT Chennai?",
+    "output": "In 2022-2023, 147 CSE students were placed, with a 97.5% overall rate."
+  },
+  {
+    "instruction": "What is the placement percentage for ECE students at RIT Chennai?",
+    "output": "In 2022-2023, 98 ECE students were placed."
+  },
+  {
+    "instruction": "What is the placement percentage for Mechanical Engineering students?",
+    "output": "In 2022-2023, 30 Mechanical Engineering students were placed."
+  },
+  {
+    "instruction": "Does RIT Chennai offer transportation facilities?",
+    "output": "Yes, RIT Chennai provides bus transport to various parts of the city."
+  },
+  {
+    "instruction": "What is the hostel fee at RIT Chennai?",
+    "output": "Hostel fees are INR 60,200 for non-AC rooms and INR 75,000 for AC rooms."
+  },
+  {
+    "instruction": "What is the fee structure for B.Tech at RIT Chennai?",
+    "output": "The B.Tech fee is approximately INR 2 Lakh for 4 years."
+  },
+  {
+    "instruction": "Are there any eco-friendly initiatives at RIT Chennai?",
+    "output": "Yes, the campus has solar panels and rainwater harvesting systems."
+  },
+  {
+    "instruction": "What is the size of the RIT Chennai campus?",
+    "output": "The campus spans approximately 10.88 acres."
+  },
+  {
+    "instruction": "Does RIT Chennai have any industry collaborations?",
+    "output": "Yes, RIT Chennai has MoUs with leading industries and foreign universities."
+  },
+  {
+    "instruction": "What is the NIRF ranking of RIT Chennai?",
+    "output": "RIT Chennai is ranked in the 151-200 band by NIRF 2024."
+  },
+  {
+    "instruction": "Does RIT Chennai offer any certification courses?",
+    "output": "Yes, certification courses are offered in collaboration with industries."
+  },
+  {
+    "instruction": "Are there any guest lectures at RIT Chennai?",
+    "output": "Yes, guest lectures are regularly organized by industry experts."
+  },
+  {
+    "instruction": "What is the student enrollment capacity at RIT Chennai?",
+    "output": "RIT Chennai has a capacity for approximately 720 students in UG programs."
+  },
+  {
+    "instruction": "Does RIT Chennai have a placement cell?",
+    "output": "Yes, RIT Chennai has a dedicated placement cell for student support."
+  },
+  {
+    "instruction": "What is the median salary package at RIT Chennai?",
+    "output": "The median salary package in 2023 was INR 5.35 LPA."
+  },
+  {
+    "instruction": "Are there any alumni networks at RIT Chennai?",
+    "output": "Yes, RIT Chennai has a strong alumni network for career support."
+  },
+  {
+    "instruction": "What is the process for branch change at RIT Chennai?",
+    "output": "Branch change is allowed based on specific criteria and availability."
+  },
+  {
+    "instruction": "Does RIT Chennai have a research center?",
+    "output": "Yes, RIT Chennai is an Anna University-approved research institute."
+  },
+  {
+    "instruction": "What are the library hours at RIT Chennai?",
+    "output": "Library hours are typically from 8 AM to 6 PM, subject to change."
+  },
+  {
+    "instruction": "Are there any international exchange programs at RIT Chennai?",
+    "output": "Yes, RIT Chennai has tie-ups with foreign universities for exchange programs."
+  },
+  {
+    "instruction": "What is the role of the Women Empowerment Club at RIT Chennai?",
+    "output": "The club promotes gender equality and organizes awareness programs."
+  },
+  {
+    "instruction": "Does RIT Chennai have a photography club?",
+    "output": "Yes, the NERD PIXS Photography Club is active on campus."
+  },
+  {
+    "instruction": "What is the STEAM Club at RIT Chennai?",
+    "output": "The STEAM Club focuses on Science, Technology, Engineering, Art, and Mathematics."
+  },
+  {
+    "instruction": "What is the IoT Club at RIT Chennai?",
+    "output": "The IoT Club trains students in Internet of Things technologies."
+  },
+  {
+    "instruction": "What is the CAM Club at RIT Chennai?",
+    "output": "The CAM Club focuses on CAD design and 3D printing projects."
+  },
+  {
+    "instruction": "What is the TechSparks Club at RIT Chennai?",
+    "output": "TechSparks Club enhances technical and professional skills."
+  },
+  {
+    "instruction": "What is the Language Club at RIT Chennai?",
+    "output": "The Language Club promotes skills in English, Tamil, Japanese, and German."
+  },
+  {
+    "instruction": "What is the Maths Club at RIT Chennai?",
+    "output": "The Maths Club develops analytical and logical skills."
+  },
+  {
+    "instruction": "What is the Rotaract Club at RIT Chennai?",
+    "output": "The Rotaract Club focuses on leadership and community service."
+  },
+  {
+    "instruction": "What is the Yuva Club at RIT Chennai?",
+    "output": "The Yuva Club, part of CII, promotes youth leadership and nation-building."
+  },
+  {
+    "instruction": "What are some recent awards received by RIT Chennai?",
+    "output": "RIT Chennai received a 4-star rating for innovation in 2023-2024."
+  },
+  {
+    "instruction": "Has RIT Chennai signed any recent MoUs?",
+    "output": "Yes, an MoU was signed with Swadeshi Shodh Sansthan."
+  },
+  {
+    "instruction": "What is the Quantum Week Celebration at RIT Chennai?",
+    "output": "It includes quizzes, talks, and contests on quantum computing."
+  },
+  {
+    "instruction": "Does RIT Chennai organize Women\u00e2\u20ac\u2122s Day celebrations?",
+    "output": "Yes, Women\u00e2\u20ac\u2122s Day is celebrated with events and activities."
+  },
+  {
+    "instruction": "Are there any faculty development programs at RIT Chennai?",
+    "output": "Yes, programs like 'Unlearning in VUCA World' are conducted."
+  },
+  {
+    "instruction": "What is the capacity of the cafeteria at RIT Chennai?",
+    "output": "The cafeteria has a seating capacity of over 500."
+  },
+  {
+    "instruction": "Does RIT Chennai have a medical center?",
+    "output": "Yes, a medical center with 24/7 facilities is available."
+  },
+  {
+    "instruction": "What is the highest cutoff for RIT Chennai admissions?",
+    "output": "The highest cutoff in 2023 was 196.5 for UG engineering courses."
+  },
+  {
+    "instruction": "What is the average cutoff for RIT Chennai admissions?",
+    "output": "The average cutoff varies but was notably high in TNEA 2023."
+  },
+  {
+    "instruction": "Does RIT Chennai offer online courses?",
+    "output": "RIT Chennai offers NPTEL online courses for students."
+  },
+  {
+    "instruction": "What is the role of the placement cell at RIT Chennai?",
+    "output": "It organizes placement drives, training, and industry interactions."
+  },
+  {
+    "instruction": "Are there any cultural events at RIT Chennai?",
+    "output": "Yes, events like Telugu New Year celebrations are organized."
+  },
+  {
+    "instruction": "What is the student feedback on RIT Chennai placements?",
+    "output": "Students report 85%-98% placement rates, though some note competition."
+  },
+  {
+    "instruction": "What is the student feedback on RIT Chennai infrastructure?",
+    "output": "Feedback is positive, with some noting areas for improvement."
+  },
+  {
+    "instruction": "What is the student feedback on RIT Chennai faculty?",
+    "output": "Faculty is praised for being supportive and industry-experienced."
+  },
+  {
+    "instruction": "What is the student feedback on RIT Chennai campus life?",
+    "output": "Campus life is vibrant, though some find it dull due to size."
+  },
+  {
+    "instruction": "What is the student feedback on RIT Chennai value for money?",
+    "output": "Most students find it valuable, though some advise research."
+  },
+  {
+    "instruction": "Does RIT Chennai have a grievance redressal system?",
+    "output": "Yes, a grievance redressal system is in place for students."
+  },
+  {
+    "instruction": "What is the role of the anti-ragging committee at RIT Chennai?",
+    "output": "It ensures a ragging-free campus as per UGC regulations."
+  },
+  {
+    "instruction": "Are there any entrepreneurship programs at RIT Chennai?",
+    "output": "Yes, RIT Chennai supports entrepreneurship through IoT and CAM Clubs."
+  },
+  {
+    "instruction": "Does RIT Chennai have a counseling center?",
+    "output": "Yes, a counseling center supports student mental health."
+  },
+  {
+    "instruction": "What is the process for applying for scholarships at RIT Chennai?",
+    "output": "Students apply through the institute\u00e2\u20ac\u2122s scholarship office."
+  },
+  {
+    "instruction": "Are there any industrial visits organized by RIT Chennai?",
+    "output": "Yes, industrial visits are part of the curriculum."
+  },
+  {
+    "instruction": "What is the role of the alumni association at RIT Chennai?",
+    "output": "It connects alumni for networking and career opportunities."
+  },
+  {
+    "instruction": "Does RIT Chennai have a student council?",
+    "output": "Yes, a student council organizes events and represents students."
+  },
+  {
+    "instruction": "What is the process for hostel allocation at RIT Chennai?",
+    "output": "Hostel allocation is based on application and availability."
+  },
+  {
+    "instruction": "Are there any language learning programs at RIT Chennai?",
+    "output": "Yes, the Language Club offers programs in multiple languages."
+  },
+  {
+    "instruction": "What is the role of the Maths Club at RIT Chennai?",
+    "output": "It enhances analytical and numerical skills through activities."
+  },
+  {
+    "instruction": "Does RIT Chennai have a career guidance cell?",
+    "output": "Yes, a career guidance cell supports student career planning."
+  },
+  {
+    "instruction": "What is the process for participating in sports at RIT Chennai?",
+    "output": "Students can join sports teams through the sports department."
+  },
+  {
+    "instruction": "Are there any community service programs at RIT Chennai?",
+    "output": "Yes, the Rotaract Club organizes community service activities."
+  },
+  {
+    "instruction": "What is the role of the Yuva Club at RIT Chennai?",
+    "output": "It promotes youth leadership and nation-building initiatives."
+  },
+  {
+    "instruction": "Does RIT Chennai have a digital library?",
+    "output": "Yes, the library includes digital resources like e-books."
+  },
+  {
+    "instruction": "What is the process for attending guest lectures at RIT Chennai?",
+    "output": "Guest lectures are open to students, announced via notices."
+  },
+  {
+    "instruction": "Are there any coding clubs at RIT Chennai?",
+    "output": "Yes, clubs like TechSparks focus on coding and technology."
+  },
+  {
+    "instruction": "What is the role of the STEAM Club at RIT Chennai?",
+    "output": "It promotes interdisciplinary learning in science and arts."
+  },
+  {
+    "instruction": "Does RIT Chennai have a startup incubator?",
+    "output": "Yes, RIT Chennai supports startups through innovation programs."
+  },
+  {
+    "instruction": "What is the process for organizing events at RIT Chennai?",
+    "output": "Events are organized through student clubs and faculty approval."
+  },
+  {
+    "instruction": "Are there any art clubs at RIT Chennai?",
+    "output": "Yes, the Photography Club promotes artistic activities."
+  },
+  {
+    "instruction": "What is the role of the Women Empowerment Club at RIT Chennai?",
+    "output": "It addresses women\u00e2\u20ac\u2122s issues and promotes equality."
+  },
+  {
+    "instruction": "Does RIT Chennai have a debate club?",
+    "output": "Yes, the Language Club organizes debates and elocution."
+  },
+  {
+    "instruction": "What is the process for accessing library resources at RIT Chennai?",
+    "output": "Students access resources with a library card and online portal."
+  },
+  {
+    "instruction": "Are there any music clubs at RIT Chennai?",
+    "output": "Yes, cultural clubs organize music-related activities."
+  },
+  {
+    "instruction": "What is the role of the IoT Club at RIT Chennai?",
+    "output": "It trains students in IoT technologies and applications."
+  },
+  {
+    "instruction": "Does RIT Chennai have a drama club?",
+    "output": "Yes, cultural clubs include drama and theater activities."
+  },
+  {
+    "instruction": "What is the process for joining the Rotaract Club at RIT Chennai?",
+    "output": "Students can join by registering with the club coordinator."
+  },
+  {
+    "instruction": "Are there any dance clubs at RIT Chennai?",
+    "output": "Yes, cultural clubs organize dance events and competitions."
+  },
+  {
+    "instruction": "What is the role of the CAM Club at RIT Chennai?",
+    "output": "It focuses on CAD design and manufacturing projects."
+  },
+  {
+    "instruction": "Does RIT Chennai have a literary club?",
+    "output": "Yes, the Language Club promotes literary activities."
+  },
+  {
+    "instruction": "What is the process for participating in technical symposiums at RIT Chennai?",
+    "output": "Students register through the respective department or club."
+  },
+  {
+    "instruction": "Are there any environmental clubs at RIT Chennai?",
+    "output": "Yes, eco-friendly initiatives are supported by student groups."
+  },
+  {
+    "instruction": "What is the role of the TechSparks Club at RIT Chennai?",
+    "output": "It enhances technical skills through hands-on programs."
+  },
+  {
+    "instruction": "Does RIT Chennai have a quiz club?",
+    "output": "Yes, the Language Club organizes quizzes and competitions."
+  },
+  {
+    "instruction": "What is the process for accessing sports facilities at RIT Chennai?",
+    "output": "Students can access facilities through the sports department."
+  },
+  {
+    "instruction": "Are there any social service clubs at RIT Chennai?",
+    "output": "Yes, the Rotaract Club focuses on social service."
+  },
+  {
+    "instruction": "What is the role of the Photography Club at RIT Chennai?",
+    "output": "It promotes photography and contributes to social media content."
+  },
+  {
+    "instruction": "Does RIT Chennai have a robotics club?",
+    "output": "Yes, the CAM Club supports robotics projects."
+  }
+]
