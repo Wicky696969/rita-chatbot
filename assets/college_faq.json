@@ -562,5 +562,9 @@
   {
     "instruction": "Does RIT Chennai have a robotics club?",
     "output": "Yes, the CAM Club supports robotics projects."
+  },
+  {
+    "instruction": "rita full form",
+    "output": "Rajalakshmi institute of technology assistance"
   }
 ]

@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -99,6 +103,16 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
       _isBotTyping = true;
       _controller.clear();
     });
+
+    try {
+      await FirebaseFirestore.instance.collection('messages').add({
+        'sender': 'user',
+        'message': userMessage,
+        'timestamp': FieldValue.serverTimestamp(),
+      });
+    } catch (e) {
+      print("Firestore error: $e");
+    }
 
     String botResponse = await _getBotResponse(userMessage);
 
