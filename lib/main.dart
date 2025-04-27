@@ -111,10 +111,15 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
+                Image.asset(
+                  'assets/icons/ritaiccon-7.png',
+                  height:100,
+                ),
+                SizedBox(height: 16),
                 Text(
                   'RITA',
                   style: TextStyle(
-                    fontFamily: 'DancingScript',
+                    fontFamily: 'PlayfairDisplay',
                     fontSize: 60,
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
