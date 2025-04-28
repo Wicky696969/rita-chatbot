@@ -45,16 +45,7 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
   double _soundLevel = 0.0;
   static const double _minSoundLevel = -10.0; // Threshold for detecting voice
   static const int _maxSilenceSeconds = 5; // Timeout for no voice detected
-
-  // Casual message responses
-  final Map<String, String> _casualResponses = {
-    "hi": "Hey there! How can I help you with RIT Chennai today?",
-    "hello": "Hello! Ready to explore RIT Chennai? Ask me anything!",
-    "bye": "Goodbye! Feel free to come back with more questions about RIT Chennai!",
-    "ok": "Alright! What's next? Ask about campus, fees, or anything else!",
-    "thanks": "You're welcome! Anything else about RIT Chennai I can help with?",
-    "thank you": "My pleasure! Got more questions about RIT Chennai?",
-  };
+  bool _isDarkMode = false; // Track theme mode
 
   @override
   void initState() {
@@ -62,6 +53,7 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
     _loadFaqData();
     _loadCachedResponses();
     _loadVoiceOutputPreference();
+    _loadThemePreference();
     _speech = stt.SpeechToText();
     _flutterTts = FlutterTts();
     _initSpeech();
@@ -94,6 +86,21 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
     await prefs.setBool('voice_output_enabled', value);
     setState(() {
       _isVoiceOutputEnabled = value;
+    });
+  }
+
+  Future<void> _loadThemePreference() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _isDarkMode = prefs.getBool('is_dark_mode') ?? false;
+    });
+  }
+
+  Future<void> _saveThemePreference(bool value) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('is_dark_mode', value);
+    setState(() {
+      _isDarkMode = value;
     });
   }
 
@@ -181,50 +188,6 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
     }
   }
 
-  Future<void> _saveLearnedResponse(String query, String response) async {
-    try {
-      final normalizedQuery = _normalizeQuery(query);
-      final collection = FirebaseFirestore.instance.collection('learned_responses');
-      final querySnapshot = await collection
-          .where('normalized_query', isEqualTo: normalizedQuery)
-          .limit(1)
-          .get();
-      if (querySnapshot.docs.isEmpty) {
-        await collection.add({
-          'normalized_query': normalizedQuery,
-          'original_query': query,
-          'response': response,
-          'timestamp': FieldValue.serverTimestamp(),
-        });
-        print("Saved learned response for query: $query");
-      }
-      // Limit Firestore collection size
-      final allDocs = await collection.orderBy('timestamp').get();
-      if (allDocs.docs.length > 1000) {
-        await allDocs.docs.first.reference.delete();
-      }
-    } catch (e) {
-      print("Error saving learned response: $e");
-    }
-  }
-
-  Future<String?> _getLearnedResponse(String query) async {
-    try {
-      final normalizedQuery = _normalizeQuery(query);
-      final querySnapshot = await FirebaseFirestore.instance
-          .collection('learned_responses')
-          .where('normalized_query', isEqualTo: normalizedQuery)
-          .limit(1)
-          .get();
-      if (querySnapshot.docs.isNotEmpty) {
-        return querySnapshot.docs.first.data()['response'] as String?;
-      }
-    } catch (e) {
-      print("Error fetching learned response: $e");
-    }
-    return null;
-  }
-
   Future<void> _initSpeech() async {
     for (int attempt = 1; attempt <= 3; attempt++) {
       try {
@@ -261,7 +224,7 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
               );
             }
           },
-          debugLogging: true,
+          debugLogging: true, // Enable for troubleshooting
         );
         if (_speechInitialized) {
           print('Speech recognition initialized successfully');
@@ -327,6 +290,7 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
             _soundLevel = level;
           });
           if (_isListening && level < _minSoundLevel && _lastWords.isEmpty) {
+            // Check for prolonged silence
             Future.delayed(Duration(seconds: _maxSilenceSeconds), () {
               if (_isListening && _lastWords.isEmpty && _soundLevel < _minSoundLevel) {
                 _speech.stop();
@@ -339,11 +303,11 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
             });
           }
         },
-        listenFor: const Duration(seconds: 30),
-        pauseFor: const Duration(seconds: 5),
-        sampleRate: 16000,
-        partialResults: true,
-        cancelOnError: false,
+        listenFor: const Duration(seconds: 30), // Longer listening duration
+        pauseFor: const Duration(seconds: 5), // Allow longer pauses
+        sampleRate: 16000, // Standard sample rate for clarity
+        partialResults: true, // Enable partial results for responsiveness
+        cancelOnError: false, // Continue listening on minor errors
       );
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -391,7 +355,7 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
               ),
               const SizedBox(height: 10),
               Text(
-                'Oops, No Voice Detected!',
+                'Voice Not Detected',
                 style: TextStyle(
                   fontFamily: 'Poppins',
                   fontSize: 20,
@@ -401,7 +365,7 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
               ),
               const SizedBox(height: 10),
               Text(
-                'Please speak clearly or tap "Try Again" to retry.',
+                'No speech was detected. Please speak clearly or try again.',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'Poppins',
@@ -410,26 +374,42 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
                 ),
               ),
               const SizedBox(height: 20),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  foregroundColor: Colors.blueAccent,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 12),
-                ),
-                onPressed: () {
-                  Navigator.pop(context);
-                  _listen();
-                },
-                child: Text(
-                  'Try Again',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 16,
-                    color: Colors.blueAccent,
-                    fontWeight: FontWeight.bold,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      foregroundColor: Colors.blueAccent,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                      _listen();
+                    },
+                    child: Text(
+                      'Try Again',
+                      style: TextStyle(fontFamily: 'Poppins', color: Colors.blueAccent),
+                    ),
                   ),
-                ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      foregroundColor: Colors.blueAccent,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                      _focusNode.requestFocus();
+                    },
+                    child: Text(
+                      'Use Text',
+                      style: TextStyle(fontFamily: 'Poppins', color: Colors.blueAccent),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -489,26 +469,26 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
   Future<String> _getBotResponse(String userMessage) async {
     String normalizedMessage = _normalizeQuery(userMessage);
 
-    // Check for casual messages
-    if (_casualResponses.containsKey(normalizedMessage)) {
-      final response = _casualResponses[normalizedMessage]!;
-      await _saveCachedResponse(normalizedMessage, response);
-      return response;
+    // Handle casual greetings and simple messages
+    final casualResponses = {
+      'hi': 'Hello! How can I assist you with RIT Chennai today?',
+      'hello': 'Hi there! Ready to answer your questions about RIT Chennai!',
+      'ok': 'Alright! Anything specific about RIT Chennai you want to know?',
+      'bye': 'Goodbye! Feel free to come back with more questions about RIT Chennai!',
+      'thanks': 'You\'re welcome! Any more questions about RIT Chennai?',
+      'thank you': 'My pleasure! What\'s next on your mind about RIT Chennai?'
+    };
+
+    if (casualResponses.containsKey(normalizedMessage)) {
+      await _saveCachedResponse(normalizedMessage, casualResponses[normalizedMessage]);
+      return casualResponses[normalizedMessage]!;
     }
 
-    // Check local cache
+    // Existing logic for FAQ and Gemini API
     if (_responseCache.containsKey(normalizedMessage)) {
       return _responseCache[normalizedMessage]!;
     }
 
-    // Check learned responses in Firestore
-    final learnedResponse = await _getLearnedResponse(userMessage);
-    if (learnedResponse != null) {
-      await _saveCachedResponse(normalizedMessage, learnedResponse);
-      return learnedResponse;
-    }
-
-    // Check FAQ data
     for (var faq in _faqData) {
       String faqInstruction = _normalizeQuery(faq["instruction"]!);
       String accessLevel = faq["access_level"] ?? "public";
@@ -554,16 +534,11 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
       return bestMatch;
     }
 
-    // Check restricted queries
     if (!isStudent && (normalizedMessage.contains("attendance") || normalizedMessage.contains("student portal"))) {
       return "This information is restricted to RIT Chennai students. Please log in as a student.";
     }
 
-    // Fallback to Gemini API and save response for learning
-    final geminiResponse = await getGeminiResponse(userMessage);
-    await _saveCachedResponse(normalizedMessage, geminiResponse);
-    await _saveLearnedResponse(userMessage, geminiResponse);
-    return geminiResponse;
+    return await getGeminiResponse(userMessage);
   }
 
   String _normalizeQuery(String query) {
@@ -725,10 +700,16 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
                   constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.7),
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: isBot ? Colors.blue[50]!.withOpacity(0.9) : Colors.green[100]!.withOpacity(0.9),
+                    color: isBot
+                        ? (_isDarkMode ? Colors.blue[800]!.withOpacity(0.9) : Colors.blue[50]!.withOpacity(0.9))
+                        : (_isDarkMode ? Colors.green[800]!.withOpacity(0.9) : Colors.green[100]!.withOpacity(0.9)),
                     borderRadius: BorderRadius.circular(20),
                     boxShadow: [
-                      BoxShadow(color: Colors.black26, blurRadius: 4, offset: Offset(0, 2)),
+                      BoxShadow(
+                        color: _isDarkMode ? Colors.black54 : Colors.black26,
+                        blurRadius: 4,
+                        offset: Offset(0, 2),
+                      ),
                     ],
                   ),
                   child: isBot
@@ -736,7 +717,11 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
                     animatedTexts: [
                       TypewriterAnimatedText(
                         message['message']!,
-                        textStyle: TextStyle(color: Colors.black87, fontSize: 16, fontFamily: 'Poppins'),
+                        textStyle: TextStyle(
+                          color: _isDarkMode ? Colors.white : Colors.black87,
+                          fontSize: 16,
+                          fontFamily: 'Poppins',
+                        ),
                         speed: const Duration(milliseconds: 20),
                       ),
                     ],
@@ -744,7 +729,11 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
                   )
                       : Text(
                     message['message']!,
-                    style: TextStyle(color: Colors.black87, fontSize: 16, fontFamily: 'Poppins'),
+                    style: TextStyle(
+                      color: _isDarkMode ? Colors.white : Colors.black87,
+                      fontSize: 16,
+                      fontFamily: 'Poppins',
+                    ),
                   ),
                 ),
               ),
@@ -761,7 +750,11 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
             padding: const EdgeInsets.only(top: 4.0),
             child: Text(
               timestamp,
-              style: TextStyle(fontSize: 12, color: Colors.white70, fontFamily: 'Poppins'),
+              style: TextStyle(
+                fontSize: 12,
+                color: _isDarkMode ? Colors.white70 : Colors.white70,
+                fontFamily: 'Poppins',
+              ),
             ),
           ),
         ],
@@ -773,7 +766,13 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 4.0),
       child: ActionChip(
-        label: Text(label, style: TextStyle(color: Colors.white, fontFamily: 'Poppins')),
+        label: Text(
+          label,
+          style: TextStyle(
+            color: _isDarkMode ? Colors.white : Colors.white,
+            fontFamily: 'Poppins',
+          ),
+        ),
         backgroundColor: Colors.blueAccent,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         onPressed: () {
@@ -799,7 +798,7 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
               gradient: RadialGradient(
                 colors: [
                   _isListening ? Colors.blueAccent.withOpacity(0.6) : Colors.blueAccent.withOpacity(0.3),
-                  Colors.white.withOpacity(0.2),
+                  _isDarkMode ? Colors.black.withOpacity(0.2) : Colors.white.withOpacity(0.2),
                   Colors.transparent,
                 ],
                 stops: [0.0, 0.5, 1.0],
@@ -817,7 +816,7 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
               scale: _isListening ? _micScaleAnimation : AlwaysStoppedAnimation(1.0),
               child: CircleAvatar(
                 radius: 24,
-                backgroundColor: Colors.white,
+                backgroundColor: _isDarkMode ? Colors.grey[800] : Colors.white,
                 child: Icon(
                   _isListening ? Icons.mic : Icons.mic_none,
                   color: Colors.blueAccent,
@@ -844,126 +843,150 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/rit_building.jpg'),
-            fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.3), BlendMode.dstATop),
+    return Theme(
+      data: _isDarkMode ? ThemeData.dark() : ThemeData.light(),
+      child: Scaffold(
+        body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/rit_building.jpg'),
+              fit: BoxFit.cover,
+              colorFilter: ColorFilter.mode(
+                _isDarkMode ? Colors.black.withOpacity(0.5) : Colors.black.withOpacity(0.3),
+                BlendMode.dstATop,
+              ),
+            ),
           ),
-        ),
-        child: Column(
-          children: [
-            AppBar(
-              title: Text('RITA - RIT Chennai Chatbot', style: Theme.of(context).textTheme.headlineSmall),
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              flexibleSpace: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [Colors.blueAccent, Colors.blue],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  ),
-                ),
-              ),
-              actions: [
-                IconButton(
-                  icon: Icon(_isVoiceOutputEnabled ? Icons.volume_up : Icons.volume_off),
-                  onPressed: () {
-                    _saveVoiceOutputPreference(!_isVoiceOutputEnabled);
-                  },
-                ),
-              ],
-            ),
-            Expanded(
-              child: ListView.builder(
-                controller: _scrollController,
-                padding: const EdgeInsets.only(bottom: 80),
-                itemCount: _messages.length + (_isBotTyping ? 1 : 0),
-                itemBuilder: (context, index) {
-                  if (index == _messages.length && _isBotTyping) {
-                    return Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Row(
-                        children: [
-                          CircleAvatar(
-                            radius: 20,
-                            backgroundColor: Colors.blueAccent,
-                            child: Text('R', style: TextStyle(color: Colors.white, fontFamily: 'Poppins')),
-                          ),
-                          const SizedBox(width: 8),
-                          Container(
-                            padding: const EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                              color: Colors.blue[50]!.withOpacity(0.9),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: CircularProgressIndicator(strokeWidth: 2),
-                          ),
-                        ],
-                      ),
-                    );
-                  }
-                  return _buildMessage(_messages[index]);
-                },
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8.0),
-              color: Colors.white,
-              child: Column(
-                children: [
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: _getDynamicSuggestions()
-                          .map((s) => _buildSuggestionChip(s['label']!, s['query']!))
-                          .toList(),
+          child: Column(
+            children: [
+              AppBar(
+                title: Text('RITA - RIT Chennai Chatbot', style: Theme.of(context).textTheme.headlineSmall),
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                flexibleSpace: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: _isDarkMode
+                          ? [Colors.blueGrey[900]!, Colors.blueGrey[700]!]
+                          : [Colors.blueAccent, Colors.blue],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
                     ),
                   ),
-                  const SizedBox(height: 8),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: TextField(
-                          controller: _controller,
-                          focusNode: _focusNode,
-                          style: TextStyle(fontFamily: 'Poppins'),
-                          decoration: InputDecoration(
-                            hintText: 'Ask about RIT Chennai...',
-                            hintStyle: TextStyle(fontFamily: 'Poppins'),
-                            filled: true,
-                            fillColor: Colors.grey[100],
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
-                              borderSide: BorderSide.none,
-                            ),
-                            contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      _buildVoiceDetectorAnimation(),
-                      const SizedBox(width: 8),
-                      CircleAvatar(
-                        radius: 24,
-                        backgroundColor: Colors.blueAccent,
-                        child: IconButton(
-                          icon: Icon(Icons.send, color: Colors.white),
-                          onPressed: () {
-                            _isVoiceInput = false;
-                            _sendMessage();
-                          },
-                        ),
-                      ),
-                    ],
+                ),
+                actions: [
+                  IconButton(
+                    icon: Icon(_isVoiceOutputEnabled ? Icons.volume_up : Icons.volume_off),
+                    onPressed: () {
+                      _saveVoiceOutputPreference(!_isVoiceOutputEnabled);
+                    },
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.brightness_4),
+                    onPressed: () {
+                      _saveThemePreference(!_isDarkMode);
+                    },
                   ),
                 ],
               ),
-            ),
-          ],
+              Expanded(
+                child: ListView.builder(
+                  controller: _scrollController,
+                  padding: const EdgeInsets.only(bottom: 80),
+                  itemCount: _messages.length + (_isBotTyping ? 1 : 0),
+                  itemBuilder: (context, index) {
+                    if (index == _messages.length && _isBotTyping) {
+                      return Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Row(
+                          children: [
+                            CircleAvatar(
+                              radius: 20,
+                              backgroundColor: Colors.blueAccent,
+                              child: Text('R',
+                                  style: TextStyle(
+                                      color: Colors.white, fontWeight: FontWeight.bold, fontFamily: 'Poppins')),
+                            ),
+                            const SizedBox(width: 8),
+                            Container(
+                              padding: const EdgeInsets.all(12),
+                              decoration: BoxDecoration(
+                                color: _isDarkMode
+                                    ? Colors.blue[800]!.withOpacity(0.9)
+                                    : Colors.blue[50]!.withOpacity(0.9),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: CircularProgressIndicator(strokeWidth: 2),
+                            ),
+                          ],
+                        ),
+                      );
+                    }
+                    return _buildMessage(_messages[index]);
+                  },
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.all(8.0),
+                color: _isDarkMode ? Colors.grey[900] : Colors.white,
+                child: Column(
+                  children: [
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: _getDynamicSuggestions()
+                            .map((s) => _buildSuggestionChip(s['label']!, s['query']!))
+                            .toList(),
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            controller: _controller,
+                            focusNode: _focusNode,
+                            style: TextStyle(
+                              fontFamily: 'Poppins',
+                              color: _isDarkMode ? Colors.white : Colors.black,
+                            ),
+                            decoration: InputDecoration(
+                              hintText: 'Ask about RIT Chennai...',
+                              hintStyle: TextStyle(
+                                fontFamily: 'Poppins',
+                                color: _isDarkMode ? Colors.grey[400] : Colors.grey,
+                              ),
+                              filled: true,
+                              fillColor: _isDarkMode ? Colors.grey[800] : Colors.grey[100],
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide: BorderSide.none,
+                              ),
+                              contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        _buildVoiceDetectorAnimation(),
+                        const SizedBox(width: 8),
+                        CircleAvatar(
+                          radius: 24,
+                          backgroundColor: Colors.blueAccent,
+                          child: IconButton(
+                            icon: Icon(Icons.send, color: Colors.white),
+                            onPressed: () {
+                              _isVoiceInput = false;
+                              _sendMessage();
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
