@@ -46,6 +46,9 @@ dependencies:
   speech_to_text: ^7.0.0
   flutter_tts: ^4.0.2
   flutter_dotenv: ^5.1.0
+  fuzzy: ^0.5.1
+  uuid: ^4.4.0
+  string_similarity: ^2.0.0
 
 
 dev_dependencies:
