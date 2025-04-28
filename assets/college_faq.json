@@ -1,1124 +1,566 @@
 [
-  <!-- Previous 50 entries remain as provided earlier -->
-  {
-    "instruction": "What are the facilities for data analytics students at RIT Chennai?",
-    "output": "Data Analytics students at RIT Chennai have access to labs with data visualization tools, statistical software, and big data platforms like Hadoop.",
-    "keywords": "data analytics, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for data analytics students at RIT Chennai?, Does RIT have good data analytics labs?, What resources are available for data analytics at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What is the full name of RIT Chennai?",
+    "output": "Rajalakshmi Institute of Technology"
   },
-  {
-    "instruction": "Does RIT Chennai have a tennis club?",
-    "output": "Yes, RIT Chennai has a tennis club that organizes tournaments and training sessions for students.",
-    "keywords": "tennis, club, tournaments, rit chennai",
-    "related_questions": "Is there a tennis club at RIT Chennai?, Does RIT have tennis activities?, Can I join the tennis club at RIT?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "When was RIT Chennai established?",
+    "output": "2008"
   },
-  {
-    "instruction": "What are the facilities for machine learning students at RIT Chennai?",
-    "output": "Machine Learning students at RIT Chennai have access to labs with TensorFlow, PyTorch, and GPU-enabled systems for deep learning projects.",
-    "keywords": "machine learning, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for machine learning students at RIT Chennai?, Does RIT have good ML labs?, What resources are available for machine learning at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "Is RIT Chennai affiliated with any university?",
+    "output": "Yes, it is affiliated with Anna University, Chennai."
   },
-  {
-    "instruction": "Does RIT Chennai have a swimming club?",
-    "output": "Yes, RIT Chennai has a swimming club that organizes training sessions and inter-college swimming competitions.",
-    "keywords": "swimming, club, competitions, rit chennai",
-    "related_questions": "Is there a swimming club at RIT Chennai?, Does RIT have swimming activities?, Can I join the swimming club at RIT?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What accreditation does RIT Chennai have?",
+    "output": "It is accredited with A++ grade by NAAC and has NBA-accredited courses."
   },
-  {
-    "instruction": "What are the facilities for embedded systems students at RIT Chennai?",
-    "output": "Embedded Systems students at RIT Chennai have access to labs with microcontrollers, FPGA boards, and real-time operating system tools.",
-    "keywords": "embedded systems, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for embedded systems students at RIT Chennai?, Does RIT have good embedded labs?, What resources are available for embedded systems at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What courses are offered at RIT Chennai?",
+    "output": "RIT Chennai offers B.E., B.Tech., M.E., and Ph.D. programs in various engineering disciplines."
   },
-  {
-    "instruction": "Does RIT Chennai have a martial arts club?",
-    "output": "Yes, RIT Chennai has a martial arts club that offers training in karate, taekwondo, and self-defense for students.",
-    "keywords": "martial arts, club, karate, rit chennai",
-    "related_questions": "Is there a martial arts club at RIT Chennai?, Does RIT have self-defense training?, Can I join the martial arts club at RIT?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "How can I apply for admission to RIT Chennai?",
+    "output": "Admissions are through Tamil Nadu Engineering Admissions (TNEA) counseling based on 12th standard marks."
   },
-  {
-    "instruction": "What are the facilities for VLSI design students at RIT Chennai?",
-    "output": "VLSI Design students at RIT Chennai have access to labs with EDA tools, simulation software, and hardware prototyping kits.",
-    "keywords": "vlsi design, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for VLSI students at RIT Chennai?, Does RIT have good VLSI labs?, What resources are available for VLSI at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What is the eligibility criteria for B.E./B.Tech programs?",
+    "output": "Candidates must have passed 10+2 with Physics, Chemistry, and Mathematics."
   },
-  {
-    "instruction": "Does RIT Chennai have a cycling club?",
-    "output": "Yes, RIT Chennai has a cycling club that organizes rides and promotes fitness among students.",
-    "keywords": "cycling, club, fitness, rit chennai",
-    "related_questions": "Is there a cycling club at RIT Chennai?, Does RIT have cycling activities?, Can I join the cycling club at RIT?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "Does RIT Chennai offer scholarships?",
+    "output": "Yes, scholarships are available for meritorious students and those with financial need."
   },
-  {
-    "instruction": "What are the facilities for power electronics students at RIT Chennai?",
-    "output": "Power Electronics students at RIT Chennai have access to labs with inverters, converters, and power system simulation tools.",
-    "keywords": "power electronics, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for power electronics students at RIT Chennai?, Does RIT have good power labs?, What resources are available for power electronics at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What are the placement statistics for RIT Chennai?",
+    "output": "In 2022-2023, 275 students were placed with a 97.5% placement rate."
   },
-  {
-    "instruction": "Does RIT Chennai have a hiking club?",
-    "output": "Yes, RIT Chennai has a hiking club that organizes trekking trips and outdoor adventure activities.",
-    "keywords": "hiking, club, trekking, rit chennai",
-    "related_questions": "Is there a hiking club at RIT Chennai?, Does RIT have trekking activities?, Can I join the hiking club at RIT?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "Who are some of the top recruiters at RIT Chennai?",
+    "output": "Top recruiters include Infosys, Wipro, TCS, Amazon, and Zoho."
   },
-  {
-    "instruction": "What are the facilities for renewable energy students at RIT Chennai?",
-    "output": "Renewable Energy students at RIT Chennai have access to labs with solar panels, wind turbine simulators, and energy storage systems.",
-    "keywords": "renewable energy, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for renewable energy students at RIT Chennai?, Does RIT have good renewable labs?, What resources are available for renewable energy at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What facilities are available on campus?",
+    "output": "Facilities include a library, hostels, cafeteria, sports facilities, and modern labs."
   },
-  {
-    "instruction": "Does RIT Chennai have a painting club?",
-    "output": "Yes, RIT Chennai has a painting club that organizes art exhibitions and painting workshops for students.",
-    "keywords": "painting, club, exhibitions, rit chennai",
-    "related_questions": "Is there a painting club at RIT Chennai?, Does RIT have painting activities?, Can I join the painting club at RIT?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "Is there a hostel facility at RIT Chennai?",
+    "output": "Yes, there are separate hostels for boys and girls with modern amenities."
   },
-  {
-    "instruction": "What are the facilities for structural engineering students at RIT Chennai?",
-    "output": "Structural Engineering students at RIT Chennai have access to labs with seismic testing equipment and structural analysis software.",
-    "keywords": "structural engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for structural students at RIT Chennai?, Does RIT have good structural labs?, What resources are available for structural engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What is the official website of RIT Chennai?",
+    "output": "The official website is https://www.ritchennai.org/."
   },
-  {
-    "instruction": "Does RIT Chennai have a sketching club?",
-    "output": "Yes, RIT Chennai has a sketching club that organizes sketching competitions and workshops for students.",
-    "keywords": "sketching, club, competitions, rit chennai",
-    "related_questions": "Is there a sketching club at RIT Chennai?, Does RIT have sketching activities?, Can I join the sketching club at RIT?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "Does RIT Chennai have any social media presence?",
+    "output": "Yes, RIT Chennai has an Instagram account (@ritchennai) and a YouTube channel."
   },
-  {
-    "instruction": "What are the facilities for thermal engineering students at RIT Chennai?",
-    "output": "Thermal Engineering students at RIT Chennai have access to labs with heat transfer equipment, refrigeration units, and thermodynamics tools.",
-    "keywords": "thermal engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for thermal students at RIT Chennai?, Does RIT have good thermal labs?, What resources are available for thermal engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What is the contact number for RIT Chennai?",
+    "output": "The contact numbers are 044-67181600 and 67181601."
   },
-  {
-    "instruction": "Does RIT Chennai have a pottery club?",
-    "output": "Yes, RIT Chennai has a pottery club that organizes pottery workshops and exhibitions for students.",
-    "keywords": "pottery, club, workshops, rit chennai",
-    "related_questions": "Is there a pottery club at RIT Chennai?, Does RIT have pottery activities?, Can I join the pottery club at RIT?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What is the address of RIT Chennai?",
+    "output": "RIT Chennai is located in Kuthambakkam, near Poonamallee, Chennai - 600124, Tamil Nadu."
   },
-  {
-    "instruction": "What are the facilities for fluid mechanics students at RIT Chennai?",
-    "output": "Fluid Mechanics students at RIT Chennai have access to labs with hydraulic benches, flow measurement devices, and computational fluid dynamics software.",
-    "keywords": "fluid mechanics, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for fluid mechanics students at RIT Chennai?, Does RIT have good fluid labs?, What resources are available for fluid mechanics at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "Is RIT Chennai an autonomous institution?",
+    "output": "Yes, RIT Chennai is an autonomous institution."
   },
-  {
-    "instruction": "Does RIT Chennai have a gardening club?",
-    "output": "Yes, RIT Chennai has a gardening club that promotes campus greening and organizes plant care workshops.",
-    "keywords": "gardening, club, greening, rit chennai",
-    "related_questions": "Is there a gardening club at RIT Chennai?, Does RIT have gardening activities?, Can I join the gardening club at RIT?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What is the motto of RIT Chennai?",
+    "output": "The motto of RIT Chennai is 'Believe In The Possibilities.'"
   },
-  {
-    "instruction": "What are the facilities for materials science students at RIT Chennai?",
-    "output": "Materials Science students at RIT Chennai have access to labs with material testing machines, metallography tools, and polymer analysis equipment.",
-    "keywords": "materials science, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for materials science students at RIT Chennai?, Does RIT have good materials labs?, What resources are available for materials science at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "Are there any Ph.D. programs at RIT Chennai?",
+    "output": "Yes, Ph.D. programs are offered across Engineering, Technology, Science, and Humanities disciplines."
   },
-  {
-    "instruction": "Does RIT Chennai have a fashion club?",
-    "output": "Yes, RIT Chennai has a fashion club that organizes fashion shows and design workshops for students.",
-    "keywords": "fashion, club, shows, rit chennai",
-    "related_questions": "Is there a fashion club at RIT Chennai?, Does RIT have fashion activities?, Can I join the fashion club at RIT?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What is the duration of B.E./B.Tech programs?",
+    "output": "The duration of B.E./B.Tech programs is 4 years."
   },
-  {
-    "instruction": "What are the facilities for geotechnical engineering students at RIT Chennai?",
-    "output": "Geotechnical Engineering students at RIT Chennai have access to labs with soil testing equipment, triaxial testing devices, and geotechnical software.",
-    "keywords": "geotechnical engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for geotechnical students at RIT Chennai?, Does RIT have good geotechnical labs?, What resources are available for geotechnical engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What specializations are available in B.Tech at RIT Chennai?",
+    "output": "Specializations include Artificial Intelligence & Data Science, Computer Science and Business Systems, and Bio Technology."
   },
-  {
-    "instruction": "Does RIT Chennai have a jewelry making club?",
-    "output": "Yes, RIT Chennai has a jewelry making club that organizes workshops and exhibitions for students interested in crafting.",
-    "keywords": "jewelry making, club, workshops, rit chennai",
-    "related_questions": "Is there a jewelry making club at RIT Chennai?, Does RIT have jewelry crafting activities?, Can I join the jewelry making club at RIT?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "Is there a choice-based credit system at RIT Chennai?",
+    "output": "Yes, RIT Chennai follows a choice-based credit system for its programs."
   },
-  {
-    "instruction": "What are the facilities for transportation engineering students at RIT Chennai?",
-    "output": "Transportation Engineering students at RIT Chennai have access to labs with traffic simulation software, road testing equipment, and urban planning tools.",
-    "keywords": "transportation engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for transportation students at RIT Chennai?, Does RIT have good transportation labs?, What resources are available for transportation engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "Are there any interdisciplinary courses offered?",
+    "output": "RIT Chennai offers interdisciplinary courses like AI & ML and Computer Science & Business Systems."
   },
-  {
-    "instruction": "Does RIT Chennai have a woodwork club?",
-    "output": "Yes, RIT Chennai has a woodwork club that organizes carpentry workshops and furniture design sessions for students.",
-    "keywords": "woodwork, club, carpentry, rit chennai",
-    "related_questions": "Is there a woodwork club at RIT Chennai?, Does RIT have wood crafting activities?, Can I join the woodwork club at RIT?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What is the admission process for lateral entry at RIT Chennai?",
+    "output": "Lateral entry admissions are for diploma holders through TNEA counseling."
   },
-  {
-    "instruction": "What are the facilities for environmental engineering students at RIT Chennai?",
-    "output": "Environmental Engineering students at RIT Chennai have access to labs with water quality testing equipment, air pollution monitors, and waste management tools.",
-    "keywords": "environmental engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for environmental students at RIT Chennai?, Does RIT have good environmental labs?, What resources are available for environmental engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "Are there any management quota seats at RIT Chennai?",
+    "output": "Yes, RIT Chennai offers admissions through management quota, subject to eligibility."
   },
-  {
-    "instruction": "Does RIT Chennai have a sculpture club?",
-    "output": "Yes, RIT Chennai has a sculpture club that organizes sculpting workshops and art exhibitions for students.",
-    "keywords": "sculpture, club, workshops, rit chennai",
-    "related_questions": "Is there a sculpture club at RIT Chennai?, Does RIT have sculpting activities?, Can I join the sculpture club at RIT?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What documents are required for admission to RIT Chennai?",
+    "output": "Required documents include 10th and 12th mark sheets, TNEA counseling letter, and identity proofs."
   },
-  {
-    "instruction": "What are the facilities for construction management students at RIT Chennai?",
-    "output": "Construction Management students at RIT Chennai have access to labs with project management software, building information modeling tools, and construction simulation systems.",
-    "keywords": "construction management, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for construction management students at RIT Chennai?, Does RIT have good construction labs?, What resources are available for construction management at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "When does the admission process start at RIT Chennai?",
+    "output": "The admission process typically starts in May/June, aligned with TNEA counseling."
   },
-  {
-    "instruction": "Does RIT Chennai have a textile club?",
-    "output": "Yes, RIT Chennai has a textile club that organizes weaving workshops and textile design competitions for students.",
-    "keywords": "textile, club, weaving, rit chennai",
-    "related_questions": "Is there a textile club at RIT Chennai?, Does RIT have textile activities?, Can I join the textile club at RIT?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What is TNEA and how does it relate to RIT Chennai admissions?",
+    "output": "TNEA is Tamil Nadu Engineering Admissions, the counseling process for RIT Chennai admissions."
   },
-  {
-    "instruction": "What are the facilities for water resources engineering students at RIT Chennai?",
-    "output": "Water Resources Engineering students at RIT Chennai have access to labs with hydrological modeling software, irrigation equipment, and water quality analysis tools.",
-    "keywords": "water resources, engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for water resources students at RIT Chennai?, Does RIT have good water labs?, What resources are available for water resources engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "Can I get admission through sports quota at RIT Chennai?",
+    "output": "Sports quota admissions may be available, subject to Anna University guidelines."
   },
-  {
-    "instruction": "Does RIT Chennai have a knitting club?",
-    "output": "Yes, RIT Chennai has a knitting club that organizes knitting workshops and craft exhibitions for students.",
-    "keywords": "knitting, club, workshops, rit chennai",
-    "related_questions": "Is there a knitting club at RIT Chennai?, Does RIT have knitting activities?, Can I join the knitting club at RIT?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "How many faculty members are there at RIT Chennai?",
+    "output": "RIT Chennai has 157 faculty members."
   },
-  {
-    "instruction": "What are the facilities for industrial engineering students at RIT Chennai?",
-    "output": "Industrial Engineering students at RIT Chennai have access to labs with production planning software, ergonomics tools, and lean manufacturing systems.",
-    "keywords": "industrial engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for industrial students at RIT Chennai?, Does RIT have good industrial labs?, What resources are available for industrial engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "How many faculty members at RIT Chennai hold Ph.D. degrees?",
+    "output": "53 faculty members at RIT Chennai hold Ph.D. degrees."
   },
-  {
-    "instruction": "Does RIT Chennai have a beadwork club?",
-    "output": "Yes, RIT Chennai has a beadwork club that organizes bead crafting workshops and exhibitions for students.",
-    "keywords": "beadwork, club, workshops, rit chennai",
-    "related_questions": "Is there a beadwork club at RIT Chennai?, Does RIT have bead crafting activities?, Can I join the beadwork club at RIT?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "Are there any visiting faculty or guest lecturers at RIT Chennai?",
+    "output": "Yes, RIT Chennai invites guest lecturers to enhance student learning."
   },
-  {
-    "instruction": "What are the facilities for manufacturing engineering students at RIT Chennai?",
-    "output": "Manufacturing Engineering students at RIT Chennai have access to labs with CNC machines, 3D printers, and quality control equipment.",
-    "keywords": "manufacturing engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for manufacturing students at RIT Chennai?, Does RIT have good manufacturing labs?, What resources are available for manufacturing engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What is the student-to-faculty ratio at RIT Chennai?",
+    "output": "The student-to-faculty ratio is approximately 15:1, based on enrollment and faculty numbers."
   },
-  {
-    "instruction": "Does RIT Chennai have a sewing club?",
-    "output": "Yes, RIT Chennai has a sewing club that organizes stitching workshops and fashion design sessions for students.",
-    "keywords": "sewing, club, workshops, rit chennai",
-    "related_questions": "Is there a sewing club at RIT Chennai?, Does RIT have sewing activities?, Can I join the sewing club at RIT?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What is the highest salary package offered at RIT Chennai?",
+    "output": "The highest salary package offered in 2023 was 44 LPA."
   },
-  {
-    "instruction": "What are the facilities for production engineering students at RIT Chennai?",
-    "output": "Production Engineering students at RIT Chennai have access to labs with automation systems, robotics, and process optimization tools.",
-    "keywords": "production engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for production students at RIT Chennai?, Does RIT have good production labs?, What resources are available for production engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What is the average salary package at RIT Chennai?",
+    "output": "The average salary package in 2023 was around 6-12 LPA."
   },
-  {
-    "instruction": "Does RIT Chennai have a crochet club?",
-    "output": "Yes, RIT Chennai has a crochet club that organizes crocheting workshops and craft exhibitions for students.",
-    "keywords": "crochet, club, workshops, rit chennai",
-    "related_questions": "Is there a crochet club at RIT Chennai?, Does RIT have crocheting activities?, Can I join the crochet club at RIT?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "Are there internship opportunities at RIT Chennai?",
+    "output": "Yes, 90%-93% of students secure internships with reputed organizations."
   },
-  {
-    "instruction": "What are the facilities for quality engineering students at RIT Chennai?",
-    "output": "Quality Engineering students at RIT Chennai have access to labs with statistical process control tools, Six Sigma software, and quality testing equipment.",
-    "keywords": "quality engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for quality students at RIT Chennai?, Does RIT have good quality labs?, What resources are available for quality engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "Does RIT Chennai provide placement training?",
+    "output": "Yes, RIT Chennai offers placement training, including aptitude and soft skills."
   },
-  {
-    "instruction": "Does RIT Chennai have a quilting club?",
-    "output": "Yes, RIT Chennai has a quilting club that organizes quilting workshops and craft exhibitions for students.",
-    "keywords": "quilting, club, workshops, rit chennai",
-    "related_questions": "Is there a quilting club at RIT Chennai?, Does RIT have quilting activities?, Can I join the quilting club at RIT?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "How does the placement cell assist students at RIT Chennai?",
+    "output": "The placement cell organizes campus drives, training, and industry interactions."
   },
-  {
-    "instruction": "What are the facilities for safety engineering students at RIT Chennai?",
-    "output": "Safety Engineering students at RIT Chennai have access to labs with occupational health tools, safety audits software, and hazard analysis systems.",
-    "keywords": "safety engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for safety students at RIT Chennai?, Does RIT have good safety labs?, What resources are available for safety engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "Does RIT Chennai have a library? What are its features?",
+    "output": "Yes, the library has over 18,328 volumes, journals, and digital resources."
   },
-  {
-    "instruction": "Does RIT Chennai have a weaving club?",
-    "output": "Yes, RIT Chennai has a weaving club that organizes weaving workshops and textile exhibitions for students.",
-    "keywords": "weaving, club, workshops, rit chennai",
-    "related_questions": "Is there a weaving club at RIT Chennai?, Does RIT have weaving activities?, Can I join the weaving club at RIT?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What sports facilities are available at RIT Chennai?",
+    "output": "Sports facilities include cricket, football, basketball, volleyball, and indoor games."
   },
-  {
-    "instruction": "What are the facilities for systems engineering students at RIT Chennai?",
-    "output": "Systems Engineering students at RIT Chennai have access to labs with systems modeling software, simulation tools, and integration platforms.",
-    "keywords": "systems engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for systems students at RIT Chennai?, Does RIT have good systems labs?, What resources are available for systems engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "Is there a cafeteria on campus at RIT Chennai?",
+    "output": "Yes, the cafeteria serves hygienic food with a seating capacity of over 500."
   },
-  {
-    "instruction": "Does RIT Chennai have a embroidery club?",
-    "output": "Yes, RIT Chennai has an embroidery club that organizes embroidery workshops and craft exhibitions for students.",
-    "keywords": "embroidery, club, workshops, rit chennai",
-    "related_questions": "Is there an embroidery club at RIT Chennai?, Does RIT have embroidery activities?, Can I join the embroidery club at RIT?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "Are there any medical facilities on campus at RIT Chennai?",
+    "output": "Yes, RIT Chennai has a medical center with 24/7 facilities."
   },
-  {
-    "instruction": "What are the facilities for software engineering students at RIT Chennai?",
-    "output": "Software Engineering students at RIT Chennai have access to labs with agile development tools, version control systems, and testing frameworks.",
-    "keywords": "software engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for software students at RIT Chennai?, Does RIT have good software labs?, What resources are available for software engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "Is the RIT Chennai campus Wi-Fi enabled?",
+    "output": "Yes, the campus is Wi-Fi enabled for students and faculty."
   },
-  {
-    "instruction": "Does RIT Chennai have a leather crafting club?",
-    "output": "Yes, RIT Chennai has a leather crafting club that organizes leather working workshops and exhibitions for students.",
-    "keywords": "leather crafting, club, workshops, rit chennai",
-    "related_questions": "Is there a leather crafting club at RIT Chennai?, Does RIT have leather working activities?, Can I join the leather crafting club at RIT?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What are the laboratory facilities like at RIT Chennai?",
+    "output": "RIT Chennai has over 40 labs for electronics, computer science, and more."
   },
-  {
-    "instruction": "What are the facilities for network engineering students at RIT Chennai?",
-    "output": "Network Engineering students at RIT Chennai have access to labs with Cisco routers, network simulators, and cybersecurity tools.",
-    "keywords": "network engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for network students at RIT Chennai?, Does RIT have good network labs?, What resources are available for network engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What student clubs are there at RIT Chennai?",
+    "output": "Clubs include STEAM Club, IoT Club, CAM Club, and Women Empowerment Club."
   },
-  {
-    "instruction": "Does RIT Chennai have a glass blowing club?",
-    "output": "Yes, RIT Chennai has a glass blowing club that organizes glass crafting workshops and exhibitions for students.",
-    "keywords": "glass blowing, club, workshops, rit chennai",
-    "related_questions": "Is there a glass blowing club at RIT Chennai?, Does RIT have glass crafting activities?, Can I join the glass blowing club at RIT?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "How can I join a student club at RIT Chennai?",
+    "output": "Students can join clubs by registering through the student affairs office."
   },
-  {
-    "instruction": "What are the facilities for telecommunication engineering students at RIT Chennai?",
-    "output": "Telecommunication Engineering students at RIT Chennai have access to labs with RF equipment, signal processing tools, and satellite communication systems.",
-    "keywords": "telecommunication engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for telecom students at RIT Chennai?, Does RIT have good telecom labs?, What resources are available for telecommunication engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What events are organized at RIT Chennai?",
+    "output": "Events include technical workshops, cultural festivals, and sports tournaments."
   },
-  {
-    "instruction": "Does RIT Chennai have a metalwork club?",
-    "output": "Yes, RIT Chennai has a metalwork club that organizes metal crafting workshops and exhibitions for students.",
-    "keywords": "metalwork, club, workshops, rit chennai",
-    "related_questions": "Is there a metalwork club at RIT Chennai?, Does RIT have metal crafting activities?, Can I join the metalwork club at RIT?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "Is there a cultural festival at RIT Chennai?",
+    "output": "Yes, RIT Chennai organizes cultural festivals with student participation."
   },
-  {
-    "instruction": "What are the facilities for audio engineering students at RIT Chennai?",
-    "output": "Audio Engineering students at RIT Chennai have access to labs with sound recording equipment, mixing consoles, and acoustic analysis tools.",
-    "keywords": "audio engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for audio students at RIT Chennai?, Does RIT have good audio labs?, What resources are available for audio engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "Is there a technical symposium at RIT Chennai?",
+    "output": "Yes, technical symposiums like Quantum Week are held annually."
   },
-  {
-    "instruction": "Does RIT Chennai have a paper craft club?",
-    "output": "Yes, RIT Chennai has a paper craft club that organizes origami workshops and paper art exhibitions for students.",
-    "keywords": "paper craft, club, workshops, rit chennai",
-    "related_questions": "Is there a paper craft club at RIT Chennai?, Does RIT have paper art activities?, Can I join the paper craft club at RIT?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "Are there any sports tournaments at RIT Chennai?",
+    "output": "Yes, RIT Chennai hosts inter-college and intra-college sports tournaments."
   },
-  {
-    "instruction": "What are the facilities for video engineering students at RIT Chennai?",
-    "output": "Video Engineering students at RIT Chennai have access to labs with video editing software, camera equipment, and post-production tools.",
-    "keywords": "video engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for video students at RIT Chennai?, Does RIT have good video labs?, What resources are available for video engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What is the dress code for students at RIT Chennai?",
+    "output": "The dress code is formal, with specific guidelines provided by the institute."
   },
-  {
-    "instruction": "Does RIT Chennai have a puppetry club?",
-    "output": "Yes, RIT Chennai has a puppetry club that organizes puppet-making workshops and performances for students.",
-    "keywords": "puppetry, club, workshops, rit chennai",
-    "related_questions": "Is there a puppetry club at RIT Chennai?, Does RIT have puppet-making activities?, Can I join the puppetry club at RIT?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "Are there any restrictions on campus at RIT Chennai?",
+    "output": "Restrictions include anti-ragging policies and campus conduct rules."
   },
-  {
-    "instruction": "What are the facilities for animation engineering students at RIT Chennai?",
-    "output": "Animation Engineering students at RIT Chennai have access to labs with 3D modeling software, motion capture systems, and rendering tools.",
-    "keywords": "animation engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for animation students at RIT Chennai?, Does RIT have good animation labs?, What resources are available for animation engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "How is the campus security at RIT Chennai?",
+    "output": "The campus has 24/7 security with CCTV and trained personnel."
   },
-  {
-    "instruction": "Does RIT Chennai have a storytelling club?",
-    "output": "Yes, RIT Chennai has a storytelling club that organizes narrative sessions and creative writing workshops for students.",
-    "keywords": "storytelling, club, workshops, rit chennai",
-    "related_questions": "Is there a storytelling club at RIT Chennai?, Does RIT have storytelling activities?, Can I join the storytelling club at RIT?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What is the anti-ragging policy at RIT Chennai?",
+    "output": "RIT Chennai has a strict anti-ragging policy as per UGC guidelines."
   },
-  {
-    "instruction": "What are the facilities for gaming engineering students at RIT Chennai?",
-    "output": "Gaming Engineering students at RIT Chennai have access to labs with game development engines, VR systems, and graphics programming tools.",
-    "keywords": "gaming engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for gaming students at RIT Chennai?, Does RIT have good gaming labs?, What resources are available for gaming engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What is the placement percentage for CSE students at RIT Chennai?",
+    "output": "In 2022-2023, 147 CSE students were placed, with a 97.5% overall rate."
   },
-  {
-    "instruction": "Does RIT Chennai have a poetry club?",
-    "output": "Yes, RIT Chennai has a poetry club that organizes poetry readings and writing competitions for students.",
-    "keywords": "poetry, club, readings, rit chennai",
-    "related_questions": "Is there a poetry club at RIT Chennai?, Does RIT have poetry activities?, Can I join the poetry club at RIT?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What is the placement percentage for ECE students at RIT Chennai?",
+    "output": "In 2022-2023, 98 ECE students were placed."
   },
-  {
-    "instruction": "What are the facilities for virtual reality students at RIT Chennai?",
-    "output": "Virtual Reality students at RIT Chennai have access to labs with VR headsets, 3D modeling tools, and immersive simulation platforms.",
-    "keywords": "virtual reality, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for VR students at RIT Chennai?, Does RIT have good VR labs?, What resources are available for virtual reality at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What is the placement percentage for Mechanical Engineering students?",
+    "output": "In 2022-2023, 30 Mechanical Engineering students were placed."
   },
-  {
-    "instruction": "Does RIT Chennai have a public speaking club?",
-    "output": "Yes, RIT Chennai has a public speaking club that organizes debates, speeches, and elocution contests for students.",
-    "keywords": "public speaking, club, debates, rit chennai",
-    "related_questions": "Is there a public speaking club at RIT Chennai?, Does RIT have speech activities?, Can I join the public speaking club at RIT?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "Does RIT Chennai offer transportation facilities?",
+    "output": "Yes, RIT Chennai provides bus transport to various parts of the city."
   },
-  {
-    "instruction": "What are the facilities for augmented reality students at RIT Chennai?",
-    "output": "Augmented Reality students at RIT Chennai have access to labs with AR development kits, holographic displays, and interactive design tools.",
-    "keywords": "augmented reality, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for AR students at RIT Chennai?, Does RIT have good AR labs?, What resources are available for augmented reality at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What is the hostel fee at RIT Chennai?",
+    "output": "Hostel fees are INR 60,200 for non-AC rooms and INR 75,000 for AC rooms."
   },
-  {
-    "instruction": "Does RIT Chennai have a journalism club?",
-    "output": "Yes, RIT Chennai has a journalism club that organizes article writing, news reporting, and media workshops for students.",
-    "keywords": "journalism, club, workshops, rit chennai",
-    "related_questions": "Is there a journalism club at RIT Chennai?, Does RIT have media activities?, Can I join the journalism club at RIT?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What is the fee structure for B.Tech at RIT Chennai?",
+    "output": "The B.Tech fee is approximately INR 2 Lakh for 4 years."
   },
-  {
-    "instruction": "What are the facilities for blockchain students at RIT Chennai?",
-    "output": "Blockchain students at RIT Chennai have access to labs with cryptocurrency platforms, smart contract tools, and decentralized application development kits.",
-    "keywords": "blockchain, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for blockchain students at RIT Chennai?, Does RIT have good blockchain labs?, What resources are available for blockchain at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "Are there any eco-friendly initiatives at RIT Chennai?",
+    "output": "Yes, the campus has solar panels and rainwater harvesting systems."
   },
-  {
-    "instruction": "Does RIT Chennai have a radio club?",
-    "output": "Yes, RIT Chennai has a radio club that operates an on-campus radio station and organizes broadcasting workshops.",
-    "keywords": "radio, club, broadcasting, rit chennai",
-    "related_questions": "Is there a radio club at RIT Chennai?, Does RIT have radio activities?, Can I join the radio club at RIT?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What is the size of the RIT Chennai campus?",
+    "output": "The campus spans approximately 10.88 acres."
   },
-  {
-    "instruction": "What are the facilities for quantum computing students at RIT Chennai?",
-    "output": "Quantum Computing students at RIT Chennai have access to labs with quantum simulation software and research-grade computing resources.",
-    "keywords": "quantum computing, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for quantum students at RIT Chennai?, Does RIT have good quantum labs?, What resources are available for quantum computing at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "Does RIT Chennai have any industry collaborations?",
+    "output": "Yes, RIT Chennai has MoUs with leading industries and foreign universities."
   },
-  {
-    "instruction": "Does RIT Chennai have a photography competition?",
-    "output": "Yes, RIT Chennai organizes annual photography competitions as part of its cultural and technical events.",
-    "keywords": "photography, competition, events, rit chennai",
-    "related_questions": "Is there a photography competition at RIT Chennai?, Does RIT host photo contests?, Can I participate in RIT Chennai's photography event?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What is the NIRF ranking of RIT Chennai?",
+    "output": "RIT Chennai is ranked in the 151-200 band by NIRF 2024."
   },
-  {
-    "instruction": "What are the facilities for artificial intelligence students at RIT Chennai?",
-    "output": "Artificial Intelligence students at RIT Chennai have access to labs with neural network tools, natural language processing software, and AI development kits.",
-    "keywords": "artificial intelligence, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for AI students at RIT Chennai?, Does RIT have good AI labs?, What resources are available for artificial intelligence at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "Does RIT Chennai offer any certification courses?",
+    "output": "Yes, certification courses are offered in collaboration with industries."
   },
-  {
-    "instruction": "Does RIT Chennai have a dance competition?",
-    "output": "Yes, RIT Chennai organizes dance competitions during cultural festivals like Cultura.",
-    "keywords": "dance, competition, cultura, rit chennai",
-    "related_questions": "Is there a dance competition at RIT Chennai?, Does RIT host dance contests?, Can I participate in RIT Chennai's dance event?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "Are there any guest lectures at RIT Chennai?",
+    "output": "Yes, guest lectures are regularly organized by industry experts."
   },
-  {
-    "instruction": "What are the facilities for robotics engineering students at RIT Chennai?",
-    "output": "Robotics Engineering students at RIT Chennai have access to labs with robotic arms, sensor kits, and automation software.",
-    "keywords": "robotics engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for robotics engineering students at RIT Chennai?, Does RIT have good robotics labs?, What resources are available for robotics engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What is the student enrollment capacity at RIT Chennai?",
+    "output": "RIT Chennai has a capacity for approximately 720 students in UG programs."
   },
-  {
-    "instruction": "Does RIT Chennai have a music competition?",
-    "output": "Yes, RIT Chennai organizes music competitions featuring solo and group performances during cultural events.",
-    "keywords": "music, competition, events, rit chennai",
-    "related_questions": "Is there a music competition at RIT Chennai?, Does RIT host music contests?, Can I participate in RIT Chennai's music event?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "Does RIT Chennai have a placement cell?",
+    "output": "Yes, RIT Chennai has a dedicated placement cell for student support."
   },
-  {
-    "instruction": "What are the facilities for mechatronics engineering students at RIT Chennai?",
-    "output": "Mechatronics Engineering students at RIT Chennai have access to labs with PLC systems, robotic assemblies, and control engineering tools.",
-    "keywords": "mechatronics engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for mechatronics students at RIT Chennai?, Does RIT have good mechatronics labs?, What resources are available for mechatronics engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What is the median salary package at RIT Chennai?",
+    "output": "The median salary package in 2023 was INR 5.35 LPA."
   },
-  {
-    "instruction": "Does RIT Chennai have a drama competition?",
-    "output": "Yes, RIT Chennai organizes drama competitions as part of its cultural festivals and symposiums.",
-    "keywords": "drama, competition, festivals, rit chennai",
-    "related_questions": "Is there a drama competition at RIT Chennai?, Does RIT host theatre contests?, Can I participate in RIT Chennai's drama event?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "Are there any alumni networks at RIT Chennai?",
+    "output": "Yes, RIT Chennai has a strong alumni network for career support."
   },
-  {
-    "instruction": "What are the facilities for nanotechnology students at RIT Chennai?",
-    "output": "Nanotechnology students at RIT Chennai have access to labs with electron microscopes, nanomaterial synthesis tools, and characterization equipment.",
-    "keywords": "nanotechnology, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for nanotechnology students at RIT Chennai?, Does RIT have good nano labs?, What resources are available for nanotechnology at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What is the process for branch change at RIT Chennai?",
+    "output": "Branch change is allowed based on specific criteria and availability."
   },
-  {
-    "instruction": "Does RIT Chennai have an art competition?",
-    "output": "Yes, RIT Chennai organizes art competitions featuring painting, sketching, and sculpture during cultural events.",
-    "keywords": "art, competition, painting, rit chennai",
-    "related_questions": "Is there an art competition at RIT Chennai?, Does RIT host art contests?, Can I participate in RIT Chennai's art event?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "Does RIT Chennai have a research center?",
+    "output": "Yes, RIT Chennai is an Anna University-approved research institute."
   },
-  {
-    "instruction": "What are the facilities for biomedical instrumentation students at RIT Chennai?",
-    "output": "Biomedical Instrumentation students at RIT Chennai have access to labs with medical device prototypes, signal processing tools, and diagnostic equipment.",
-    "keywords": "biomedical instrumentation, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for biomedical instrumentation students at RIT Chennai?, Does RIT have good biomedical labs?, What resources are available for biomedical instrumentation at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What are the library hours at RIT Chennai?",
+    "output": "Library hours are typically from 8 AM to 6 PM, subject to change."
   },
-  {
-    "instruction": "Does RIT Chennai have a coding competition?",
-    "output": "Yes, RIT Chennai organizes coding competitions and hackathons as part of its technical symposiums like Quantum Week.",
-    "keywords": "coding, competition, hackathons, rit chennai",
-    "related_questions": "Is there a coding competition at RIT Chennai?, Does RIT host coding contests?, Can I participate in RIT Chennai's coding event?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "Are there any international exchange programs at RIT Chennai?",
+    "output": "Yes, RIT Chennai has tie-ups with foreign universities for exchange programs."
   },
-  {
-    "instruction": "What are the facilities for control systems engineering students at RIT Chennai?",
-    "output": "Control Systems Engineering students at RIT Chennai have access to labs with PID controllers, PLC systems, and automation tools.",
-    "keywords": "control systems, engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for control systems students at RIT Chennai?, Does RIT have good control labs?, What resources are available for control systems engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What is the role of the Women Empowerment Club at RIT Chennai?",
+    "output": "The club promotes gender equality and organizes awareness programs."
   },
-  {
-    "instruction": "Does RIT Chennai have a quiz competition?",
-    "output": "Yes, RIT Chennai organizes quiz competitions on various topics during its cultural and technical events.",
-    "keywords": "quiz, competition, events, rit chennai",
-    "related_questions": "Is there a quiz competition at RIT Chennai?, Does RIT host quiz contests?, Can I participate in RIT Chennai's quiz event?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "Does RIT Chennai have a photography club?",
+    "output": "Yes, the NERD PIXS Photography Club is active on campus."
   },
-  {
-    "instruction": "What are the facilities for digital signal processing students at RIT Chennai?",
-    "output": "Digital Signal Processing students at RIT Chennai have access to labs with DSP processors, MATLAB, and real-time signal analysis tools.",
-    "keywords": "digital signal processing, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for DSP students at RIT Chennai?, Does RIT have good DSP labs?, What resources are available for digital signal processing at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What is the STEAM Club at RIT Chennai?",
+    "output": "The STEAM Club focuses on Science, Technology, Engineering, Art, and Mathematics."
   },
-  {
-    "instruction": "Does RIT Chennai have a debate competition?",
-    "output": "Yes, RIT Chennai organizes debate competitions as part of its literary and cultural events.",
-    "keywords": "debate, competition, events, rit chennai",
-    "related_questions": "Is there a debate competition at RIT Chennai?, Does RIT host debate contests?, Can I participate in RIT Chennai's debate event?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What is the IoT Club at RIT Chennai?",
+    "output": "The IoT Club trains students in Internet of Things technologies."
   },
-  {
-    "instruction": "What are the facilities for image processing students at RIT Chennai?",
-    "output": "Image Processing students at RIT Chennai have access to labs with image analysis software, computer vision tools, and high-resolution imaging systems.",
-    "keywords": "image processing, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for image processing students at RIT Chennai?, Does RIT have good image labs?, What resources are available for image processing at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What is the CAM Club at RIT Chennai?",
+    "output": "The CAM Club focuses on CAD design and 3D printing projects."
   },
-  {
-    "instruction": "Does RIT Chennai have a speech competition?",
-    "output": "Yes, RIT Chennai organizes speech competitions as part of its public speaking and literary events.",
-    "keywords": "speech, competition, events, rit chennai",
-    "related_questions": "Is there a speech competition at RIT Chennai?, Does RIT host speech contests?, Can I participate in RIT Chennai's speech event?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What is the TechSparks Club at RIT Chennai?",
+    "output": "TechSparks Club enhances technical and professional skills."
   },
-  {
-    "instruction": "What are the facilities for wireless communication students at RIT Chennai?",
-    "output": "Wireless Communication students at RIT Chennai have access to labs with RF transceivers, antenna design tools, and network simulation software.",
-    "keywords": "wireless communication, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for wireless students at RIT Chennai?, Does RIT have good wireless labs?, What resources are available for wireless communication at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What is the Language Club at RIT Chennai?",
+    "output": "The Language Club promotes skills in English, Tamil, Japanese, and German."
   },
-  {
-    "instruction": "Does RIT Chennai have an elocution competition?",
-    "output": "Yes, RIT Chennai organizes elocution competitions as part of its literary and cultural events.",
-    "keywords": "elocution, competition, events, rit chennai",
-    "related_questions": "Is there an elocution competition at RIT Chennai?, Does RIT host elocution contests?, Can I participate in RIT Chennai's elocution event?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What is the Maths Club at RIT Chennai?",
+    "output": "The Maths Club develops analytical and logical skills."
   },
-  {
-    "instruction": "What are the facilities for optical communication students at RIT Chennai?",
-    "output": "Optical Communication students at RIT Chennai have access to labs with fiber optic systems, laser equipment, and photonics tools.",
-    "keywords": "optical communication, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for optical students at RIT Chennai?, Does RIT have good optical labs?, What resources are available for optical communication at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What is the Rotaract Club at RIT Chennai?",
+    "output": "The Rotaract Club focuses on leadership and community service."
   },
-  {
-    "instruction": "Does RIT Chennai have a writing competition?",
-    "output": "Yes, RIT Chennai organizes writing competitions for essays, stories, and poetry during its literary events.",
-    "keywords": "writing, competition, events, rit chennai",
-    "related_questions": "Is there a writing competition at RIT Chennai?, Does RIT host writing contests?, Can I participate in RIT Chennai's writing event?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What is the Yuva Club at RIT Chennai?",
+    "output": "The Yuva Club, part of CII, promotes youth leadership and nation-building."
   },
-  {
-    "instruction": "What are the facilities for satellite communication students at RIT Chennai?",
-    "output": "Satellite Communication students at RIT Chennai have access to labs with satellite simulators, tracking systems, and RF communication tools.",
-    "keywords": "satellite communication, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for satellite students at RIT Chennai?, Does RIT have good satellite labs?, What resources are available for satellite communication at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What are some recent awards received by RIT Chennai?",
+    "output": "RIT Chennai received a 4-star rating for innovation in 2023-2024."
   },
-  {
-    "instruction": "Does RIT Chennai have a journalism competition?",
-    "output": "Yes, RIT Chennai organizes journalism competitions for article writing and news reporting during its media events.",
-    "keywords": "journalism, competition, events, rit chennai",
-    "related_questions": "Is there a journalism competition at RIT Chennai?, Does RIT host journalism contests?, Can I participate in RIT Chennai's journalism event?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "Has RIT Chennai signed any recent MoUs?",
+    "output": "Yes, an MoU was signed with Swadeshi Shodh Sansthan."
   },
-  {
-    "instruction": "What are the facilities for microwave engineering students at RIT Chennai?",
-    "output": "Microwave Engineering students at RIT Chennai have access to labs with microwave generators, waveguide systems, and antenna testing equipment.",
-    "keywords": "microwave engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for microwave students at RIT Chennai?, Does RIT have good microwave labs?, What resources are available for microwave engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What is the Quantum Week Celebration at RIT Chennai?",
+    "output": "It includes quizzes, talks, and contests on quantum computing."
   },
-  {
-    "instruction": "Does RIT Chennai have a broadcasting competition?",
-    "output": "Yes, RIT Chennai organizes broadcasting competitions as part of its radio club events and media symposiums.",
-    "keywords": "broadcasting, competition, events, rit chennai",
-    "related_questions": "Is there a broadcasting competition at RIT Chennai?, Does RIT host broadcasting contests?, Can I participate in RIT Chennai's broadcasting event?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "Does RIT Chennai organize Women\u00e2\u20ac\u2122s Day celebrations?",
+    "output": "Yes, Women\u00e2\u20ac\u2122s Day is celebrated with events and activities."
   },
-  {
-    "instruction": "What are the facilities for radar engineering students at RIT Chennai?",
-    "output": "Radar Engineering students at RIT Chennai have access to labs with radar simulators, signal processing tools, and tracking systems.",
-    "keywords": "radar engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for radar students at RIT Chennai?, Does RIT have good radar labs?, What resources are available for radar engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "Are there any faculty development programs at RIT Chennai?",
+    "output": "Yes, programs like 'Unlearning in VUCA World' are conducted."
   },
-  {
-    "instruction": "Does RIT Chennai have a media competition?",
-    "output": "Yes, RIT Chennai organizes media competitions for video production, photography, and journalism during its cultural events.",
-    "keywords": "media, competition, events, rit chennai",
-    "related_questions": "Is there a media competition at RIT Chennai?, Does RIT host media contests?, Can I participate in RIT Chennai's media event?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What is the capacity of the cafeteria at RIT Chennai?",
+    "output": "The cafeteria has a seating capacity of over 500."
   },
-  {
-    "instruction": "What are the facilities for sonar engineering students at RIT Chennai?",
-    "output": "Sonar Engineering students at RIT Chennai have access to labs with underwater acoustics tools, signal processing systems, and sonar simulation software.",
-    "keywords": "sonar engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for sonar students at RIT Chennai?, Does RIT have good sonar labs?, What resources are available for sonar engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "Does RIT Chennai have a medical center?",
+    "output": "Yes, a medical center with 24/7 facilities is available."
   },
-  {
-    "instruction": "Does RIT Chennai have a film making competition?",
-    "output": "Yes, RIT Chennai organizes film making competitions as part of its film club events and cultural festivals.",
-    "keywords": "film making, competition, events, rit chennai",
-    "related_questions": "Is there a film making competition at RIT Chennai?, Does RIT host film contests?, Can I participate in RIT Chennai's film making event?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What is the highest cutoff for RIT Chennai admissions?",
+    "output": "The highest cutoff in 2023 was 196.5 for UG engineering courses."
   },
-  {
-    "instruction": "What are the facilities for navigation engineering students at RIT Chennai?",
-    "output": "Navigation Engineering students at RIT Chennai have access to labs with GPS simulators, inertial navigation systems, and geospatial tools.",
-    "keywords": "navigation engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for navigation students at RIT Chennai?, Does RIT have good navigation labs?, What resources are available for navigation engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What is the average cutoff for RIT Chennai admissions?",
+    "output": "The average cutoff varies but was notably high in TNEA 2023."
   },
-  {
-    "instruction": "Does RIT Chennai have a video editing competition?",
-    "output": "Yes, RIT Chennai organizes video editing competitions as part of its media and film club events.",
-    "keywords": "video editing, competition, events, rit chennai",
-    "related_questions": "Is there a video editing competition at RIT Chennai?, Does RIT host video editing contests?, Can I participate in RIT Chennai's video editing event?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "Does RIT Chennai offer online courses?",
+    "output": "RIT Chennai offers NPTEL online courses for students."
   },
-  {
-    "instruction": "What are the facilities for avionics engineering students at RIT Chennai?",
-    "output": "Avionics Engineering students at RIT Chennai have access to labs with flight control systems, avionics testing tools, and radar simulation software.",
-    "keywords": "avionics engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for avionics students at RIT Chennai?, Does RIT have good avionics labs?, What resources are available for avionics engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What is the role of the placement cell at RIT Chennai?",
+    "output": "It organizes placement drives, training, and industry interactions."
   },
-  {
-    "instruction": "Does RIT Chennai have a photography exhibition?",
-    "output": "Yes, RIT Chennai organizes photography exhibitions to showcase student work during cultural and technical events.",
-    "keywords": "photography, exhibition, events, rit chennai",
-    "related_questions": "Is there a photography exhibition at RIT Chennai?, Does RIT host photo displays?, Can I participate in RIT Chennai's photography exhibition?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "Are there any cultural events at RIT Chennai?",
+    "output": "Yes, events like Telugu New Year celebrations are organized."
   },
-  {
-    "instruction": "What are the facilities for aerospace engineering students at RIT Chennai?",
-    "output": "Aerospace Engineering students at RIT Chennai have access to labs with wind tunnels, aerodynamic testing tools, and flight simulation systems.",
-    "keywords": "aerospace engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for aerospace students at RIT Chennai?, Does RIT have good aerospace labs?, What resources are available for aerospace engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What is the student feedback on RIT Chennai placements?",
+    "output": "Students report 85%-98% placement rates, though some note competition."
   },
-  {
-    "instruction": "Does RIT Chennai have an art exhibition?",
-    "output": "Yes, RIT Chennai organizes art exhibitions featuring painting, sculpture, and crafts during its cultural events.",
-    "keywords": "art, exhibition, events, rit chennai",
-    "related_questions": "Is there an art exhibition at RIT Chennai?, Does RIT host art displays?, Can I participate in RIT Chennai's art exhibition?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What is the student feedback on RIT Chennai infrastructure?",
+    "output": "Feedback is positive, with some noting areas for improvement."
   },
-  {
-    "instruction": "What are the facilities for astronautical engineering students at RIT Chennai?",
-    "output": "Astronautical Engineering students at RIT Chennai have access to labs with orbital mechanics software, propulsion testing tools, and satellite design kits.",
-    "keywords": "astronautical engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for astronautical students at RIT Chennai?, Does RIT have good astronautical labs?, What resources are available for astronautical engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What is the student feedback on RIT Chennai faculty?",
+    "output": "Faculty is praised for being supportive and industry-experienced."
   },
-  {
-    "instruction": "Does RIT Chennai have a craft exhibition?",
-    "output": "Yes, RIT Chennai organizes craft exhibitions to showcase student projects in pottery, beadwork, and textile during cultural events.",
-    "keywords": "craft, exhibition, events, rit chennai",
-    "related_questions": "Is there a craft exhibition at RIT Chennai?, Does RIT host craft displays?, Can I participate in RIT Chennai's craft exhibition?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What is the student feedback on RIT Chennai campus life?",
+    "output": "Campus life is vibrant, though some find it dull due to size."
   },
-  {
-    "instruction": "What are the facilities for propulsion engineering students at RIT Chennai?",
-    "output": "Propulsion Engineering students at RIT Chennai have access to labs with rocket engine simulators, thrust measurement tools, and combustion analysis systems.",
-    "keywords": "propulsion engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for propulsion students at RIT Chennai?, Does RIT have good propulsion labs?, What resources are available for propulsion engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What is the student feedback on RIT Chennai value for money?",
+    "output": "Most students find it valuable, though some advise research."
   },
-  {
-    "instruction": "Does RIT Chennai have a science exhibition?",
-    "output": "Yes, RIT Chennai organizes science exhibitions featuring student projects and research during technical symposiums.",
-    "keywords": "science, exhibition, events, rit chennai",
-    "related_questions": "Is there a science exhibition at RIT Chennai?, Does RIT host science displays?, Can I participate in RIT Chennai's science exhibition?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "Does RIT Chennai have a grievance redressal system?",
+    "output": "Yes, a grievance redressal system is in place for students."
   },
-  {
-    "instruction": "What are the facilities for aerodynamics engineering students at RIT Chennai?",
-    "output": "Aerodynamics Engineering students at RIT Chennai have access to labs with wind tunnels, CFD software, and aerodynamic testing rigs.",
-    "keywords": "aerodynamics engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for aerodynamics students at RIT Chennai?, Does RIT have good aerodynamics labs?, What resources are available for aerodynamics engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "What is the role of the anti-ragging committee at RIT Chennai?",
+    "output": "It ensures a ragging-free campus as per UGC regulations."
   },
-  {
-    "instruction": "Does RIT Chennai have a technology exhibition?",
-    "output": "Yes, RIT Chennai organizes technology exhibitions showcasing student innovations during events like Quantum Week.",
-    "keywords": "technology, exhibition, events, rit chennai",
-    "related_questions": "Is there a technology exhibition at RIT Chennai?, Does RIT host tech displays?, Can I participate in RIT Chennai's technology exhibition?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "Are there any entrepreneurship programs at RIT Chennai?",
+    "output": "Yes, RIT Chennai supports entrepreneurship through IoT and CAM Clubs."
   },
-  {
-    "instruction": "What are the facilities for flight dynamics students at RIT Chennai?",
-    "output": "Flight Dynamics students at RIT Chennai have access to labs with flight simulation software, stability analysis tools, and motion tracking systems.",
-    "keywords": "flight dynamics, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for flight dynamics students at RIT Chennai?, Does RIT have good flight labs?, What resources are available for flight dynamics at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "Does RIT Chennai have a counseling center?",
+    "output": "Yes, a counseling center supports student mental health."
   },
-  {
-    "instruction": "Does RIT Chennai have an engineering exhibition?",
-    "output": "Yes, RIT Chennai organizes engineering exhibitions featuring student projects during technical symposiums and open house events.",
-    "keywords": "engineering, exhibition, events, rit chennai",
-    "related_questions": "Is there an engineering exhibition at RIT Chennai?, Does RIT host engineering displays?, Can I participate in RIT Chennai's engineering exhibition?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What is the process for applying for scholarships at RIT Chennai?",
+    "output": "Students apply through the institute\u00e2\u20ac\u2122s scholarship office."
   },
-  {
-    "instruction": "What are the facilities for spacecraft design students at RIT Chennai?",
-    "output": "Spacecraft Design students at RIT Chennai have access to labs with CAD software, structural analysis tools, and satellite prototyping kits.",
-    "keywords": "spacecraft design, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for spacecraft students at RIT Chennai?, Does RIT have good spacecraft labs?, What resources are available for spacecraft design at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "Are there any industrial visits organized by RIT Chennai?",
+    "output": "Yes, industrial visits are part of the curriculum."
   },
-  {
-    "instruction": "Does RIT Chennai have a robotics exhibition?",
-    "output": "Yes, RIT Chennai organizes robotics exhibitions showcasing student robots during technical symposiums and competitions.",
-    "keywords": "robotics, exhibition, events, rit chennai",
-    "related_questions": "Is there a robotics exhibition at RIT Chennai?, Does RIT host robot displays?, Can I participate in RIT Chennai's robotics exhibition?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What is the role of the alumni association at RIT Chennai?",
+    "output": "It connects alumni for networking and career opportunities."
   },
-  {
-    "instruction": "What are the facilities for orbital mechanics students at RIT Chennai?",
-    "output": "Orbital Mechanics students at RIT Chennai have access to labs with orbital simulation software, trajectory analysis tools, and satellite tracking systems.",
-    "keywords": "orbital mechanics, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for orbital mechanics students at RIT Chennai?, Does RIT have good orbital labs?, What resources are available for orbital mechanics at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "Does RIT Chennai have a student council?",
+    "output": "Yes, a student council organizes events and represents students."
   },
-  {
-    "instruction": "Does RIT Chennai have an AI exhibition?",
-    "output": "Yes, RIT Chennai organizes AI exhibitions showcasing student projects in artificial intelligence during technical events.",
-    "keywords": "ai, exhibition, events, rit chennai",
-    "related_questions": "Is there an AI exhibition at RIT Chennai?, Does RIT host AI displays?, Can I participate in RIT Chennai's AI exhibition?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What is the process for hostel allocation at RIT Chennai?",
+    "output": "Hostel allocation is based on application and availability."
   },
-  {
-    "instruction": "What are the facilities for satellite navigation students at RIT Chennai?",
-    "output": "Satellite Navigation students at RIT Chennai have access to labs with GPS receivers, navigation software, and geodetic survey tools.",
-    "keywords": "satellite navigation, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for satellite navigation students at RIT Chennai?, Does RIT have good navigation labs?, What resources are available for satellite navigation at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "Are there any language learning programs at RIT Chennai?",
+    "output": "Yes, the Language Club offers programs in multiple languages."
   },
-  {
-    "instruction": "Does RIT Chennai have a data science exhibition?",
-    "output": "Yes, RIT Chennai organizes data science exhibitions showcasing student projects during technical symposiums.",
-    "keywords": "data science, exhibition, events, rit chennai",
-    "related_questions": "Is there a data science exhibition at RIT Chennai?, Does RIT host data science displays?, Can I participate in RIT Chennai's data science exhibition?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What is the role of the Maths Club at RIT Chennai?",
+    "output": "It enhances analytical and numerical skills through activities."
   },
-  {
-    "instruction": "What are the facilities for remote sensing students at RIT Chennai?",
-    "output": "Remote Sensing students at RIT Chennai have access to labs with satellite imagery software, GIS tools, and geospatial analysis systems.",
-    "keywords": "remote sensing, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for remote sensing students at RIT Chennai?, Does RIT have good remote sensing labs?, What resources are available for remote sensing at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "Does RIT Chennai have a career guidance cell?",
+    "output": "Yes, a career guidance cell supports student career planning."
   },
-  {
-    "instruction": "Does RIT Chennai have a machine learning exhibition?",
-    "output": "Yes, RIT Chennai organizes machine learning exhibitions showcasing student projects during technical events.",
-    "keywords": "machine learning, exhibition, events, rit chennai",
-    "related_questions": "Is there a machine learning exhibition at RIT Chennai?, Does RIT host ML displays?, Can I participate in RIT Chennai's machine learning exhibition?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What is the process for participating in sports at RIT Chennai?",
+    "output": "Students can join sports teams through the sports department."
   },
-  {
-    "instruction": "What are the facilities for GIS students at RIT Chennai?",
-    "output": "GIS students at RIT Chennai have access to labs with geographic information systems software, mapping tools, and spatial data analysis platforms.",
-    "keywords": "gis, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for GIS students at RIT Chennai?, Does RIT have good GIS labs?, What resources are available for GIS at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "Are there any community service programs at RIT Chennai?",
+    "output": "Yes, the Rotaract Club organizes community service activities."
   },
-  {
-    "instruction": "Does RIT Chennai have a cybersecurity exhibition?",
-    "output": "Yes, RIT Chennai organizes cybersecurity exhibitions showcasing student projects during technical symposiums.",
-    "keywords": "cybersecurity, exhibition, events, rit chennai",
-    "related_questions": "Is there a cybersecurity exhibition at RIT Chennai?, Does RIT host cybersecurity displays?, Can I participate in RIT Chennai's cybersecurity exhibition?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What is the role of the Yuva Club at RIT Chennai?",
+    "output": "It promotes youth leadership and nation-building initiatives."
   },
-  {
-    "instruction": "What are the facilities for photogrammetry students at RIT Chennai?",
-    "output": "Photogrammetry students at RIT Chennai have access to labs with aerial photography tools, 3D modeling software, and geospatial mapping systems.",
-    "keywords": "photogrammetry, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for photogrammetry students at RIT Chennai?, Does RIT have good photogrammetry labs?, What resources are available for photogrammetry at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "Does RIT Chennai have a digital library?",
+    "output": "Yes, the library includes digital resources like e-books."
   },
-  {
-    "instruction": "Does RIT Chennai have an IoT exhibition?",
-    "output": "Yes, RIT Chennai organizes IoT exhibitions showcasing student projects during technical events like Quantum Week.",
-    "keywords": "iot, exhibition, events, rit chennai",
-    "related_questions": "Is there an IoT exhibition at RIT Chennai?, Does RIT host IoT displays?, Can I participate in RIT Chennai's IoT exhibition?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What is the process for attending guest lectures at RIT Chennai?",
+    "output": "Guest lectures are open to students, announced via notices."
   },
-  {
-    "instruction": "What are the facilities for cartography students at RIT Chennai?",
-    "output": "Cartography students at RIT Chennai have access to labs with map-making software, GPS devices, and topographic analysis tools.",
-    "keywords": "cartography, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for cartography students at RIT Chennai?, Does RIT have good cartography labs?, What resources are available for cartography at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "Are there any coding clubs at RIT Chennai?",
+    "output": "Yes, clubs like TechSparks focus on coding and technology."
   },
-  {
-    "instruction": "Does RIT Chennai have a cloud computing exhibition?",
-    "output": "Yes, RIT Chennai organizes cloud computing exhibitions showcasing student projects during technical symposiums.",
-    "keywords": "cloud computing, exhibition, events, rit chennai",
-    "related_questions": "Is there a cloud computing exhibition at RIT Chennai?, Does RIT host cloud displays?, Can I participate in RIT Chennai's cloud computing exhibition?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What is the role of the STEAM Club at RIT Chennai?",
+    "output": "It promotes interdisciplinary learning in science and arts."
   },
-  {
-    "instruction": "What are the facilities for surveying students at RIT Chennai?",
-    "output": "Surveying students at RIT Chennai have access to labs with total stations, theodolites, and GPS surveying equipment.",
-    "keywords": "surveying, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for surveying students at RIT Chennai?, Does RIT have good surveying labs?, What resources are available for surveying at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "Does RIT Chennai have a startup incubator?",
+    "output": "Yes, RIT Chennai supports startups through innovation programs."
   },
-  {
-    "instruction": "Does RIT Chennai have a big data exhibition?",
-    "output": "Yes, RIT Chennai organizes big data exhibitions showcasing student projects during technical events.",
-    "keywords": "big data, exhibition, events, rit chennai",
-    "related_questions": "Is there a big data exhibition at RIT Chennai?, Does RIT host big data displays?, Can I participate in RIT Chennai's big data exhibition?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What is the process for organizing events at RIT Chennai?",
+    "output": "Events are organized through student clubs and faculty approval."
   },
-  {
-    "instruction": "What are the facilities for hydrography students at RIT Chennai?",
-    "output": "Hydrography students at RIT Chennai have access to labs with bathymetric survey tools, sonar systems, and ocean mapping software.",
-    "keywords": "hydrography, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for hydrography students at RIT Chennai?, Does RIT have good hydrography labs?, What resources are available for hydrography at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "Are there any art clubs at RIT Chennai?",
+    "output": "Yes, the Photography Club promotes artistic activities."
   },
-  {
-    "instruction": "Does RIT Chennai have a quantum computing exhibition?",
-    "output": "Yes, RIT Chennai organizes quantum computing exhibitions showcasing student projects during technical symposiums.",
-    "keywords": "quantum computing, exhibition, events, rit chennai",
-    "related_questions": "Is there a quantum computing exhibition at RIT Chennai?, Does RIT host quantum displays?, Can I participate in RIT Chennai's quantum computing exhibition?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What is the role of the Women Empowerment Club at RIT Chennai?",
+    "output": "It addresses women\u00e2\u20ac\u2122s issues and promotes equality."
   },
-  {
-    "instruction": "What are the facilities for oceanography students at RIT Chennai?",
-    "output": "Oceanography students at RIT Chennai have access to labs with ocean current simulators, water sampling tools, and marine biology equipment.",
-    "keywords": "oceanography, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for oceanography students at RIT Chennai?, Does RIT have good oceanography labs?, What resources are available for oceanography at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "Does RIT Chennai have a debate club?",
+    "output": "Yes, the Language Club organizes debates and elocution."
   },
-  {
-    "instruction": "Does RIT Chennai have a blockchain exhibition?",
-    "output": "Yes, RIT Chennai organizes blockchain exhibitions showcasing student projects during technical events.",
-    "keywords": "blockchain, exhibition, events, rit chennai",
-    "related_questions": "Is there a blockchain exhibition at RIT Chennai?, Does RIT host blockchain displays?, Can I participate in RIT Chennai's blockchain exhibition?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What is the process for accessing library resources at RIT Chennai?",
+    "output": "Students access resources with a library card and online portal."
   },
-  {
-    "instruction": "What are the facilities for marine engineering students at RIT Chennai?",
-    "output": "Marine Engineering students at RIT Chennai have access to labs with ship design software, marine propulsion tools, and corrosion testing equipment.",
-    "keywords": "marine engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for marine students at RIT Chennai?, Does RIT have good marine labs?, What resources are available for marine engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+  {
+    "instruction": "Are there any music clubs at RIT Chennai?",
+    "output": "Yes, cultural clubs organize music-related activities."
   },
-  {
-    "instruction": "Does RIT Chennai have a virtual reality exhibition?",
-    "output": "Yes, RIT Chennai organizes virtual reality exhibitions showcasing student projects during technical symposiums.",
-    "keywords": "virtual reality, exhibition, events, rit chennai",
-    "related_questions": "Is there a virtual reality exhibition at RIT Chennai?, Does RIT host VR displays?, Can I participate in RIT Chennai's virtual reality exhibition?",
-    "category": "campus",
-    "access_level": "public"
+  {
+    "instruction": "What is the role of the IoT Club at RIT Chennai?",
+    "output": "It trains students in IoT technologies and applications."
   },
   {
-    "instruction": "What are the facilities for naval architecture students at RIT Chennai?",
-    "output": "Naval Architecture students at RIT Chennai have access to labs with ship modeling software, hydrodynamic testing tools, and stability analysis systems.",
-    "keywords": "naval architecture, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for naval architecture students at RIT Chennai?, Does RIT have good naval labs?, What resources are available for naval architecture at RIT?",
-    "category": "academics",
-    "access_level": "public"
+    "instruction": "Does RIT Chennai have a drama club?",
+    "output": "Yes, cultural clubs include drama and theater activities."
   },
   {
-    "instruction": "Does RIT Chennai have an augmented reality exhibition?",
-    "output": "Yes, RIT Chennai organizes augmented reality exhibitions showcasing student projects during technical events.",
-    "keywords": "augmented reality, exhibition, events, rit chennai",
-    "related_questions": "Is there an augmented reality exhibition at RIT Chennai?, Does RIT host AR displays?, Can I participate in RIT Chennai's augmented reality exhibition?",
-    "category": "campus",
-    "access_level": "public"
+    "instruction": "What is the process for joining the Rotaract Club at RIT Chennai?",
+    "output": "Students can join by registering with the club coordinator."
   },
   {
-    "instruction": "What are the facilities for offshore engineering students at RIT Chennai?",
-    "output": "Offshore Engineering students at RIT Chennai have access to labs with offshore platform simulators, wave analysis tools, and structural integrity systems.",
-    "keywords": "offshore engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for offshore students at RIT Chennai?, Does RIT have good offshore labs?, What resources are available for offshore engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+    "instruction": "Are there any dance clubs at RIT Chennai?",
+    "output": "Yes, cultural clubs organize dance events and competitions."
   },
   {
-    "instruction": "Does RIT Chennai have a gaming exhibition?",
-    "output": "Yes, RIT Chennai organizes gaming exhibitions showcasing student game designs during technical symposiums.",
-    "keywords": "gaming, exhibition, events, rit chennai",
-    "related_questions": "Is there a gaming exhibition at RIT Chennai?, Does RIT host game displays?, Can I participate in RIT Chennai's gaming exhibition?",
-    "category": "campus",
-    "access_level": "public"
+    "instruction": "What is the role of the CAM Club at RIT Chennai?",
+    "output": "It focuses on CAD design and manufacturing projects."
   },
   {
-    "instruction": "What are the facilities for petroleum engineering students at RIT Chennai?",
-    "output": "Petroleum Engineering students at RIT Chennai have access to labs with reservoir simulation software, drilling equipment, and oil testing tools.",
-    "keywords": "petroleum engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for petroleum students at RIT Chennai?, Does RIT have good petroleum labs?, What resources are available for petroleum engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+    "instruction": "Does RIT Chennai have a literary club?",
+    "output": "Yes, the Language Club promotes literary activities."
   },
   {
-    "instruction": "Does RIT Chennai have an animation exhibition?",
-    "output": "Yes, RIT Chennai organizes animation exhibitions showcasing student projects during technical and cultural events.",
-    "keywords": "animation, exhibition, events, rit chennai",
-    "related_questions": "Is there an animation exhibition at RIT Chennai?, Does RIT host animation displays?, Can I participate in RIT Chennai's animation exhibition?",
-    "category": "campus",
-    "access_level": "public"
+    "instruction": "What is the process for participating in technical symposiums at RIT Chennai?",
+    "output": "Students register through the respective department or club."
   },
   {
-    "instruction": "What are the facilities for gas engineering students at RIT Chennai?",
-    "output": "Gas Engineering students at RIT Chennai have access to labs with gas flow meters, compression systems, and LNG processing tools.",
-    "keywords": "gas engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for gas students at RIT Chennai?, Does RIT have good gas labs?, What resources are available for gas engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+    "instruction": "Are there any environmental clubs at RIT Chennai?",
+    "output": "Yes, eco-friendly initiatives are supported by student groups."
   },
   {
-    "instruction": "Does RIT Chennai have a video production exhibition?",
-    "output": "Yes, RIT Chennai organizes video production exhibitions showcasing student films during media and cultural events.",
-    "keywords": "video production, exhibition, events, rit chennai",
-    "related_questions": "Is there a video production exhibition at RIT Chennai?, Does RIT host video displays?, Can I participate in RIT Chennai's video production exhibition?",
-    "category": "campus",
-    "access_level": "public"
+    "instruction": "What is the role of the TechSparks Club at RIT Chennai?",
+    "output": "It enhances technical skills through hands-on programs."
   },
   {
-    "instruction": "What are the facilities for energy systems engineering students at RIT Chennai?",
-    "output": "Energy Systems Engineering students at RIT Chennai have access to labs with energy auditing tools, renewable energy simulators, and grid analysis software.",
-    "keywords": "energy systems, engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for energy systems students at RIT Chennai?, Does RIT have good energy labs?, What resources are available for energy systems engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+    "instruction": "Does RIT Chennai have a quiz club?",
+    "output": "Yes, the Language Club organizes quizzes and competitions."
   },
   {
-    "instruction": "Does RIT Chennai have a digital art exhibition?",
-    "output": "Yes, RIT Chennai organizes digital art exhibitions showcasing student digital illustrations during cultural events.",
-    "keywords": "digital art, exhibition, events, rit chennai",
-    "related_questions": "Is there a digital art exhibition at RIT Chennai?, Does RIT host digital art displays?, Can I participate in RIT Chennai's digital art exhibition?",
-    "category": "campus",
-    "access_level": "public"
+    "instruction": "What is the process for accessing sports facilities at RIT Chennai?",
+    "output": "Students can access facilities through the sports department."
   },
   {
-    "instruction": "What are the facilities for nuclear engineering students at RIT Chennai?",
-    "output": "Nuclear Engineering students at RIT Chennai have access to labs with radiation detection tools, reactor simulation software, and safety analysis systems.",
-    "keywords": "nuclear engineering, facilities, labs, rit chennai",
-    "related_questions": "What facilities are there for nuclear students at RIT Chennai?, Does RIT have good nuclear labs?, What resources are available for nuclear engineering at RIT?",
-    "category": "academics",
-    "access_level": "public"
+    "instruction": "Are there any social service clubs at RIT Chennai?",
+    "output": "Yes, the Rotaract Club focuses on social service."
   },
   {
-    "instruction": "Does RIT Chennai have a 3D modeling exhibition?",
-    "output": "Yes, RIT Chennai organizes 3D modeling exhibitions showcasing student designs during technical and cultural events.",
-    "keywords": "3d modeling, exhibition, events, rit chennai",
-    "related_questions": "Is there a 3D modeling exhibition at RIT Chennai?, Does RIT host 3D design displays?, Can I participate in RIT Chennai's 3D modeling exhibition?",
-    "category": "campus",
-    "access_level": "public"
+    "instruction": "What is the role of the Photography Club at RIT Chennai?",
+    "output": "It promotes photography and contributes to social media content."
   },
   {
-    "instruction":
+    "instruction": "Does RIT Chennai have a robotics club?",
+    "output": "Yes, the CAM Club supports robotics projects."
+  }
+]

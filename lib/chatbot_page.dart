@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:uuid/uuid.dart';
-import 'package:fuzzywuzzy/fuzzywuzzy.dart'; // For fuzzy matching
 
 class ChatbotPage extends StatefulWidget {
   const ChatbotPage({super.key});
@@ -23,16 +24,15 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
     {
       "sender": "bot",
       "message":
-      "Hello! I'm RITA, your guide to Rajalakshmi Institute of Technology (RIT Chennai). Ask about campus, courses, placements, or anything else! Try: 'What is RIT Chennai?'",
+      "Hello! I'm RITA, your guide to Rajalakshmi Institute of Technology (RIT Chennai). Tap the mic to ask about campus, fees, placements, or courses! Try: 'What is the full name of RIT Chennai?'",
       "timestamp": DateTime.now(),
-      "message_id": const Uuid().v4(),
     },
   ];
   final ScrollController _scrollController = ScrollController();
   bool _isBotTyping = false;
   List<Map<String, String>> _faqData = [];
   Map<String, String> _responseCache = {};
-  Map<String, String> _contextCache = {};
+  Map<String, String> _normalizedQueryCache = {};
   late stt.SpeechToText _speech;
   late FlutterTts _flutterTts;
   bool _isListening = false;
@@ -45,13 +45,9 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
   bool isStudent = false;
   double _soundLevel = 0.0;
   static const double _minSoundLevel = -10.0;
-  static const int _maxSilenceSeconds = 3;
+  static const int _maxSilenceSeconds = 5;
   bool _isDarkMode = false;
-  String _lastCategory = "general";
-  List<String> _recentQueries = [];
-
-  // Gemini API Key (Replace with a valid key from Google AI Studio)
-  static const String _geminiApiKey = 'AIzaSyDbbo4pQxT4Wy9Tn_H1nNf1zfvp9vG0os0';
+  final Uuid _uuid = Uuid();
 
   @override
   void initState() {
@@ -65,7 +61,7 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
     _initSpeech();
     _initTts();
     _micAnimationController = AnimationController(
-      duration: const Duration(milliseconds: 1000),
+      duration: const Duration(milliseconds: 1500),
       vsync: this,
     );
     _micScaleAnimation = Tween<double>(begin: 0.8, end: 1.2).animate(
@@ -76,7 +72,7 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
 
   Future<void> _determineUserRole() async {
     setState(() {
-      isStudent = false; // Replace with actual authentication logic
+      isStudent = false;
     });
   }
 
@@ -136,57 +132,43 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
   }
 
   Future<void> _loadFaqData() async {
-    final String faqJson = '''
-    [
-      {
-        "instruction": "What are the facilities for data analytics students at RIT Chennai?",
-        "output": "Data Analytics students at RIT Chennai have access to labs with data visualization tools, statistical software, and big data platforms like Hadoop.",
-        "keywords": "data analytics, facilities, labs, rit chennai",
-        "related_questions": "What facilities are there for data analytics students at RIT Chennai?, Does RIT have good data analytics labs?, What resources are available for data analytics at RIT?",
-        "category": "academics",
-        "access_level": "public"
-      },
-      {
-        "instruction": "What courses are offered at RIT Chennai?",
-        "output": "RIT Chennai offers courses in Computer Science, Electronics, Mechanical Engineering, and more.",
-        "keywords": "courses, offered, rit chennai, programs",
-        "related_questions": "What are the courses at RIT Chennai?, Which courses are available at RIT?, What programs does RIT offer?",
-        "category": "academics",
-        "access_level": "public"
-      },
-      {
-        "instruction": "Does RIT Chennai have a tennis club?",
-        "output": "Yes, RIT Chennai has a tennis club that organizes tournaments and training sessions for students.",
-        "keywords": "tennis, club, tournaments, rit chennai",
-        "related_questions": "Is there a tennis club at RIT Chennai?, Does RIT have tennis activities?, Can I join the tennis club at RIT?",
-        "category": "campus",
-        "access_level": "public"
+    for (int attempt = 1; attempt <= 3; attempt++) {
+      try {
+        final String response = await rootBundle.loadString('assets/college_faq.json');
+        final List<dynamic> data = jsonDecode(response);
+        setState(() {
+          _faqData = data
+              .map((item) => {
+            "uuid": _uuid.v5(Uuid.NAMESPACE_OID, item["instruction"]?.toString() ?? ""),
+            "instruction": item["instruction"]?.toString() ?? "",
+            "output": item["output"]?.toString() ?? "",
+            "keywords": item["instruction"]?.toString().toLowerCase() ?? "",
+            "category": "general",
+            "related_questions": item["instruction"]?.toString() ?? "",
+            "access_level": "public",
+          })
+              .toList();
+        });
+        print("FAQ Data Loaded: ${_faqData.length} entries");
+        // Pre-cache FAQ responses
+        for (var faq in _faqData) {
+          if (faq["output"] != null && faq["uuid"] != null) {
+            _responseCache[faq["uuid"]!] = faq["output"]!;
+          }
+        }
+        await _saveCachedResponses();
+        return;
+      } catch (e) {
+        print("Error loading FAQ data (attempt $attempt): $e");
+        if (attempt == 3) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Failed to load FAQs after $attempt attempts')),
+          );
+          setState(() {
+            _faqData = [];
+          });
+        }
       }
-      // ... (Insert the remaining 997 entries here as per the JSON structure)
-    ]
-    ''';
-
-    try {
-      final List<dynamic> data = jsonDecode(faqJson);
-      setState(() {
-        _faqData = data.map((item) => {
-          "instruction": item["instruction"]?.toString() ?? "",
-          "output": item["output"]?.toString() ?? "",
-          "keywords": item["keywords"]?.toString() ?? "",
-          "related_questions": item["related_questions"]?.toString() ?? "",
-          "category": item["category"]?.toString() ?? "general",
-          "access_level": item["access_level"]?.toString() ?? "public",
-        }).toList();
-      });
-      print("FAQ Data Loaded: ${_faqData.length} entries");
-    } catch (e) {
-      print("Error loading FAQ data: $e");
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Failed to load FAQs')),
-      );
-      setState(() {
-        _faqData = [];
-      });
     }
   }
 
@@ -207,14 +189,18 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
     }
   }
 
-  Future<void> _saveCachedResponse(String query, String? response) async {
+  Future<void> _saveCachedResponses() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('response_cache', jsonEncode(_responseCache));
+  }
+
+  Future<void> _saveCachedResponse(String uuid, String? response) async {
     if (response != null) {
-      _responseCache[query] = response;
+      _responseCache[uuid] = response;
       if (_responseCache.length > 1000) {
         _responseCache.remove(_responseCache.keys.first);
       }
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setString('response_cache', jsonEncode(_responseCache));
+      await _saveCachedResponses();
     }
   }
 
@@ -332,12 +318,11 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
             });
           }
         },
-        listenFor: const Duration(seconds: 20),
-        pauseFor: const Duration(seconds: 3),
-        sampleRate: 44100,
+        listenFor: const Duration(seconds: 30),
+        pauseFor: const Duration(seconds: 5),
+        sampleRate: 16000,
         partialResults: true,
         cancelOnError: false,
-        localeId: "en_US",
       );
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -414,10 +399,7 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
                       Navigator.pop(context);
                       _listen();
                     },
-                    child: Text(
-                      'Try Again',
-                      style: TextStyle(fontFamily: 'Poppins', color: Colors.blueAccent),
-                    ),
+                    child: Text('Try Again', style: TextStyle(fontFamily: 'Poppins', color: Colors.blueAccent)),
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
@@ -430,10 +412,7 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
                       Navigator.pop(context);
                       _focusNode.requestFocus();
                     },
-                    child: Text(
-                      'Use Text',
-                      style: TextStyle(fontFamily: 'Poppins', color: Colors.blueAccent),
-                    ),
+                    child: Text('Use Text', style: TextStyle(fontFamily: 'Poppins', color: Colors.blueAccent)),
                   ),
                 ],
               ),
@@ -453,12 +432,9 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
         "sender": "user",
         "message": userMessage,
         "timestamp": DateTime.now(),
-        "message_id": const Uuid().v4(),
       });
       _isBotTyping = true;
       _controller.clear();
-      _recentQueries.add(userMessage);
-      if (_recentQueries.length > 5) _recentQueries.removeAt(0);
     });
 
     try {
@@ -466,12 +442,9 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
         'sender': 'user',
         'message': userMessage,
         'timestamp': FieldValue.serverTimestamp(),
-        'message_id': const Uuid().v4(),
       });
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to save message')),
-      );
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Failed to save message')));
     }
 
     String botResponse = await _getBotResponse(userMessage);
@@ -482,7 +455,6 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
         "sender": "bot",
         "message": botResponse,
         "timestamp": DateTime.now(),
-        "message_id": const Uuid().v4(),
       });
     });
 
@@ -498,169 +470,88 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
   }
 
   Future<String> _getBotResponse(String userMessage) async {
-    String normalizedMessage = userMessage.toLowerCase().trim();
+    String normalizedMessage = _normalizeQuery(userMessage);
+    String queryUuid = _uuid.v5(Uuid.NAMESPACE_OID, normalizedMessage);
 
-    if (_responseCache.containsKey(normalizedMessage)) {
-      return _responseCache[normalizedMessage]!;
+    // Check UUID-based cache first (near-instantaneous)
+    if (_responseCache.containsKey(queryUuid)) {
+      return _responseCache[queryUuid]!;
     }
 
-    String? generalResponse = await _handleGeneralQueries(normalizedMessage);
-    if (generalResponse != null) {
-      await _saveCachedResponse(normalizedMessage, generalResponse);
-      return generalResponse;
-    }
-
-    String? faqResponse = await _getFaqResponseWithGemini(normalizedMessage);
-    if (faqResponse != null) {
-      await _saveCachedResponse(normalizedMessage, faqResponse);
-      return faqResponse;
-    }
-
-    return "Sorry, I can't find the answer for that response.";
-  }
-
-  Future<String?> _handleGeneralQueries(String normalizedMessage) async {
+    // Handle casual greetings and simple messages
     final casualResponses = {
-      'hi': 'Hello! How can I assist you today?',
-      'hello': 'Hi there! Ready to answer your questions!',
-      'hey': 'Hey! What do you want to know about RIT Chennai?',
-      'ok': 'Alright! Anything specific you want to know?',
-      'bye': 'Goodbye! Feel free to come back with more questions!',
-      'goodbye': 'See you later! Have a great day!',
-      'thanks': 'You\'re welcome! Any more questions?',
-      'thank you': 'My pleasure! What\'s next on your mind?',
+      'hi': 'Hello! How can I assist you with RIT Chennai today?',
+      'hello': 'Hi there! Ready to answer your questions about RIT Chennai!',
+      'ok': 'Alright! Anything specific about RIT Chennai you want to know?',
+      'bye': 'Goodbye! Feel free to come back with more questions about RIT Chennai!',
+      'thanks': 'You\'re welcome! Any more questions about RIT Chennai?',
+      'thank you': 'My pleasure! What\'s next on your mind about RIT Chennai?',
     };
 
     if (casualResponses.containsKey(normalizedMessage)) {
-      return casualResponses[normalizedMessage];
+      await _saveCachedResponse(queryUuid, casualResponses[normalizedMessage]);
+      return casualResponses[normalizedMessage]!;
     }
 
-    if (normalizedMessage.contains('time') || normalizedMessage.contains('what time is it')) {
-      final now = DateTime.now();
-      return "The current time is ${now.hour}:${now.minute.toString().padLeft(2, '0')} on ${now.day}/${now.month}/${now.year}.";
-    }
-
-    if (normalizedMessage.contains('weather') || normalizedMessage.contains('what is the weather')) {
-      return "I can't access real-time weather data, but here's a mock response: It's sunny in Chennai with a temperature of 32°C. Would you like to know something else?";
-    }
-
-    return null;
-  }
-
-  Future<String?> _getFaqResponseWithGemini(String userMessage) async {
-    if (_faqData.isEmpty) return null;
-
-    // Simulate Gemini API response to extract keywords and match with FAQ
-    // In a real application, uncomment the HTTP request below and process the response
-    List<String> extractedKeywords = await _extractKeywordsFromGemini(userMessage);
-
-    String bestMatch = "";
-    double bestScore = 0.0;
-
+    // Check FAQ data for exact matches
     for (var faq in _faqData) {
-      String accessLevel = faq["access_level"] ?? "public";
-      if (accessLevel == "students_only" && !isStudent) continue;
+      String faqInstruction = _normalizeQuery(faq["instruction"]!);
+      String faqUuid = faq["uuid"]!;
+      if (normalizedMessage == faqInstruction) {
+        await _saveCachedResponse(queryUuid, faq["output"]);
+        return faq["output"]!;
+      }
+    }
 
-      String instruction = _normalizeQuery(faq["instruction"]!).toLowerCase();
-      List<String> keywords = faq["keywords"]!.split(',').map((k) => k.trim().toLowerCase()).toList();
-      List<String> relatedQuestions = faq["related_questions"]!
-          .split(',')
-          .map((q) => _normalizeQuery(q.trim()).toLowerCase())
-          .toList();
+    // Simplified fuzzy matching (instruction-based only)
+    String? bestMatch;
+    double bestScore = 0.0;
+    String? bestMatchUuid;
+    for (var faq in _faqData) {
+      String instruction = _normalizeQuery(faq["instruction"]!);
+      String faqUuid = faq["uuid"]!;
 
-      // Check keyword overlap with extracted keywords
-      double keywordMatchScore = _calculateKeywordMatchScore(extractedKeywords, keywords);
-      double instructionScore = extractedKeywords.any((kw) => instruction.contains(kw))
-          ? ratio(userMessage, instruction) / 100.0
-          : 0.0;
-      double relatedQuestionScore = relatedQuestions.isNotEmpty
-          ? relatedQuestions
-          .map((q) => extractedKeywords.any((kw) => q.contains(kw))
-          ? ratio(userMessage, q) / 100.0
-          : 0.0)
-          .reduce((a, b) => a > b ? a : b)
-          : 0.0;
-
-      double categoryBoost = (faq["category"] == _lastCategory) ? 0.2 : 0.0;
-      double combinedScore = (0.3 * instructionScore) +
-          (0.5 * keywordMatchScore) +
-          (0.2 * relatedQuestionScore) +
-          categoryBoost;
+      double instructionScore = _calculateSimilarity(normalizedMessage.split(' ').toList(), instruction);
+      double combinedScore = instructionScore; // No keywords or related questions
 
       if (combinedScore > bestScore && combinedScore >= 0.3) {
         bestScore = combinedScore;
-        bestMatch = faq["output"] ?? "";
-        setState(() {
-          _lastCategory = faq["category"]!;
-        });
+        bestMatch = faq["output"];
+        bestMatchUuid = faqUuid;
       }
     }
 
-    return bestScore > 0 ? bestMatch : null;
-  }
-
-  Future<List<String>> _extractKeywordsFromGemini(String userMessage) async {
-    // Simulated keyword extraction (in a real scenario, Gemini API would process this)
-    // Uncomment and implement the real API call below in a non-restricted environment
-    /*
-    if (_geminiApiKey.isEmpty) {
-      print("API key is empty. Returning default keywords.");
-      return [userMessage.split(' ').first];
+    if (bestMatch != null && bestMatchUuid != null) {
+      await _saveCachedResponse(queryUuid, bestMatch);
+      await _saveCachedResponse(bestMatchUuid, bestMatch);
+      return bestMatch;
     }
 
-    try {
-      final response = await http.post(
-        Uri.parse(
-            'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=$_geminiApiKey'),
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({
-          'contents': [
-            {
-              'role': 'user',
-              'parts': [
-                {
-                  'text':
-                      'Extract the key terms or keywords from the following query related to Rajalakshmi Institute of Technology (RIT Chennai). Return them as a JSON array of strings. Query: $userMessage'
-                },
-              ],
-            },
-          ],
-        }),
-      );
-
-      if (response.statusCode == 200) {
-        final data = jsonDecode(response.body);
-        if (data['candidates'] != null && data['candidates'].isNotEmpty) {
-          final content = data['candidates'][0]['content'];
-          if (content != null && content['parts'] != null && content['parts'].isNotEmpty) {
-            String jsonString = content['parts'][0]['text']?.trim() ?? '[]';
-            return (jsonDecode(jsonString) as List<dynamic>).map((e) => e.toString()).toList();
-          }
-        }
-        print("Invalid Gemini keyword response structure: $data");
-        return [userMessage.split(' ').first];
-      } else {
-        print("Gemini API error: ${response.statusCode}, Body: ${response.body}");
-        return [userMessage.split(' ').first];
-      }
-    } catch (e) {
-      print("Gemini keyword extraction error: $e");
-      return [userMessage.split(' ').first];
+    // Restrict sensitive information for non-students
+    if (!isStudent &&
+        (normalizedMessage.contains("attendance") || normalizedMessage.contains("student portal"))) {
+      String response = "This information is restricted to RIT Chennai students. Please log in as a student.";
+      await _saveCachedResponse(queryUuid, response);
+      return response;
     }
-    */
 
-    // Simulated keyword extraction based on query splitting
-    return userMessage.split(' ').where((word) => word.length > 2).toList();
-  }
+    // Fallback to Gemini API
+    String geminiResponse = await getGeminiResponse(userMessage);
+    if (geminiResponse == "Sorry, I can't answer that." ||
+        geminiResponse == "Sorry, I can't answer that. Try asking something specific about RIT Chennai!" ||
+        geminiResponse == "Sorry, I can't answer that. Please try again later!") {
+      await _saveCachedResponse(queryUuid, "Sorry, I can't find the answer for your response");
+      return "Sorry, I can't find the answer for your response";
+    }
 
-  double _calculateKeywordMatchScore(List<String> queryKeywords, List<String> faqKeywords) {
-    if (queryKeywords.isEmpty || faqKeywords.isEmpty) return 0.0;
-    int matches = queryKeywords.where((qk) => faqKeywords.contains(qk)).length;
-    return (matches / queryKeywords.length).clamp(0.0, 1.0);
+    await _saveCachedResponse(queryUuid, geminiResponse);
+    return geminiResponse;
   }
 
   String _normalizeQuery(String query) {
-    if (_contextCache.containsKey(query)) return _contextCache[query]!;
+    if (_normalizedQueryCache.containsKey(query)) {
+      return _normalizedQueryCache[query]!;
+    }
 
     final typoMap = {
       'hostle': 'hostel',
@@ -673,39 +564,24 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
       'libary': 'library',
       'transpot': 'transport',
       'facilty': 'facility',
-      'collage': 'college',
-      'univercity': 'university',
-      'engeneering': 'engineering',
-      'scholorship': 'scholarship',
-      'rit': 'rit chennai',
-      'courses available': 'what courses are offered at rit chennai',
-      'available courses': 'what courses are offered at rit chennai',
-      'what courses': 'what courses are offered at rit chennai',
-      'which courses': 'what courses are offered at rit chennai',
     };
 
     final synonymMap = {
       'fee': ['cost', 'price', 'charge', 'expense', 'tuition'],
-      'hostel': ['dorm', 'residence', 'accommodation', 'housing'],
-      'placement': ['job', 'career', 'recruitment', 'employment'],
-      'course': ['program', 'degree', 'class', 'subject', 'courses'],
-      'campus': ['grounds', 'site', 'premises', 'college'],
-      'library': ['books', 'resources', 'study'],
-      'transport': ['bus', 'shuttle', 'commute'],
-      'faculty': ['teacher', 'professor', 'staff', 'instructor'],
-      'event': ['festival', 'celebration', 'activity'],
-      'club': ['group', 'society', 'organization'],
-      'admission': ['entry', 'enrollment', 'application'],
-      'scholarship': ['financial aid', 'grant', 'bursary'],
-      'college': ['institute', 'university', 'school'],
+      'hostel': ['dorm', 'residence', 'accommodation'],
+      'placement': ['job', 'career', 'recruitment'],
+      'course': ['program', 'degree', 'class'],
+      'campus': ['grounds', 'site', 'premises'],
+      'library': ['books', 'resources'],
+      'transport': ['bus', 'shuttle'],
+      'faculty': ['teacher', 'professor', 'staff'],
+      'event': ['festival', 'celebration'],
+      'club': ['group', 'society'],
     };
 
     String normalized = query.toLowerCase().trim().replaceAll(RegExp(r'[^\w\s]'), '');
-
     typoMap.forEach((wrong, correct) {
-      if (normalized.contains(wrong)) {
-        normalized = normalized.replaceAll(wrong, correct);
-      }
+      normalized = normalized.replaceAll(wrong, correct);
     });
 
     List<String> words = normalized.split(' ');
@@ -718,8 +594,96 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
     }
     normalized = words.join(' ');
 
-    _contextCache[query] = normalized;
+    _normalizedQueryCache[query] = normalized;
     return normalized;
+  }
+
+  double _calculateKeywordScore(String query, List<String> keywords) {
+    if (keywords.isEmpty) return 0.0;
+    double score = 0.0;
+    List<String> queryWords = query.split(' ');
+    for (var keyword in keywords) {
+      if (queryWords.contains(keyword)) {
+        score += 1.0;
+      } else {
+        for (var word in queryWords) {
+          if (word.contains(keyword) || keyword.contains(word)) {
+            score += 0.5;
+            break;
+          }
+        }
+      }
+    }
+    return (score / keywords.length).clamp(0.0, 1.0);
+  }
+
+  double _calculateSimilarity(List<String> queryWords, String instruction) {
+    final instructionWords = instruction.toLowerCase().split(' ').toSet();
+    final querySet = queryWords.toSet();
+    final keyTerms = {
+      'rit',
+      'chennai',
+      'campus',
+      'fee',
+      'placement',
+      'course',
+      'hostel',
+      'admission',
+      'scholarship',
+      'faculty',
+      'library',
+      'transport',
+      'club',
+      'event',
+    };
+
+    final intersection = querySet.intersection(instructionWords);
+    final union = querySet.union(instructionWords);
+    double jaccardSimilarity = intersection.length / union.length;
+
+    int keyTermMatches = intersection.where((word) => keyTerms.contains(word)).length;
+    double keyTermBoost = keyTermMatches * 0.2;
+
+    double lengthPenalty = (instructionWords.length < 3 || querySet.length < 3) ? 0.05 : 0.0;
+
+    return (jaccardSimilarity + keyTermBoost - lengthPenalty).clamp(0.0, 1.0);
+  }
+
+  Future<String> getGeminiResponse(String userMessage) async {
+    final apiKey = dotenv.env['GEMINI_API_KEY'];
+    if (apiKey == null) {
+      return "Sorry, I can't answer that. API key not configured.";
+    }
+
+    try {
+      final response = await http.post(
+        Uri.parse(
+          'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=$apiKey',
+        ),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({
+          'contents': [
+            {
+              'parts': [
+                {
+                  'text':
+                  'You are RITA, a chatbot for Rajalakshmi Institute of Technology (RIT Chennai). Provide accurate, concise answers about RIT Chennai. If unknown, say: "Sorry, I can\'t answer that." Question: $userMessage',
+                },
+              ],
+            },
+          ],
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        return data['candidates'][0]['content']['parts'][0]['text']?.trim() ??
+            "Sorry, I can't answer that.";
+      }
+      return "Sorry, I can't answer that. Try asking something specific about RIT Chennai!";
+    } catch (e) {
+      return "Sorry, I can't answer that. Please try again later!";
+    }
   }
 
   Widget _buildMessage(Map<String, dynamic> message) {
@@ -754,8 +718,12 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
                     color: isBot
-                        ? (_isDarkMode ? Colors.blue[800]!.withOpacity(0.9) : Colors.blue[50]!.withOpacity(0.9))
-                        : (_isDarkMode ? Colors.green[800]!.withOpacity(0.9) : Colors.green[100]!.withOpacity(0.9)),
+                        ? (_isDarkMode
+                        ? Colors.blue[800]!.withOpacity(0.9)
+                        : Colors.blue[50]!.withOpacity(0.9))
+                        : (_isDarkMode
+                        ? Colors.green[800]!.withOpacity(0.9)
+                        : Colors.green[100]!.withOpacity(0.9)),
                     borderRadius: BorderRadius.circular(20),
                     boxShadow: [
                       BoxShadow(
@@ -805,7 +773,7 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
               timestamp,
               style: TextStyle(
                 fontSize: 12,
-                color: _isDarkMode ? Colors.white70 : Colors.white70,
+                color: _isDarkMode ? Colors.white70 : Colors.black87,
                 fontFamily: 'Poppins',
               ),
             ),
@@ -888,46 +856,14 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
   }
 
   List<Map<String, String>> _getDynamicSuggestions() {
-    final categorySuggestions = {
-      'general': [
-        {'label': 'Full Name', 'query': 'What is the full name of RIT Chennai?'},
-        {'label': 'Website', 'query': 'What is the official website of RIT Chennai?'},
-        {'label': 'Contact', 'query': 'What is the contact number for RIT Chennai?'},
-        {'label': 'Address', 'query': 'What is the address of RIT Chennai?'},
-      ],
-      'academics': [
-        {'label': 'Courses', 'query': 'What courses are offered at RIT Chennai?'},
-        {'label': 'B.Tech Duration', 'query': 'What is the duration of B.E./B.Tech programs?'},
-        {'label': 'Specializations', 'query': 'What specializations are available in B.Tech at RIT Chennai?'},
-        {'label': 'Ph.D. Programs', 'query': 'Are there any Ph.D. programs at RIT Chennai?'},
-      ],
-      'admissions': [
-        {'label': 'Admission Process', 'query': 'How can I apply for admission to RIT Chennai?'},
-        {'label': 'Eligibility', 'query': 'What is the eligibility criteria for B.E./B.Tech programs?'},
-        {'label': 'TNEA', 'query': 'What is TNEA and how does it relate to RIT Chennai admissions?'},
-        {'label': 'Scholarships', 'query': 'Does RIT Chennai offer scholarships?'},
-      ],
-      'placements': [
-        {'label': 'Placement Stats', 'query': 'What are the placement statistics for RIT Chennai?'},
-        {'label': 'Top Recruiters', 'query': 'Who are some of the top recruiters at RIT Chennai?'},
-        {'label': 'Highest Package', 'query': 'What is the highest salary package offered at RIT Chennai?'},
-        {'label': 'Internships', 'query': 'Are there internship opportunities at RIT Chennai?'},
-      ],
-      'campus': [
-        {'label': 'Campus Size', 'query': 'What is the size of the RIT Chennai campus?'},
-        {'label': 'Hostel Fees', 'query': 'What is the hostel fee at RIT Chennai?'},
-        {'label': 'Clubs', 'query': 'What student clubs are there at RIT Chennai?'},
-        {'label': 'Facilities', 'query': 'What facilities are available on campus?'},
-      ],
-      'financial': [
-        {'label': 'B.Tech Fees', 'query': 'What is the fee structure for B.Tech at RIT Chennai?'},
-        {'label': 'Scholarships', 'query': 'Does RIT Chennai offer scholarships?'},
-        {'label': 'Hostel Fees', 'query': 'What is the hostel fee at RIT Chennai?'},
-        {'label': 'Transport', 'query': 'Does RIT Chennai offer transportation facilities?'},
-      ],
-    };
-
-    return categorySuggestions[_lastCategory] ?? categorySuggestions['general']!;
+    return [
+      {'label': 'Campus Size', 'query': 'What is the size of the RIT Chennai campus?'},
+      {'label': 'Hostel Fees', 'query': 'What is the hostel fee at RIT Chennai?'},
+      {'label': 'Placements', 'query': 'What are the placement statistics for RIT Chennai?'},
+      {'label': 'Courses', 'query': 'What courses are offered at RIT Chennai?'},
+      {'label': 'Admission', 'query': 'How can I apply for admission to RIT Chennai?'},
+      {'label': 'Scholarships', 'query': 'Does RIT Chennai offer scholarships?'},
+    ];
   }
 
   @override
@@ -938,7 +874,7 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: const AssetImage('assets/rit_building.jpg'),
+              image: AssetImage('assets/rit_building.jpg'),
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
                 _isDarkMode ? Colors.black.withOpacity(0.5) : Colors.black.withOpacity(0.3),
@@ -949,10 +885,7 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
           child: Column(
             children: [
               AppBar(
-                title: const Text(
-                  'RITA - RIT Chennai Chatbot',
-                  style: TextStyle(fontFamily: 'Poppins', fontSize: 20),
-                ),
+                title: Text('RITA - RIT Chennai Chatbot', style: Theme.of(context).textTheme.headlineSmall),
                 backgroundColor: Colors.transparent,
                 elevation: 0,
                 flexibleSpace: Container(
@@ -972,14 +905,12 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
                     onPressed: () {
                       _saveVoiceOutputPreference(!_isVoiceOutputEnabled);
                     },
-                    tooltip: 'Toggle Voice Output',
                   ),
                   IconButton(
-                    icon: const Icon(Icons.brightness_4),
+                    icon: Icon(Icons.brightness_4),
                     onPressed: () {
                       _saveThemePreference(!_isDarkMode);
                     },
-                    tooltip: 'Toggle Theme',
                   ),
                 ],
               ),
@@ -1015,7 +946,7 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
                                     : Colors.blue[50]!.withOpacity(0.9),
                                 borderRadius: BorderRadius.circular(20),
                               ),
-                              child: const CircularProgressIndicator(strokeWidth: 2),
+                              child: CircularProgressIndicator(strokeWidth: 2),
                             ),
                           ],
                         ),
@@ -1030,7 +961,6 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
                 color: _isDarkMode ? Colors.grey[900] : Colors.white,
                 child: Column(
                   children: [
-                    const SizedBox(height: 8),
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
@@ -1046,10 +976,7 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
                           child: TextField(
                             controller: _controller,
                             focusNode: _focusNode,
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              color: _isDarkMode ? Colors.white : Colors.black,
-                            ),
+                            style: TextStyle(fontFamily: 'Poppins', color: _isDarkMode ? Colors.white : Colors.black),
                             decoration: InputDecoration(
                               hintText: 'Ask about RIT Chennai...',
                               hintStyle: TextStyle(
@@ -1062,12 +989,8 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
                                 borderRadius: BorderRadius.circular(30),
                                 borderSide: BorderSide.none,
                               ),
-                              contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                              contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                             ),
-                            onSubmitted: (_) {
-                              _isVoiceInput = false;
-                              _sendMessage();
-                            },
                           ),
                         ),
                         const SizedBox(width: 8),
@@ -1077,7 +1000,7 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
                           radius: 24,
                           backgroundColor: Colors.blueAccent,
                           child: IconButton(
-                            icon: const Icon(Icons.send, color: Colors.white),
+                            icon: Icon(Icons.send, color: Colors.white),
                             onPressed: () {
                               _isVoiceInput = false;
                               _sendMessage();
