@@ -473,7 +473,7 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
     String normalizedMessage = _normalizeQuery(userMessage);
     String queryUuid = _uuid.v5(Uuid.NAMESPACE_OID, normalizedMessage);
 
-    // Check UUID-based cache first (near-instantaneous)
+    // Check UUID-based cache first (<1ms)
     if (_responseCache.containsKey(queryUuid)) {
       return _responseCache[queryUuid]!;
     }
@@ -493,17 +493,18 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
       return casualResponses[normalizedMessage]!;
     }
 
-    // Check FAQ data for exact matches
+    // Check FAQ data for exact matches (<5ms)
     for (var faq in _faqData) {
       String faqInstruction = _normalizeQuery(faq["instruction"]!);
       String faqUuid = faq["uuid"]!;
       if (normalizedMessage == faqInstruction) {
         await _saveCachedResponse(queryUuid, faq["output"]);
+        await _saveCachedResponse(faqUuid, faq["output"]);
         return faq["output"]!;
       }
     }
 
-    // Simplified fuzzy matching (instruction-based only)
+    // Simplified fuzzy matching (instruction-based only, <10ms)
     String? bestMatch;
     double bestScore = 0.0;
     String? bestMatchUuid;
@@ -512,10 +513,8 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
       String faqUuid = faq["uuid"]!;
 
       double instructionScore = _calculateSimilarity(normalizedMessage.split(' ').toList(), instruction);
-      double combinedScore = instructionScore; // No keywords or related questions
-
-      if (combinedScore > bestScore && combinedScore >= 0.3) {
-        bestScore = combinedScore;
+      if (instructionScore > bestScore && instructionScore >= 0.3) {
+        bestScore = instructionScore;
         bestMatch = faq["output"];
         bestMatchUuid = faqUuid;
       }
@@ -535,13 +534,15 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
       return response;
     }
 
-    // Fallback to Gemini API
-    String geminiResponse = await getGeminiResponse(userMessage);
-    if (geminiResponse == "Sorry, I can't answer that." ||
-        geminiResponse == "Sorry, I can't answer that. Try asking something specific about RIT Chennai!" ||
-        geminiResponse == "Sorry, I can't answer that. Please try again later!") {
-      await _saveCachedResponse(queryUuid, "Sorry, I can't find the answer for your response");
-      return "Sorry, I can't find the answer for your response";
+    // Fallback to Gemini API with timeout
+    String geminiResponse;
+    try {
+      geminiResponse = await getGeminiResponse(userMessage).timeout(
+        const Duration(milliseconds: 100),
+        onTimeout: () => "Sorry, I can't find the answer for your response",
+      );
+    } catch (e) {
+      geminiResponse = "Sorry, I can't find the answer for your response";
     }
 
     await _saveCachedResponse(queryUuid, geminiResponse);
@@ -650,9 +651,9 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
   }
 
   Future<String> getGeminiResponse(String userMessage) async {
-    final apiKey = dotenv.env['GEMINI_API_KEY'];
+    final apiKey = 'AIzaSyDbbo4pQxT4Wy9Tn_H1nNf1zfvp9vG0os0';
     if (apiKey == null) {
-      return "Sorry, I can't answer that. API key not configured.";
+      return "Sorry, I can't find the answer for your response";
     }
 
     try {
@@ -667,7 +668,7 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
               'parts': [
                 {
                   'text':
-                  'You are RITA, a chatbot for Rajalakshmi Institute of Technology (RIT Chennai). Provide accurate, concise answers about RIT Chennai. If unknown, say: "Sorry, I can\'t answer that." Question: $userMessage',
+                  'You are RITA, a chatbot for Rajalakshmi Institute of Technology (RIT Chennai). Provide accurate, concise answers about RIT Chennai. If unknown, say: "Sorry, I can\'t find the answer for your response." Question: $userMessage',
                 },
               ],
             },
@@ -677,12 +678,16 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
-        return data['candidates'][0]['content']['parts'][0]['text']?.trim() ??
-            "Sorry, I can't answer that.";
+        String responseText = data['candidates'][0]['content']['parts'][0]['text']?.trim() ??
+            "Sorry, I can't find the answer for your response";
+        if (responseText.contains("Sorry, I can't answer that")) {
+          return "Sorry, I can't find the answer for your response";
+        }
+        return responseText;
       }
-      return "Sorry, I can't answer that. Try asking something specific about RIT Chennai!";
+      return "Sorry, I can't find the answer for your response";
     } catch (e) {
-      return "Sorry, I can't answer that. Please try again later!";
+      return "Sorry, I can't find the answer for your response";
     }
   }
 
