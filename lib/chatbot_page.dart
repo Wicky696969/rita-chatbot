@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:animated_background/animated_background.dart';
+import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -8,8 +10,23 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:uuid/uuid.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'dart:math' as math; // Import for min function
+import 'dart:math' as math;
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: const ChatbotPage(),
+    );
+  }
+}
 
 class ChatbotPage extends StatefulWidget {
   const ChatbotPage({super.key});
@@ -18,17 +35,15 @@ class ChatbotPage extends StatefulWidget {
   _ChatbotPageState createState() => _ChatbotPageState();
 }
 
-class _ChatbotPageState extends State<ChatbotPage>
-    with TickerProviderStateMixin {
+class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin {
   final TextEditingController _controller = TextEditingController();
   final FocusNode _focusNode = FocusNode();
   final List<Map<String, dynamic>> _messages = [
     {
       "sender": "bot",
-      "message":
-      "Hello! I'm RITA, your guide to Rajalakshmi Institute of Technology (RIT Chennai). Ask about courses, campus, fees, or placements! Try: 'What are the courses available?'",
+      "message": "Hello! I'm RITA, your guide to Rajalakshmi Institute of Technology (RIT Chennai). Ask about courses, campus, fees, or placements! Try: 'What are the courses available?'",
       "timestamp": DateTime.now(),
-    },
+    }
   ];
   final ScrollController _scrollController = ScrollController();
   bool _isBotTyping = false;
@@ -126,12 +141,10 @@ class _ChatbotPageState extends State<ChatbotPage>
       await _flutterTts.setSpeechRate(0.5);
       await _flutterTts.setVolume(1.0);
       await _flutterTts.setPitch(1.0);
-      print("TTS initialized successfully");
     } catch (e) {
-      print("Error initializing TTS: $e");
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('Failed to initialize TTS')));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Failed to initialize TTS')),
+      );
     }
   }
 
@@ -143,12 +156,10 @@ class _ChatbotPageState extends State<ChatbotPage>
         await _flutterTts.setVolume(1.0);
         await _flutterTts.setPitch(1.0);
         await _flutterTts.speak(text);
-        print("Speaking: $text");
       } catch (e) {
-        print("Error in TTS: $e");
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text('Failed to speak response')));
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Failed to speak response')),
+        );
       }
     }
   }
@@ -161,28 +172,23 @@ class _ChatbotPageState extends State<ChatbotPage>
         );
         final List<dynamic> data = jsonDecode(response);
         setState(() {
-          _faqData =
-              data
-                  .map(
-                    (item) => {
-                  "uuid": _uuid.v5(
-                    Uuid.NAMESPACE_OID,
-                    item["instruction"]?.toString() ?? "",
-                  ),
-                  "instruction": item["instruction"]?.toString() ?? "",
-                  "output": item["output"]?.toString() ?? "",
-                  "keywords":
-                  item["keywords"]?.toString().toLowerCase() ?? "",
-                  "related_questions":
-                  item["related_questions"]?.toString() ?? "",
-                  "category": item["category"]?.toString() ?? "general",
-                  "access_level":
-                  item["access_level"]?.toString() ?? "public",
-                },
-              )
-                  .toList();
+          _faqData = data
+              .map(
+                (item) => {
+              "uuid": _uuid.v5(
+                Uuid.NAMESPACE_OID,
+                item["instruction"]?.toString() ?? "",
+              ),
+              "instruction": item["instruction"]?.toString() ?? "",
+              "output": item["output"]?.toString() ?? "",
+              "keywords": item["keywords"]?.toString().toLowerCase() ?? "",
+              "related_questions": item["related_questions"]?.toString() ?? "",
+              "category": item["category"]?.toString() ?? "general",
+              "access_level": item["access_level"]?.toString() ?? "public",
+            },
+          )
+              .toList();
         });
-        print("FAQ Data Loaded: ${_faqData.length} entries");
         for (var faq in _faqData) {
           if (faq["output"] != null && faq["uuid"] != null) {
             _responseCache[faq["uuid"]!] = faq["output"]!;
@@ -191,7 +197,6 @@ class _ChatbotPageState extends State<ChatbotPage>
         await _saveCachedResponses();
         return;
       } catch (e) {
-        print("Error loading FAQ data (attempt $attempt): $e");
         if (attempt == 3) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -217,9 +222,7 @@ class _ChatbotPageState extends State<ChatbotPage>
             _responseCache.remove(_responseCache.keys.first);
           }
         });
-      } catch (e) {
-        print("Error loading cached responses: $e");
-      }
+      } catch (e) {}
     }
   }
 
@@ -243,7 +246,6 @@ class _ChatbotPageState extends State<ChatbotPage>
       try {
         _speechInitialized = await _speech.initialize(
           onStatus: (status) {
-            print("Speech status: $status");
             if (status == 'done' || status == 'notListening') {
               setState(() {
                 _isListening = false;
@@ -252,7 +254,6 @@ class _ChatbotPageState extends State<ChatbotPage>
             }
           },
           onError: (error) {
-            print("Speech error: ${error.errorMsg}");
             setState(() {
               _isListening = false;
               _isVoiceInput = false;
@@ -263,13 +264,9 @@ class _ChatbotPageState extends State<ChatbotPage>
           debugLogging: true,
         );
         if (_speechInitialized) {
-          print('Speech recognition initialized successfully');
           return;
         }
-        print('Speech recognition not available (attempt $attempt)');
-      } catch (e) {
-        print('Speech initialization failed (attempt $attempt): $e');
-      }
+      } catch (e) {}
       if (attempt == 3) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -283,8 +280,7 @@ class _ChatbotPageState extends State<ChatbotPage>
   void _showSpeechErrorDialog(String errorMsg) {
     showDialog(
       context: context,
-      builder:
-          (context) => AlertDialog(
+      builder: (context) => AlertDialog(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
@@ -318,7 +314,6 @@ class _ChatbotPageState extends State<ChatbotPage>
               Text(
                 'Speech Error',
                 style: TextStyle(
-                  fontFamily: 'Poppins',
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
@@ -329,7 +324,6 @@ class _ChatbotPageState extends State<ChatbotPage>
                 'Speech recognition failed: $errorMsg. Please try again or use text input.',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontFamily: 'Poppins',
                   fontSize: 14,
                   color: Colors.white70,
                 ),
@@ -357,7 +351,6 @@ class _ChatbotPageState extends State<ChatbotPage>
                     child: Text(
                       'Try Again',
                       style: TextStyle(
-                        fontFamily: 'Poppins',
                         color: Colors.blueAccent,
                       ),
                     ),
@@ -382,7 +375,6 @@ class _ChatbotPageState extends State<ChatbotPage>
                     child: Text(
                       'Use Text',
                       style: TextStyle(
-                        fontFamily: 'Poppins',
                         color: Colors.blueAccent,
                       ),
                     ),
@@ -511,9 +503,9 @@ class _ChatbotPageState extends State<ChatbotPage>
         'timestamp': FieldValue.serverTimestamp(),
       });
     } catch (e) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('Failed to save message')));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Failed to save message')),
+      );
     }
 
     String botResponse = await _getBotResponse(userMessage);
@@ -556,8 +548,7 @@ class _ChatbotPageState extends State<ChatbotPage>
       'hi': 'Hello! How can I assist you with RIT Chennai today?',
       'hello': 'Hi there! Ready to answer your questions about RIT Chennai!',
       'ok': 'Alright! Anything specific about RIT Chennai you want to know?',
-      'bye':
-      'Goodbye! Feel free to come back with more questions about RIT Chennai!',
+      'bye': 'Goodbye! Feel free to come back with more questions about RIT Chennai!',
       'thanks': 'You\'re welcome! Any more questions about RIT Chennai?',
       'thank you': 'My pleasure! What\'s next on your mind about RIT Chennai?',
     };
@@ -585,6 +576,8 @@ class _ChatbotPageState extends State<ChatbotPage>
       'event',
       'undergraduate',
       'postgraduate',
+      'water',
+      'facilities',
     };
 
     for (var faq in _faqData) {
@@ -598,28 +591,25 @@ class _ChatbotPageState extends State<ChatbotPage>
           .map((q) => _normalizeQuery(q.trim()))
           .toList();
 
-      // Enhanced similarity calculation
       double instructionScore = _calculateSimilarity(normalizedMessage, instruction);
       double keywordScore = _calculateKeywordScore(normalizedMessage, keywords);
       double relatedScore = relatedQuestions
           .map((q) => _calculateSimilarity(normalizedMessage, q))
           .fold(0.0, (max, score) => score > max ? score : max);
 
-      // Boost score for key term matches
-      int keyTermMatches = keyTerms
-          .where((term) => normalizedMessage.contains(term))
-          .length;
+      int keyTermMatches =
+          keyTerms.where((term) => normalizedMessage.contains(term)).length;
       double keyTermBoost = keyTermMatches * 0.3;
 
-      // Weighted total score with higher threshold
-      double totalScore = (0.5 * instructionScore + 0.3 * keywordScore + 0.2 * relatedScore + keyTermBoost);
+      double totalScore =
+      (0.5 * instructionScore + 0.3 * keywordScore + 0.2 * relatedScore + keyTermBoost);
       if (totalScore >= 0.7) {
         responses.add(faq["output"]!);
       }
     }
 
     if (responses.isNotEmpty) {
-      String botResponse = responses.join("\n\n"); // Combine all matching responses
+      String botResponse = responses.join("\n\n");
       await _saveCachedResponse(queryUuid, botResponse);
       return botResponse;
     }
@@ -633,21 +623,71 @@ class _ChatbotPageState extends State<ChatbotPage>
       return response;
     }
 
-    // Fallback to Gemini API only if no good match found
-    String geminiResponse;
-    try {
-      geminiResponse = await getGeminiResponse(userMessage).timeout(
-        const Duration(seconds: 5),
-        onTimeout:
-            () => "Sorry, I can't find the answer right now. Try again later.",
-      );
-    } catch (e) {
-      geminiResponse =
-      "Sorry, I can't find the answer for your response.";
+    // Check pre-provided web context for water facilities or related topics
+    if (normalizedMessage.contains("water") || normalizedMessage.contains("facilities")) {
+      String waterResponse = _getWaterFacilitiesResponse(normalizedMessage);
+      if (waterResponse.isNotEmpty) {
+        await _saveCachedResponse(queryUuid, waterResponse);
+        return waterResponse;
+      }
     }
 
+    // Fallback to Gemini with global search tied to RIT Chennai
+    String geminiResponse = await getGeminiResponse(userMessage);
     await _saveCachedResponse(queryUuid, geminiResponse);
     return geminiResponse;
+  }
+
+  // Helper method to check web context for water facilities
+  String _getWaterFacilitiesResponse(String normalizedMessage) {
+    if (normalizedMessage.contains("water") && normalizedMessage.contains("facilities")) {
+      return "RIT Chennai provides uninterrupted water supply in its hostels, including RO water facilities, as part of its modern amenities.";
+    } else if (normalizedMessage.contains("water supply")) {
+      return "RIT Chennai ensures an uninterrupted water supply in its hostels and campus facilities.";
+    }
+    return ""; // Return empty if no match
+  }
+
+  Future<String> getGeminiResponse(String userMessage) async {
+    final apiKey = 'AIzaSyDbbo4pQxT4Wy9Tn_H1nNf1zfvp9vG0os0';
+    if (apiKey.isEmpty) {
+      return "API key not configured. Please try again later.";
+    }
+
+    try {
+      final response = await http.post(
+        Uri.parse(
+          'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=$apiKey',
+        ),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({
+          'contents': [
+            {
+              'parts': [
+                {
+                  'text':
+                  'You are RITA, a chatbot for Rajalakshmi Institute of Technology (RIT Chennai). Search your global knowledge base to answer the question, but relate the answer specifically to RIT Chennai where possible (e.g., courses, campus, facilities, water, etc.). If no relevant connection to RIT Chennai can be made, respond with: "Sorry, I can\'t find the answer for that response." Question: $userMessage',
+                },
+              ],
+            },
+          ],
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        String responseText =
+            data['candidates'][0]['content']['parts'][0]['text']?.trim() ??
+                "Sorry, I can't find the answer for that response";
+        if (responseText.contains("Sorry, I can't answer that")) {
+          return "Sorry, I can't find the answer for that response";
+        }
+        return responseText;
+      }
+      return "Sorry, I can't find the answer for that response";
+    } catch (e) {
+      return "Sorry, I can't find the answer for that response";
+    }
   }
 
   String _normalizeQuery(String query) {
@@ -655,7 +695,6 @@ class _ChatbotPageState extends State<ChatbotPage>
       return _normalizedQueryCache[query]!;
     }
 
-    // Split into words for individual correction
     List<String> words = query.toLowerCase().trim().split(' ');
     List<String> correctedWords = [];
 
@@ -702,11 +741,9 @@ class _ChatbotPageState extends State<ChatbotPage>
       if (word.isEmpty) continue;
       String corrected = word;
 
-      // Check typo map first
       if (typoMap.containsKey(word)) {
         corrected = typoMap[word]!;
       } else {
-        // Approximate matching for unmatched words
         for (var entry in typoMap.entries) {
           if (_approximateMatch(corrected, entry.key, 2)) {
             corrected = entry.value;
@@ -720,7 +757,6 @@ class _ChatbotPageState extends State<ChatbotPage>
 
     String normalized = correctedWords.join(' ');
 
-    // Apply synonym replacement
     words = normalized.split(' ');
     for (int i = 0; i < words.length; i++) {
       synonymMap.forEach((key, synonyms) {
@@ -738,15 +774,12 @@ class _ChatbotPageState extends State<ChatbotPage>
     return normalized;
   }
 
-  // Levenshtein distance-based approximate matching
   bool _approximateMatch(String a, String b, int maxDistance) {
     int m = a.length;
     int n = b.length;
 
-    // Create a 2D list for the distance matrix
     List<List<int>> matrix = List.generate(m + 1, (i) => List<int>.filled(n + 1, 0));
 
-    // Initialize first row and column
     for (int i = 0; i <= m; i++) {
       matrix[i][0] = i;
     }
@@ -754,7 +787,6 @@ class _ChatbotPageState extends State<ChatbotPage>
       matrix[0][j] = j;
     }
 
-    // Fill the matrix
     for (int i = 1; i <= m; i++) {
       for (int j = 1; j <= n; j++) {
         int cost = (a[i - 1] == b[j - 1]) ? 0 : 1;
@@ -823,48 +855,6 @@ class _ChatbotPageState extends State<ChatbotPage>
     return (jaccardSimilarity + keyTermBoost - lengthPenalty).clamp(0.0, 1.0);
   }
 
-  Future<String> getGeminiResponse(String userMessage) async {
-    final apiKey = 'AIzaSyAA0m24JK9M3boO1K_2KqGbfawUk2peuug';
-    if (apiKey.isEmpty) {
-      return "API key not configured. Please try again later.";
-    }
-
-    try {
-      final response = await http.post(
-        Uri.parse(
-          'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=$apiKey',
-        ),
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({
-          'contents': [
-            {
-              'parts': [
-                {
-                  'text':
-                  'You are RITA, a chatbot for Rajalakshmi Institute of Technology (RIT Chennai). Provide accurate, concise answers about RIT Chennai based on the following context: courses, campus, fees, placements, hostels, admissions, scholarships, faculty, library, transport, clubs, events, undergraduate, postgraduate. If the answer is not found in this context, say: "Sorry, I can\'t find the answer for your response." Question: $userMessage',
-                },
-              ],
-            },
-          ],
-        }),
-      );
-
-      if (response.statusCode == 200) {
-        final data = jsonDecode(response.body);
-        String responseText =
-            data['candidates'][0]['content']['parts'][0]['text']?.trim() ??
-                "Sorry, I can't find the answer for your response";
-        if (responseText.contains("Sorry, I can't answer that")) {
-          return "Sorry, I can't find the answer for your response";
-        }
-        return responseText;
-      }
-      return "Sorry, I can't find the answer for your response";
-    } catch (e) {
-      return "Sorry, I can't find the answer for your response";
-    }
-  }
-
   void _rateResponse(String responseId, int rating) {
     setState(() {
       _responseRatings[responseId] = rating;
@@ -878,138 +868,117 @@ class _ChatbotPageState extends State<ChatbotPage>
 
   Widget _buildMessage(Map<String, dynamic> message) {
     final isBot = message['sender'] == 'bot';
-    final timestamp = (message['timestamp'] as DateTime).toString().substring(
-      11,
-      16,
-    );
+    final timestamp = (message['timestamp'] as DateTime).toString().substring(11, 16);
     final responseId = message['responseId'] as String?;
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
-      child: Column(
-        crossAxisAlignment:
-        isBot ? CrossAxisAlignment.start : CrossAxisAlignment.end,
-        children: [
-          Row(
-            mainAxisAlignment:
-            isBot ? MainAxisAlignment.start : MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.start,
+    return SlideInLeft(
+      duration: const Duration(milliseconds: 300),
+      child: ZoomIn(
+        duration: const Duration(milliseconds: 200),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
+          child: Column(
+            crossAxisAlignment: isBot ? CrossAxisAlignment.start : CrossAxisAlignment.end,
             children: [
-              if (isBot)
-                CircleAvatar(
-                  radius: 20,
-                  backgroundColor: Colors.blueAccent,
-                  child: Text(
-                    'R',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Poppins',
-                    ),
-                  ),
-                ),
-              if (isBot) const SizedBox(width: 8),
-              Flexible(
-                child: Container(
-                  constraints: BoxConstraints(
-                    maxWidth: MediaQuery.of(context).size.width * 0.7,
-                  ),
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color:
-                    isBot
-                        ? (_isDarkMode
-                        ? Colors.blue[800]!.withOpacity(0.9)
-                        : Colors.blue[50]!.withOpacity(0.9))
-                        : (_isDarkMode
-                        ? Colors.green[800]!.withOpacity(0.9)
-                        : Colors.green[100]!.withOpacity(0.9)),
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
-                      BoxShadow(
-                        color: _isDarkMode ? Colors.black54 : Colors.black26,
-                        blurRadius: 4,
-                        offset: Offset(0, 2),
-                      ),
-                    ],
-                  ),
-                  child:
-                  isBot
-                      ? AnimatedTextKit(
-                    animatedTexts: [
-                      TypewriterAnimatedText(
-                        message['message']!,
-                        textStyle: TextStyle(
-                          color:
-                          _isDarkMode
-                              ? Colors.white
-                              : Colors.black87,
-                          fontSize: 16,
-                          fontFamily: 'Poppins',
+              Row(
+                mainAxisAlignment: isBot ? MainAxisAlignment.start : MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  if (isBot)
+                    CircleAvatar(
+                      radius: 20,
+                      backgroundColor: Colors.blueAccent,
+                      child: Text(
+                        'R',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
                         ),
-                        speed: const Duration(milliseconds: 20),
                       ),
-                    ],
-                    totalRepeatCount: 1,
-                  )
-                      : Text(
-                    message['message']!,
-                    style: TextStyle(
-                      color:
-                      _isDarkMode ? Colors.white : Colors.black87,
-                      fontSize: 16,
-                      fontFamily: 'Poppins',
                     ),
+                  if (isBot) const SizedBox(width: 8),
+                  Flexible(
+                    child: Container(
+                      constraints: BoxConstraints(
+                        maxWidth: MediaQuery.of(context).size.width * 0.7,
+                      ),
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: isBot
+                              ? [Colors.blueAccent, Colors.blue]
+                              : [Colors.greenAccent, Colors.green],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                        borderRadius: BorderRadius.circular(15),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.2),
+                            blurRadius: 5,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: isBot
+                          ? AnimatedTextKit(
+                        animatedTexts: [
+                          TypewriterAnimatedText(
+                            message['message']!,
+                            textStyle: const TextStyle(color: Colors.white, fontSize: 16),
+                            speed: const Duration(milliseconds: 20),
+                          ),
+                        ],
+                        totalRepeatCount: 1,
+                        pause: const Duration(milliseconds: 1000),
+                      )
+                          : Text(
+                        message['message']!,
+                        style: const TextStyle(color: Colors.white, fontSize: 16),
+                      ),
+                    ),
+                  ),
+                  if (!isBot) const SizedBox(width: 8),
+                  if (!isBot)
+                    CircleAvatar(
+                      radius: 20,
+                      backgroundColor: Colors.green,
+                      child: Icon(Icons.person, color: Colors.white),
+                    ),
+                ],
+              ),
+              if (isBot && responseId != null)
+                Row(
+                  mainAxisAlignment: isBot ? MainAxisAlignment.start : MainAxisAlignment.end,
+                  children: [
+                    IconButton(
+                      icon: Icon(
+                        Icons.thumb_up,
+                        color: _responseRatings[responseId] == 1 ? Colors.blue : Colors.grey,
+                      ),
+                      onPressed: () => _rateResponse(responseId, 1),
+                    ),
+                    IconButton(
+                      icon: Icon(
+                        Icons.thumb_down,
+                        color: _responseRatings[responseId] == -1 ? Colors.red : Colors.grey,
+                      ),
+                      onPressed: () => _rateResponse(responseId, -1),
+                    ),
+                  ],
+                ),
+              Padding(
+                padding: const EdgeInsets.only(top: 4.0),
+                child: Text(
+                  timestamp,
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: _isDarkMode ? Colors.white70 : Colors.black87,
                   ),
                 ),
               ),
-              if (!isBot) const SizedBox(width: 8),
-              if (!isBot)
-                CircleAvatar(
-                  radius: 20,
-                  backgroundColor: Colors.green,
-                  child: Icon(Icons.person, color: Colors.white),
-                ),
             ],
           ),
-          if (isBot && responseId != null)
-            Row(
-              mainAxisAlignment:
-              isBot ? MainAxisAlignment.start : MainAxisAlignment.end,
-              children: [
-                IconButton(
-                  icon: Icon(
-                    Icons.thumb_up,
-                    color:
-                    _responseRatings[responseId] == 1
-                        ? Colors.blue
-                        : Colors.grey,
-                  ),
-                  onPressed: () => _rateResponse(responseId, 1),
-                ),
-                IconButton(
-                  icon: Icon(
-                    Icons.thumb_down,
-                    color:
-                    _responseRatings[responseId] == -1
-                        ? Colors.red
-                        : Colors.grey,
-                  ),
-                  onPressed: () => _rateResponse(responseId, -1),
-                ),
-              ],
-            ),
-          Padding(
-            padding: const EdgeInsets.only(top: 4.0),
-            child: Text(
-              timestamp,
-              style: TextStyle(
-                fontSize: 12,
-                color: _isDarkMode ? Colors.white70 : Colors.black87,
-                fontFamily: 'Poppins',
-              ),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
@@ -1022,7 +991,6 @@ class _ChatbotPageState extends State<ChatbotPage>
           label,
           style: TextStyle(
             color: _isDarkMode ? Colors.white : Colors.white,
-            fontFamily: 'Poppins',
           ),
         ),
         backgroundColor: Colors.blueAccent,
@@ -1062,8 +1030,7 @@ class _ChatbotPageState extends State<ChatbotPage>
               ),
               boxShadow: [
                 BoxShadow(
-                  color:
-                  _isListening
+                  color: _isListening
                       ? Colors.blueAccent.withOpacity(0.5)
                       : Colors.blueAccent.withOpacity(0.3),
                   blurRadius: _isListening ? 15.0 : 5.0,
@@ -1072,8 +1039,7 @@ class _ChatbotPageState extends State<ChatbotPage>
               ],
             ),
             child: ScaleTransition(
-              scale:
-              _isListening
+              scale: _isListening
                   ? _micScaleAnimation
                   : AlwaysStoppedAnimation(1.0),
               child: CircleAvatar(
@@ -1154,17 +1120,13 @@ class _ChatbotPageState extends State<ChatbotPage>
           child: Column(
             children: [
               AppBar(
-                title: Text(
-                  'RITA - RIT Chennai Chatbot',
-                  style: TextStyle(fontFamily: 'Poppins'),
-                ),
+                title: const Text('RITA - RIT Chennai Chatbot'),
                 backgroundColor: Colors.transparent,
                 elevation: 0,
                 flexibleSpace: Container(
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
-                      colors:
-                      _isDarkMode
+                      colors: _isDarkMode
                           ? [Colors.blueGrey[900]!, Colors.blueGrey[700]!]
                           : [Colors.blueAccent, Colors.blue],
                       begin: Alignment.topLeft,
@@ -1210,7 +1172,6 @@ class _ChatbotPageState extends State<ChatbotPage>
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
-                                  fontFamily: 'Poppins',
                                 ),
                               ),
                             ),
@@ -1218,13 +1179,17 @@ class _ChatbotPageState extends State<ChatbotPage>
                             Container(
                               padding: const EdgeInsets.all(12),
                               decoration: BoxDecoration(
-                                color:
-                                _isDarkMode
-                                    ? Colors.blue[800]!.withOpacity(0.9)
-                                    : Colors.blue[50]!.withOpacity(0.9),
-                                borderRadius: BorderRadius.circular(20),
+                                gradient: LinearGradient(
+                                  colors: [Colors.blueAccent, Colors.blue],
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                ),
+                                borderRadius: BorderRadius.circular(15),
                               ),
-                              child: CircularProgressIndicator(strokeWidth: 2),
+                              child: CircularProgressIndicator(
+                                strokeWidth: 2,
+                                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                              ),
                             ),
                           ],
                         ),
@@ -1242,14 +1207,8 @@ class _ChatbotPageState extends State<ChatbotPage>
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
-                        children:
-                        _getDynamicSuggestions()
-                            .map(
-                              (s) => _buildSuggestionChip(
-                            s['label']!,
-                            s['query']!,
-                          ),
-                        )
+                        children: _getDynamicSuggestions()
+                            .map((s) => _buildSuggestionChip(s['label']!, s['query']!))
                             .toList(),
                       ),
                     ),
@@ -1261,23 +1220,15 @@ class _ChatbotPageState extends State<ChatbotPage>
                             controller: _controller,
                             focusNode: _focusNode,
                             style: TextStyle(
-                              fontFamily: 'Poppins',
                               color: _isDarkMode ? Colors.white : Colors.black,
                             ),
                             decoration: InputDecoration(
                               hintText: 'Ask about RIT Chennai...',
                               hintStyle: TextStyle(
-                                fontFamily: 'Poppins',
-                                color:
-                                _isDarkMode
-                                    ? Colors.grey[400]
-                                    : Colors.grey,
+                                color: _isDarkMode ? Colors.grey[400] : Colors.grey,
                               ),
                               filled: true,
-                              fillColor:
-                              _isDarkMode
-                                  ? Colors.grey[800]
-                                  : Colors.grey[100],
+                              fillColor: _isDarkMode ? Colors.grey[800] : Colors.grey[100],
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30),
                                 borderSide: BorderSide.none,

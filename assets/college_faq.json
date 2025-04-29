@@ -2,256 +2,272 @@
   {
     "instruction": "What is the full name of RIT Chennai?",
     "output": "The full name of RIT Chennai is Rajalakshmi Institute of Technology.",
-    "keywords": "full name, rit chennai, rajalakshmi, institute, technology",
-    "related_questions": "What does RIT stand for?, What is the full form of RIT Chennai?, What is RIT Chennai called?",
+    "keywords": "fullname, institution-name, rajalakshmi-tech, rit-title",
+    "related_questions": "What does RIT stand for?, What is the full form of RIT Chennai?, What is RIT Chennai called?, What is the name of RIT?, What is RIT's full name?",
     "category": "general",
     "access_level": "public"
   },
   {
     "instruction": "When was RIT Chennai established?",
     "output": "Rajalakshmi Institute of Technology was established in 2008.",
-    "keywords": "established, founded, rit chennai, year, start",
-    "related_questions": "When did RIT Chennai start?, What is the founding year of RIT Chennai?, When was RIT founded?",
+    "keywords": "establishment-date, founding-year, rit-start, inception",
+    "related_questions": "When did RIT Chennai start?, What is the founding year of RIT Chennai?, When was RIT founded?, Since when has RIT Chennai been running?, How old is RIT Chennai?",
     "category": "general",
     "access_level": "public"
   },
   {
     "instruction": "Is RIT Chennai affiliated with any university?",
     "output": "Yes, RIT Chennai is affiliated with Anna University, Chennai.",
-    "keywords": "affiliated, university, anna university, rit chennai, affiliation",
-    "related_questions": "Which university is RIT Chennai affiliated with?, Is RIT under Anna University?, What is the affiliation of RIT Chennai?",
+    "keywords": "university-affiliation, anna-link, rit-academic-tie",
+    "related_questions": "Which university is RIT Chennai affiliated with?, Is RIT under Anna University?, What is the affiliation of RIT Chennai?, Is RIT Chennai linked to any university?, Does RIT Chennai have an affiliation?",
     "category": "academics",
     "access_level": "public"
   },
   {
     "instruction": "What accreditation does RIT Chennai have?",
     "output": "RIT Chennai is accredited with an A++ grade by NAAC and has NBA-accredited courses.",
-    "keywords": "accreditation, naac, nba, rit chennai, grade",
-    "related_questions": "Is RIT Chennai accredited?, What is the NAAC grade of RIT Chennai?, Does RIT have NBA accreditation?",
+    "keywords": "accreditation-status, naac-grade, nba-certification",
+    "related_questions": "Is RIT Chennai accredited?, What is the NAAC grade of RIT Chennai?, Does RIT have NBA accreditation?, What accreditations does RIT Chennai have?, Is RIT Chennai NAAC approved?",
     "category": "academics",
     "access_level": "public"
   },
   {
     "instruction": "What courses are offered at RIT Chennai?",
     "output": "RIT Chennai offers B.E., B.Tech., M.E., and Ph.D. programs in various engineering disciplines, including Computer Science, Mechanical, Electronics, Artificial Intelligence, and Biotechnology.",
-    "keywords": "courses, programs, btech, be, me, phd, engineering, rit chennai",
-    "related_questions": "What are the programs at RIT Chennai?, Which courses does RIT offer?, What degrees are available at RIT Chennai?",
+    "keywords": "course-offerings, program-list, rit-academic-programs",
+    "related_questions": "What are the programs at RIT Chennai?, Which courses does RIT offer?, What degrees are available at RIT Chennai?, What engineering courses are at RIT?, What can I study at RIT Chennai?",
+    "category": "academics",
+    "access_level": "public"
+  },
+  {
+    "instruction": "What undergraduate courses are available at RIT Chennai?",
+    "output": "RIT Chennai offers undergraduate courses like B.E. and B.Tech. in Computer Science, Mechanical, Electronics, Artificial Intelligence, and Biotechnology.",
+    "keywords": "ug-courses, undergraduate-programs, rit-btech-be",
+    "related_questions": "What UG courses does RIT Chennai have?, What are the undergraduate programs at RIT?, Which B.Tech courses are at RIT Chennai?, What are RIT Chennai's UG streams?, Does RIT offer B.E. courses?",
+    "category": "academics",
+    "access_level": "public"
+  },
+  {
+    "instruction": "What postgraduate courses are available at RIT Chennai?",
+    "output": "RIT Chennai offers postgraduate courses like M.E. in various disciplines such as Computer Science, Mechanical, and Electronics.",
+    "keywords": "pg-courses, postgraduate-programs, rit-me-masters",
+    "related_questions": "What PG courses does RIT Chennai have?, What are the postgraduate programs at RIT?, Which M.E. courses are at RIT Chennai?, What are RIT Chennai's PG streams?, Does RIT offer master’s degrees?",
     "category": "academics",
     "access_level": "public"
   },
   {
     "instruction": "How can I apply for admission to RIT Chennai?",
     "output": "Admissions to RIT Chennai are through Tamil Nadu Engineering Admissions (TNEA) counseling based on 12th standard marks. Visit the TNEA website or RIT Chennai's official site for details.",
-    "keywords": "admission, apply, tnea, counseling, rit chennai",
-    "related_questions": "How to get into RIT Chennai?, What is the admission process for RIT?, How do I join RIT Chennai?",
+    "keywords": "admission-process, tnea-application, rit-enrollment",
+    "related_questions": "How to get into RIT Chennai?, What is the admission process for RIT?, How do I join RIT Chennai?, How to apply to RIT Chennai?, What is the enrollment procedure?",
     "category": "admissions",
     "access_level": "public"
   },
   {
     "instruction": "What is the eligibility criteria for B.E./B.Tech programs?",
     "output": "Candidates must have passed 10+2 with Physics, Chemistry, and Mathematics with a minimum percentage as per TNEA guidelines.",
-    "keywords": "eligibility, btech, be, criteria, 12th, rit chennai",
-    "related_questions": "Who can apply for B.Tech at RIT Chennai?, What are the requirements for RIT B.E. admission?, What marks are needed for RIT Chennai?",
+    "keywords": "btech-eligibility, be-requirements, rit-admission-criteria",
+    "related_questions": "Who can apply for B.Tech at RIT Chennai?, What are the requirements for RIT B.E. admission?, What marks are needed for RIT Chennai?, What is the eligibility for RIT B.Tech?",
     "category": "admissions",
     "access_level": "public"
   },
   {
     "instruction": "Does RIT Chennai offer scholarships?",
     "output": "Yes, RIT Chennai offers scholarships for meritorious students and those with financial need, including government and institute-specific schemes.",
-    "keywords": "scholarships, financial aid, merit, rit chennai",
-    "related_questions": "Are scholarships available at RIT Chennai?, How to get a scholarship at RIT?, What financial aid does RIT offer?",
+    "keywords": "scholarship-opportunities, rit-financial-aid, merit-aid",
+    "related_questions": "Are scholarships available at RIT Chennai?, How to get a scholarship at RIT?, What financial aid does RIT offer?, Does RIT Chennai provide scholarships?, What are the scholarship options?",
     "category": "financial",
     "access_level": "public"
   },
   {
     "instruction": "What are the placement statistics for RIT Chennai?",
     "output": "In 2022-2023, RIT Chennai achieved a 97.5% placement rate, with 275 students placed in top companies.",
-    "keywords": "placement, statistics, jobs, rit chennai, rate",
-    "related_questions": "What is the placement rate at RIT Chennai?, How many students get placed at RIT?, What are RIT Chennai placement stats?",
+    "keywords": "placement-stats, rit-job-rate, employment-data",
+    "related_questions": "What is the placement rate at RIT Chennai?, How many students get placed at RIT?, What are RIT Chennai placement stats?, What is RIT's job placement record?, What is the employment rate at RIT?",
     "category": "placements",
     "access_level": "public"
   },
   {
     "instruction": "Who are some of the top recruiters at RIT Chennai?",
     "output": "Top recruiters at RIT Chennai include Infosys, Wipro, TCS, Amazon, Zoho, and Cognizant.",
-    "keywords": "recruiters, companies, placement, rit chennai",
-    "related_questions": "Which companies visit RIT Chennai?, Who hires from RIT Chennai?, What are the top companies at RIT placements?",
+    "keywords": "top-recruiters, rit-hiring-companies, placement-partners",
+    "related_questions": "Which companies visit RIT Chennai?, Who hires from RIT Chennai?, What are the top companies at RIT placements?, What firms recruit at RIT?, Who are RIT Chennai's employers?",
     "category": "placements",
     "access_level": "public"
   },
   {
     "instruction": "What facilities are available on campus?",
     "output": "RIT Chennai's campus includes a library, hostels, cafeteria, sports facilities, modern labs, Wi-Fi, and a medical center.",
-    "keywords": "facilities, campus, library, hostel, sports, rit chennai",
-    "related_questions": "What amenities does RIT Chennai have?, What facilities are on RIT campus?, Does RIT Chennai have good infrastructure?",
+    "keywords": "campus-facilities, rit-infrastructure, on-site-amenities",
+    "related_questions": "What amenities does RIT Chennai have?, What facilities are on RIT campus?, Does RIT Chennai have good infrastructure?, What is available on RIT grounds?, What are RIT's campus features?",
     "category": "campus",
     "access_level": "public"
   },
   {
     "instruction": "Is there a hostel facility at RIT Chennai?",
     "output": "Yes, RIT Chennai provides separate hostels for boys and girls with modern amenities like Wi-Fi, mess, and security.",
-    "keywords": "hostel, accommodation, boys, girls, rit chennai",
-    "related_questions": "Does RIT Chennai have hostels?, What are the hostel facilities at RIT?, Is hostel available at RIT Chennai?",
+    "keywords": "hostel-availability, rit-accommodation, dorm-options",
+    "related_questions": "Does RIT Chennai have hostels?, What are the hostel facilities at RIT?, Is hostel available at RIT Chennai?, Are there dorms at RIT?, What is the hostel situation at RIT?",
     "category": "campus",
     "access_level": "public"
   },
   {
     "instruction": "What is the official website of RIT Chennai?",
     "output": "The official website of RIT Chennai is https://www.ritchennai.org/.",
-    "keywords": "website, official, rit chennai, url",
-    "related_questions": "What is RIT Chennai's website?, Where can I find RIT Chennai online?, What is the URL of RIT Chennai?",
+    "keywords": "official-website, rit-online, site-url",
+    "related_questions": "What is RIT Chennai's website?, Where can I find RIT Chennai online?, What is the URL of RIT Chennai?, What is RIT's official site?, How to access RIT Chennai online?",
     "category": "general",
     "access_level": "public"
   },
   {
     "instruction": "Does RIT Chennai have any social media presence?",
     "output": "Yes, RIT Chennai is active on Instagram (@ritchennai), YouTube, and other platforms.",
-    "keywords": "social media, instagram, youtube, rit chennai",
-    "related_questions": "Is RIT Chennai on social media?, What is RIT Chennai's Instagram?, Does RIT have a YouTube channel?",
+    "keywords": "social-media-presence, rit-instagram, online-platforms",
+    "related_questions": "Is RIT Chennai on social media?, What is RIT Chennai's Instagram?, Does RIT have a YouTube channel?, Where can I follow RIT Chennai online?, What are RIT's social handles?",
     "category": "general",
     "access_level": "public"
   },
   {
     "instruction": "What is the contact number for RIT Chennai?",
     "output": "The contact numbers for RIT Chennai are 044-67181600 and 67181601.",
-    "keywords": "contact, phone, number, rit chennai",
-    "related_questions": "How to contact RIT Chennai?, What is the phone number of RIT Chennai?, How do I reach RIT Chennai?",
+    "keywords": "contact-number, rit-phone, helpline",
+    "related_questions": "How to contact RIT Chennai?, What is the phone number of RIT Chennai?, How do I reach RIT Chennai?, What is RIT's contact info?, Who to call at RIT Chennai?",
     "category": "general",
     "access_level": "public"
   },
   {
     "instruction": "What is the address of RIT Chennai?",
     "output": "RIT Chennai is located at Kuthambakkam, near Poonamallee, Chennai - 600124, Tamil Nadu, India.",
-    "keywords": "address, location, rit chennai, kuthambakkam",
-    "related_questions": "Where is RIT Chennai located?, What is the address of RIT?, How to find RIT Chennai?",
+    "keywords": "campus-address, rit-location, physical-site",
+    "related_questions": "Where is RIT Chennai located?, What is the address of RIT?, How to find RIT Chennai?, What is RIT's location?, Where is RIT Chennai campus?",
     "category": "general",
     "access_level": "public"
   },
   {
     "instruction": "Is RIT Chennai an autonomous institution?",
     "output": "Yes, RIT Chennai is an autonomous institution under Anna University.",
-    "keywords": "autonomous, institution, rit chennai, anna university",
-    "related_questions": "Is RIT Chennai autonomous?, Does RIT have autonomy?, What is the status of RIT Chennai?",
+    "keywords": "autonomous-status, rit-independence, anna-autonomy",
+    "related_questions": "Is RIT Chennai autonomous?, Does RIT have autonomy?, What is the status of RIT Chennai?, Is RIT self-governing?, Is RIT Chennai independent?",
     "category": "academics",
     "access_level": "public"
   },
   {
     "instruction": "What is the motto of RIT Chennai?",
     "output": "The motto of RIT Chennai is 'Believe In The Possibilities.'",
-    "keywords": "motto, slogan, rit chennai, believe",
-    "related_questions": "What is the motto of RIT Chennai?, Does RIT Chennai have a slogan?, What is RIT's mission statement?",
+    "keywords": "motto-phrase, rit-slogan, believe-possibilities",
+    "related_questions": "What is the motto of RIT Chennai?, Does RIT Chennai have a slogan?, What is RIT's mission statement?, What is RIT Chennai's tagline?, What does RIT stand for in spirit?",
     "category": "general",
     "access_level": "public"
   },
   {
     "instruction": "Are there any Ph.D. programs at RIT Chennai?",
     "output": "Yes, RIT Chennai offers Ph.D. programs in Engineering, Technology, Science, and Humanities.",
-    "keywords": "phd, doctorate, research, rit chennai",
-    "related_questions": "Does RIT Chennai offer Ph.D.?, What Ph.D. programs are at RIT?, Can I do a doctorate at RIT Chennai?",
+    "keywords": "phd-programs, rit-doctorate, research-degrees",
+    "related_questions": "Does RIT Chennai offer Ph.D.?, What Ph.D. programs are at RIT?, Can I do a doctorate at RIT Chennai?, Are there research degrees at RIT?, Does RIT have Ph.D. options?",
     "category": "academics",
     "access_level": "public"
   },
   {
     "instruction": "What is the duration of B.E./B.Tech programs?",
     "output": "The duration of B.E./B.Tech programs at RIT Chennai is 4 years.",
-    "keywords": "duration, btech, be, years, rit chennai",
-    "related_questions": "How long is the B.Tech at RIT Chennai?, What is the duration of RIT B.E.?, How many years is RIT engineering?",
+    "keywords": "btech-duration, be-length, rit-program-years",
+    "related_questions": "How long is the B.Tech at RIT Chennai?, What is the duration of RIT B.E.?, How many years is RIT engineering?, What is the length of B.Tech at RIT?, How long does B.E. take at RIT?",
     "category": "academics",
     "access_level": "public"
   },
   {
     "instruction": "What specializations are available in B.Tech at RIT Chennai?",
     "output": "B.Tech specializations include Artificial Intelligence & Data Science, Computer Science and Business Systems, Biotechnology, and Information Technology.",
-    "keywords": "specializations, btech, ai, data science, biotechnology, rit chennai",
-    "related_questions": "What B.Tech branches are at RIT Chennai?, Which specializations does RIT offer?, What are RIT Chennai B.Tech streams?",
+    "keywords": "btech-specializations, rit-tech-branches, ai-data",
+    "related_questions": "What B.Tech branches are at RIT Chennai?, Which specializations does RIT offer?, What are RIT Chennai B.Tech streams?, What are the B.Tech focus areas at RIT?, What specializations are in RIT's B.Tech?",
     "category": "academics",
     "access_level": "public"
   },
   {
     "instruction": "What is the fee structure for B.Tech at RIT Chennai?",
     "output": "The B.Tech fee at RIT Chennai is approximately INR 2 Lakh for 4 years, excluding hostel and other charges.",
-    "keywords": "fee, btech, cost, tuition, rit chennai",
-    "related_questions": "How much is the B.Tech fee at RIT Chennai?, What is the cost of studying B.Tech at RIT?, What are RIT Chennai fees?",
+    "keywords": "btech-fee, rit-tuition-cost, program-expense",
+    "related_questions": "How much is the B.Tech fee at RIT Chennai?, What is the cost of studying B.Tech at RIT?, What are RIT Chennai fees?, What is the B.Tech tuition at RIT?, How expensive is RIT B.Tech?",
     "category": "financial",
     "access_level": "public"
   },
   {
     "instruction": "What is the hostel fee at RIT Chennai?",
     "output": "Hostel fees at RIT Chennai are INR 60,200 for non-AC rooms and INR 75,000 for AC rooms per year.",
-    "keywords": "hostel, fee, cost, accommodation, rit chennai",
-    "related_questions": "How much is the hostel fee at RIT Chennai?, What is the cost of RIT hostels?, Does RIT Chennai have expensive hostels?",
+    "keywords": "hostel-fee, rit-accommodation-cost, dorm-charge",
+    "related_questions": "How much is the hostel fee at RIT Chennai?, What is the cost of RIT hostels?, Does RIT Chennai have expensive hostels?, What are the hostel charges at RIT?, How much is RIT dorm fee?",
     "category": "financial",
     "access_level": "public"
   },
   {
     "instruction": "What is the size of the RIT Chennai campus?",
     "output": "The RIT Chennai campus spans approximately 10.88 acres.",
-    "keywords": "campus, size, area, acres, rit chennai",
-    "related_questions": "How big is the RIT Chennai campus?, What is the area of RIT Chennai?, How large is RIT's campus?",
+    "keywords": "campus-size, rit-land-area, acreage",
+    "related_questions": "How big is the RIT Chennai campus?, What is the area of RIT Chennai?, How large is RIT's campus?, What is the size of RIT grounds?, How many acres is RIT Chennai?",
     "category": "campus",
     "access_level": "public"
   },
   {
     "instruction": "Does RIT Chennai have any industry collaborations?",
     "output": "Yes, RIT Chennai has MoUs with leading industries and foreign universities for research and training.",
-    "keywords": "industry, collaborations, mou, rit chennai",
-    "related_questions": "Does RIT Chennai work with companies?, What are RIT Chennai's industry ties?, Are there MoUs at RIT Chennai?",
+    "keywords": "industry-collabs, rit-mou, research-partners",
+    "related_questions": "Does RIT Chennai work with companies?, What are RIT Chennai's industry ties?, Are there MoUs at RIT Chennai?, Does RIT collaborate with industries?, What are RIT's industry partnerships?",
     "category": "academics",
     "access_level": "public"
   },
   {
     "instruction": "What is the NIRF ranking of RIT Chennai?",
     "output": "RIT Chennai is ranked in the 151-200 band by NIRF 2024.",
-    "keywords": "nirf, ranking, rit chennai, 2024",
-    "related_questions": "What is RIT Chennai's NIRF rank?, How is RIT ranked in NIRF?, Does RIT Chennai have a good ranking?",
+    "keywords": "nirf-ranking, rit-score, 2024-position",
+    "related_questions": "What is RIT Chennai's NIRF rank?, How is RIT ranked in NIRF?, Does RIT Chennai have a good ranking?, What is RIT's NIRF band?, Where does RIT stand in NIRF 2024?",
     "category": "general",
     "access_level": "public"
   },
   {
     "instruction": "What student clubs are there at RIT Chennai?",
     "output": "RIT Chennai has clubs like STEAM Club, IoT Club, CAM Club, Women Empowerment Club, TechSparks, Language Club, and Rotaract Club.",
-    "keywords": "clubs, student, steam, iot, women, rit chennai",
-    "related_questions": "What are the clubs at RIT Chennai?, Does RIT have student groups?, Which clubs can I join at RIT Chennai?",
+    "keywords": "student-clubs, rit-organizations, steam-iot",
+    "related_questions": "What are the clubs at RIT Chennai?, Does RIT have student groups?, Which clubs can I join at RIT Chennai?, What are RIT's student societies?, What clubs does RIT offer?",
     "category": "campus",
     "access_level": "public"
   },
   {
     "instruction": "What events are organized at RIT Chennai?",
     "output": "RIT Chennai organizes technical workshops, cultural festivals, sports tournaments, and symposiums like Quantum Week.",
-    "keywords": "events, festivals, symposium, quantum week, rit chennai",
-    "related_questions": "What events happen at RIT Chennai?, Does RIT organize festivals?, What are RIT Chennai's activities?",
+    "keywords": "rit-events, cultural-fests, quantum-week",
+    "related_questions": "What events happen at RIT Chennai?, Does RIT organize festivals?, What are RIT Chennai's activities?, What symposiums does RIT hold?, What are RIT's annual events?",
     "category": "campus",
     "access_level": "public"
   },
   {
     "instruction": "Does RIT Chennai offer transportation facilities?",
     "output": "Yes, RIT Chennai provides bus transport to various parts of Chennai for students and staff.",
-    "keywords": "transport, bus, shuttle, rit chennai",
-    "related_questions": "Does RIT Chennai have buses?, What is the transport facility at RIT?, How to commute to RIT Chennai?",
+    "keywords": "transport-services, rit-bus, shuttle-system",
+    "related_questions": "Does RIT Chennai have buses?, What is the transport facility at RIT?, How to commute to RIT Chennai?, Does RIT provide transport?, What is RIT's shuttle service?",
     "category": "campus",
     "access_level": "public"
   },
   {
     "instruction": "Are there any eco-friendly initiatives at RIT Chennai?",
     "output": "Yes, RIT Chennai has solar panels, rainwater harvesting, and campus greening initiatives.",
-    "keywords": "eco-friendly, solar, rainwater, green, rit chennai",
-    "related_questions": "Is RIT Chennai eco-friendly?, What green initiatives does RIT have?, Does RIT support sustainability?",
+    "keywords": "eco-initiatives, rit-sustainability, solar-harvesting",
+    "related_questions": "Is RIT Chennai eco-friendly?, What green initiatives does RIT have?, Does RIT support sustainability?, What are RIT's eco-efforts?, Does RIT Chennai use solar energy?",
     "category": "campus",
     "access_level": "public"
   },
   {
     "instruction": "What is the attendance policy at RIT Chennai?",
     "output": "Students must maintain a minimum of 75% attendance per semester, as per Anna University guidelines.",
-    "keywords": "attendance, policy, rules, rit chennai",
-    "related_questions": "What is the attendance rule at RIT Chennai?, How much attendance is required at RIT?, Does RIT have strict attendance?",
+    "keywords": "attendance-policy, rit-requirement, semester-rule",
+    "related_questions": "What is the attendance rule at RIT Chennai?, How much attendance is required at RIT?, Does RIT have strict attendance?, What is the minimum attendance at RIT?, What are RIT's attendance guidelines?",
     "category": "administration",
     "access_level": "students_only"
   },
   {
     "instruction": "How can I access the student portal at RIT Chennai?",
     "output": "The student portal can be accessed via the RIT Chennai website with your student ID and password.",
-    "keywords": "student portal, access, login, rit chennai",
-    "related_questions": "How to log into RIT Chennai portal?, What is the RIT student portal?, How do I use the RIT Chennai website?",
+    "keywords": "student-portal, rit-login, access-portal",
+    "related_questions": "How to log into RIT Chennai portal?, What is the RIT student portal?, How do I use the RIT Chennai website?, How to access RIT's student section?, What is the login for RIT portal?",
     "category": "administration",
     "access_level": "students_only"
   }
