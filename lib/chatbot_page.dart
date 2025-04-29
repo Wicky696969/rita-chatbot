@@ -9,6 +9,7 @@ import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:uuid/uuid.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'dart:math' as math; // Import for min function
 
 class ChatbotPage extends StatefulWidget {
   const ChatbotPage({super.key});
@@ -25,7 +26,7 @@ class _ChatbotPageState extends State<ChatbotPage>
     {
       "sender": "bot",
       "message":
-          "Hello! I'm RITA, your guide to Rajalakshmi Institute of Technology (RIT Chennai). Ask about courses, campus, fees, or placements! Try: 'What are the courses available?'",
+      "Hello! I'm RITA, your guide to Rajalakshmi Institute of Technology (RIT Chennai). Ask about courses, campus, fees, or placements! Try: 'What are the courses available?'",
       "timestamp": DateTime.now(),
     },
   ];
@@ -164,21 +165,21 @@ class _ChatbotPageState extends State<ChatbotPage>
               data
                   .map(
                     (item) => {
-                      "uuid": _uuid.v5(
-                        Uuid.NAMESPACE_OID,
-                        item["instruction"]?.toString() ?? "",
-                      ),
-                      "instruction": item["instruction"]?.toString() ?? "",
-                      "output": item["output"]?.toString() ?? "",
-                      "keywords":
-                          item["keywords"]?.toString().toLowerCase() ?? "",
-                      "related_questions":
-                          item["related_questions"]?.toString() ?? "",
-                      "category": item["category"]?.toString() ?? "general",
-                      "access_level":
-                          item["access_level"]?.toString() ?? "public",
-                    },
-                  )
+                  "uuid": _uuid.v5(
+                    Uuid.NAMESPACE_OID,
+                    item["instruction"]?.toString() ?? "",
+                  ),
+                  "instruction": item["instruction"]?.toString() ?? "",
+                  "output": item["output"]?.toString() ?? "",
+                  "keywords":
+                  item["keywords"]?.toString().toLowerCase() ?? "",
+                  "related_questions":
+                  item["related_questions"]?.toString() ?? "",
+                  "category": item["category"]?.toString() ?? "general",
+                  "access_level":
+                  item["access_level"]?.toString() ?? "public",
+                },
+              )
                   .toList();
         });
         print("FAQ Data Loaded: ${_faqData.length} entries");
@@ -284,114 +285,114 @@ class _ChatbotPageState extends State<ChatbotPage>
       context: context,
       builder:
           (context) => AlertDialog(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        backgroundColor: Colors.transparent,
+        contentPadding: EdgeInsets.zero,
+        content: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.blueAccent, Colors.blue[700]!],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
             ),
-            backgroundColor: Colors.transparent,
-            contentPadding: EdgeInsets.zero,
-            content: Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [Colors.blueAccent, Colors.blue[700]!],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                ),
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black26,
-                    blurRadius: 10,
-                    offset: Offset(0, 4),
-                  ),
-                ],
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black26,
+                blurRadius: 10,
+                offset: Offset(0, 4),
               ),
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  AnimatedContainer(
-                    duration: const Duration(milliseconds: 500),
-                    child: Icon(Icons.mic_off, color: Colors.white, size: 50),
-                  ),
-                  const SizedBox(height: 10),
-                  Text(
-                    'Speech Error',
-                    style: TextStyle(
-                      fontFamily: 'Poppins',
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  Text(
-                    'Speech recognition failed: $errorMsg. Please try again or use text input.',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontFamily: 'Poppins',
-                      fontSize: 14,
-                      color: Colors.white70,
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
-                          foregroundColor: Colors.blueAccent,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 20,
-                            vertical: 10,
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.pop(context);
-                          _listen();
-                        },
-                        child: Text(
-                          'Try Again',
-                          style: TextStyle(
-                            fontFamily: 'Poppins',
-                            color: Colors.blueAccent,
-                          ),
-                        ),
-                      ),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
-                          foregroundColor: Colors.blueAccent,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 20,
-                            vertical: 10,
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.pop(context);
-                          _controller.clear();
-                          _focusNode.requestFocus();
-                        },
-                        child: Text(
-                          'Use Text',
-                          style: TextStyle(
-                            fontFamily: 'Poppins',
-                            color: Colors.blueAccent,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
+            ],
           ),
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              AnimatedContainer(
+                duration: const Duration(milliseconds: 500),
+                child: Icon(Icons.mic_off, color: Colors.white, size: 50),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                'Speech Error',
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                'Speech recognition failed: $errorMsg. Please try again or use text input.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 14,
+                  color: Colors.white70,
+                ),
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      foregroundColor: Colors.blueAccent,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 10,
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                      _listen();
+                    },
+                    child: Text(
+                      'Try Again',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        color: Colors.blueAccent,
+                      ),
+                    ),
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      foregroundColor: Colors.blueAccent,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 10,
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                      _controller.clear();
+                      _focusNode.requestFocus();
+                    },
+                    child: Text(
+                      'Use Text',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        color: Colors.blueAccent,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
@@ -556,7 +557,7 @@ class _ChatbotPageState extends State<ChatbotPage>
       'hello': 'Hi there! Ready to answer your questions about RIT Chennai!',
       'ok': 'Alright! Anything specific about RIT Chennai you want to know?',
       'bye':
-          'Goodbye! Feel free to come back with more questions about RIT Chennai!',
+      'Goodbye! Feel free to come back with more questions about RIT Chennai!',
       'thanks': 'You\'re welcome! Any more questions about RIT Chennai?',
       'thank you': 'My pleasure! What\'s next on your mind about RIT Chennai?',
     };
@@ -566,42 +567,61 @@ class _ChatbotPageState extends State<ChatbotPage>
       return casualResponses[normalizedMessage]!;
     }
 
-    String? bestMatch;
-    double bestScore = 0.0;
-    String? bestMatchUuid;
+    List<String> responses = [];
+    final keyTerms = {
+      'rit',
+      'chennai',
+      'campus',
+      'fee',
+      'placement',
+      'courses',
+      'hostel',
+      'admission',
+      'scholarship',
+      'faculty',
+      'library',
+      'transport',
+      'club',
+      'event',
+      'undergraduate',
+      'postgraduate',
+    };
+
     for (var faq in _faqData) {
       String instruction = _normalizeQuery(faq["instruction"]!);
       String faqUuid = faq["uuid"]!;
       List<String> keywords =
-          faq["keywords"]!.split(', ').map((k) => k.trim()).toList();
+      faq["keywords"]!.split(', ').map((k) => k.trim()).toList();
       List<String> relatedQuestions =
-          faq["related_questions"]!
-              .split(', ')
-              .map((q) => _normalizeQuery(q.trim()))
-              .toList();
+      faq["related_questions"]!
+          .split(', ')
+          .map((q) => _normalizeQuery(q.trim()))
+          .toList();
 
-      double instructionScore = _calculateSimilarity(
-        normalizedMessage,
-        instruction,
-      );
+      // Enhanced similarity calculation
+      double instructionScore = _calculateSimilarity(normalizedMessage, instruction);
       double keywordScore = _calculateKeywordScore(normalizedMessage, keywords);
       double relatedScore = relatedQuestions
           .map((q) => _calculateSimilarity(normalizedMessage, q))
           .fold(0.0, (max, score) => score > max ? score : max);
 
-      double totalScore =
-          (0.4 * instructionScore + 0.3 * keywordScore + 0.3 * relatedScore);
-      if (totalScore > bestScore && totalScore >= 0.4) {
-        bestScore = totalScore;
-        bestMatch = faq["output"];
-        bestMatchUuid = faqUuid;
+      // Boost score for key term matches
+      int keyTermMatches = keyTerms
+          .where((term) => normalizedMessage.contains(term))
+          .length;
+      double keyTermBoost = keyTermMatches * 0.3;
+
+      // Weighted total score with higher threshold
+      double totalScore = (0.5 * instructionScore + 0.3 * keywordScore + 0.2 * relatedScore + keyTermBoost);
+      if (totalScore >= 0.7) {
+        responses.add(faq["output"]!);
       }
     }
 
-    if (bestMatch != null && bestMatchUuid != null) {
-      await _saveCachedResponse(queryUuid, bestMatch);
-      await _saveCachedResponse(bestMatchUuid, bestMatch);
-      return bestMatch;
+    if (responses.isNotEmpty) {
+      String botResponse = responses.join("\n\n"); // Combine all matching responses
+      await _saveCachedResponse(queryUuid, botResponse);
+      return botResponse;
     }
 
     if (!isStudent &&
@@ -613,6 +633,7 @@ class _ChatbotPageState extends State<ChatbotPage>
       return response;
     }
 
+    // Fallback to Gemini API only if no good match found
     String geminiResponse;
     try {
       geminiResponse = await getGeminiResponse(userMessage).timeout(
@@ -622,7 +643,7 @@ class _ChatbotPageState extends State<ChatbotPage>
       );
     } catch (e) {
       geminiResponse =
-          "Sorry, I can't find the answer right now. Try again later.";
+      "Sorry, I can't find the answer for your response.";
     }
 
     await _saveCachedResponse(queryUuid, geminiResponse);
@@ -633,6 +654,10 @@ class _ChatbotPageState extends State<ChatbotPage>
     if (_normalizedQueryCache.containsKey(query)) {
       return _normalizedQueryCache[query]!;
     }
+
+    // Split into words for individual correction
+    List<String> words = query.toLowerCase().trim().split(' ');
+    List<String> correctedWords = [];
 
     final typoMap = {
       'hostle': 'hostel',
@@ -649,30 +674,54 @@ class _ChatbotPageState extends State<ChatbotPage>
       'programme': 'program',
       'undergraduate': 'ug',
       'postgraduate': 'pg',
+      'ritchennai': 'rit chennai',
+      'admsn': 'admission',
+      'inmcorrect': 'incorrect',
+      'midstakes': 'mistakes',
+      'havbe': 'have',
+      'alos': 'also',
+      'shuld': 'should',
+      'wht': 'what',
+      'abt': 'about',
     };
 
     final synonymMap = {
-      'courses': ['program', 'degree', 'class', 'curriculum', 'subjects'],
-      'fee': ['cost', 'price', 'charge', 'expense', 'tuition'],
-      'hostel': ['dorm', 'residence', 'accommodation'],
-      'placement': ['job', 'career', 'recruitment'],
-      'campus': ['grounds', 'site', 'premises'],
-      'library': ['books', 'resources'],
-      'transport': ['bus', 'shuttle'],
-      'faculty': ['teacher', 'professor', 'staff'],
-      'event': ['festival', 'celebration'],
-      'club': ['group', 'society'],
+      'courses': ['program', 'degree', 'class', 'curriculum', 'subjects', 'programmes'],
+      'fee': ['cost', 'price', 'charge', 'expense', 'tuition', 'fees'],
+      'hostel': ['dorm', 'residence', 'accommodation', 'hall'],
+      'placement': ['job', 'career', 'recruitment', 'jobs'],
+      'campus': ['grounds', 'site', 'premises', 'college'],
+      'library': ['books', 'resources', 'study room'],
+      'transport': ['bus', 'shuttle', 'transportation'],
+      'faculty': ['teacher', 'professor', 'staff', 'lecturer'],
+      'event': ['festival', 'celebration', 'activity'],
+      'club': ['group', 'society', 'organization'],
     };
 
-    String normalized = query.toLowerCase().trim().replaceAll(
-      RegExp(r'[^\w\s]'),
-      '',
-    );
-    typoMap.forEach((wrong, correct) {
-      normalized = normalized.replaceAll(wrong, correct);
-    });
+    for (String word in words) {
+      if (word.isEmpty) continue;
+      String corrected = word;
 
-    List<String> words = normalized.split(' ');
+      // Check typo map first
+      if (typoMap.containsKey(word)) {
+        corrected = typoMap[word]!;
+      } else {
+        // Approximate matching for unmatched words
+        for (var entry in typoMap.entries) {
+          if (_approximateMatch(corrected, entry.key, 2)) {
+            corrected = entry.value;
+            break;
+          }
+        }
+      }
+
+      correctedWords.add(corrected);
+    }
+
+    String normalized = correctedWords.join(' ');
+
+    // Apply synonym replacement
+    words = normalized.split(' ');
     for (int i = 0; i < words.length; i++) {
       synonymMap.forEach((key, synonyms) {
         if (synonyms.contains(words[i])) {
@@ -680,13 +729,43 @@ class _ChatbotPageState extends State<ChatbotPage>
         }
       });
     }
-    normalized = words.join(' ');
+    normalized = words.join(' ').replaceAll(RegExp(r'[^\w\s]'), '');
 
     _normalizedQueryCache[query] = normalized;
     if (_normalizedQueryCache.length > 1000) {
       _normalizedQueryCache.remove(_normalizedQueryCache.keys.first);
     }
     return normalized;
+  }
+
+  // Levenshtein distance-based approximate matching
+  bool _approximateMatch(String a, String b, int maxDistance) {
+    int m = a.length;
+    int n = b.length;
+
+    // Create a 2D list for the distance matrix
+    List<List<int>> matrix = List.generate(m + 1, (i) => List<int>.filled(n + 1, 0));
+
+    // Initialize first row and column
+    for (int i = 0; i <= m; i++) {
+      matrix[i][0] = i;
+    }
+    for (int j = 0; j <= n; j++) {
+      matrix[0][j] = j;
+    }
+
+    // Fill the matrix
+    for (int i = 1; i <= m; i++) {
+      for (int j = 1; j <= n; j++) {
+        int cost = (a[i - 1] == b[j - 1]) ? 0 : 1;
+        matrix[i][j] = math.min(
+          math.min(matrix[i - 1][j] + 1, matrix[i][j - 1] + 1),
+          matrix[i - 1][j - 1] + cost,
+        );
+      }
+    }
+
+    return matrix[m][n] <= maxDistance;
   }
 
   double _calculateKeywordScore(String query, List<String> keywords) {
@@ -698,8 +777,8 @@ class _ChatbotPageState extends State<ChatbotPage>
         score += 1.0;
       } else {
         for (var word in queryWords) {
-          if (word.contains(keyword) || keyword.contains(word)) {
-            score += 0.5;
+          if (_approximateMatch(word, keyword, 2)) {
+            score += 0.6;
             break;
           }
         }
@@ -736,10 +815,10 @@ class _ChatbotPageState extends State<ChatbotPage>
 
     int keyTermMatches =
         intersection.where((word) => keyTerms.contains(word)).length;
-    double keyTermBoost = keyTermMatches * 0.2;
+    double keyTermBoost = keyTermMatches * 0.3;
 
     double lengthPenalty =
-        (instructionWords.length < 3 || queryWords.length < 3) ? 0.05 : 0.0;
+    (instructionWords.length < 3 || queryWords.length < 3) ? 0.05 : 0.0;
 
     return (jaccardSimilarity + keyTermBoost - lengthPenalty).clamp(0.0, 1.0);
   }
@@ -762,7 +841,7 @@ class _ChatbotPageState extends State<ChatbotPage>
               'parts': [
                 {
                   'text':
-                      'You are RITA, a chatbot for Rajalakshmi Institute of Technology (RIT Chennai). Provide accurate, concise answers about RIT Chennai. If unknown, say: "Sorry, I can\'t find the answer for your response." Question: $userMessage',
+                  'You are RITA, a chatbot for Rajalakshmi Institute of Technology (RIT Chennai). Provide accurate, concise answers about RIT Chennai based on the following context: courses, campus, fees, placements, hostels, admissions, scholarships, faculty, library, transport, clubs, events, undergraduate, postgraduate. If the answer is not found in this context, say: "Sorry, I can\'t find the answer for your response." Question: $userMessage',
                 },
               ],
             },
@@ -774,7 +853,7 @@ class _ChatbotPageState extends State<ChatbotPage>
         final data = jsonDecode(response.body);
         String responseText =
             data['candidates'][0]['content']['parts'][0]['text']?.trim() ??
-            "Sorry, I can't find the answer for your response";
+                "Sorry, I can't find the answer for your response";
         if (responseText.contains("Sorry, I can't answer that")) {
           return "Sorry, I can't find the answer for your response";
         }
@@ -808,11 +887,11 @@ class _ChatbotPageState extends State<ChatbotPage>
       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
       child: Column(
         crossAxisAlignment:
-            isBot ? CrossAxisAlignment.start : CrossAxisAlignment.end,
+        isBot ? CrossAxisAlignment.start : CrossAxisAlignment.end,
         children: [
           Row(
             mainAxisAlignment:
-                isBot ? MainAxisAlignment.start : MainAxisAlignment.end,
+            isBot ? MainAxisAlignment.start : MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               if (isBot)
@@ -837,13 +916,13 @@ class _ChatbotPageState extends State<ChatbotPage>
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
                     color:
-                        isBot
-                            ? (_isDarkMode
-                                ? Colors.blue[800]!.withOpacity(0.9)
-                                : Colors.blue[50]!.withOpacity(0.9))
-                            : (_isDarkMode
-                                ? Colors.green[800]!.withOpacity(0.9)
-                                : Colors.green[100]!.withOpacity(0.9)),
+                    isBot
+                        ? (_isDarkMode
+                        ? Colors.blue[800]!.withOpacity(0.9)
+                        : Colors.blue[50]!.withOpacity(0.9))
+                        : (_isDarkMode
+                        ? Colors.green[800]!.withOpacity(0.9)
+                        : Colors.green[100]!.withOpacity(0.9)),
                     borderRadius: BorderRadius.circular(20),
                     boxShadow: [
                       BoxShadow(
@@ -854,33 +933,33 @@ class _ChatbotPageState extends State<ChatbotPage>
                     ],
                   ),
                   child:
-                      isBot
-                          ? AnimatedTextKit(
-                            animatedTexts: [
-                              TypewriterAnimatedText(
-                                message['message']!,
-                                textStyle: TextStyle(
-                                  color:
-                                      _isDarkMode
-                                          ? Colors.white
-                                          : Colors.black87,
-                                  fontSize: 16,
-                                  fontFamily: 'Poppins',
-                                ),
-                                speed: const Duration(milliseconds: 20),
-                              ),
-                            ],
-                            totalRepeatCount: 1,
-                          )
-                          : Text(
-                            message['message']!,
-                            style: TextStyle(
-                              color:
-                                  _isDarkMode ? Colors.white : Colors.black87,
-                              fontSize: 16,
-                              fontFamily: 'Poppins',
-                            ),
-                          ),
+                  isBot
+                      ? AnimatedTextKit(
+                    animatedTexts: [
+                      TypewriterAnimatedText(
+                        message['message']!,
+                        textStyle: TextStyle(
+                          color:
+                          _isDarkMode
+                              ? Colors.white
+                              : Colors.black87,
+                          fontSize: 16,
+                          fontFamily: 'Poppins',
+                        ),
+                        speed: const Duration(milliseconds: 20),
+                      ),
+                    ],
+                    totalRepeatCount: 1,
+                  )
+                      : Text(
+                    message['message']!,
+                    style: TextStyle(
+                      color:
+                      _isDarkMode ? Colors.white : Colors.black87,
+                      fontSize: 16,
+                      fontFamily: 'Poppins',
+                    ),
+                  ),
                 ),
               ),
               if (!isBot) const SizedBox(width: 8),
@@ -895,15 +974,15 @@ class _ChatbotPageState extends State<ChatbotPage>
           if (isBot && responseId != null)
             Row(
               mainAxisAlignment:
-                  isBot ? MainAxisAlignment.start : MainAxisAlignment.end,
+              isBot ? MainAxisAlignment.start : MainAxisAlignment.end,
               children: [
                 IconButton(
                   icon: Icon(
                     Icons.thumb_up,
                     color:
-                        _responseRatings[responseId] == 1
-                            ? Colors.blue
-                            : Colors.grey,
+                    _responseRatings[responseId] == 1
+                        ? Colors.blue
+                        : Colors.grey,
                   ),
                   onPressed: () => _rateResponse(responseId, 1),
                 ),
@@ -911,9 +990,9 @@ class _ChatbotPageState extends State<ChatbotPage>
                   icon: Icon(
                     Icons.thumb_down,
                     color:
-                        _responseRatings[responseId] == -1
-                            ? Colors.red
-                            : Colors.grey,
+                    _responseRatings[responseId] == -1
+                        ? Colors.red
+                        : Colors.grey,
                   ),
                   onPressed: () => _rateResponse(responseId, -1),
                 ),
@@ -984,9 +1063,9 @@ class _ChatbotPageState extends State<ChatbotPage>
               boxShadow: [
                 BoxShadow(
                   color:
-                      _isListening
-                          ? Colors.blueAccent.withOpacity(0.5)
-                          : Colors.blueAccent.withOpacity(0.3),
+                  _isListening
+                      ? Colors.blueAccent.withOpacity(0.5)
+                      : Colors.blueAccent.withOpacity(0.3),
                   blurRadius: _isListening ? 15.0 : 5.0,
                   spreadRadius: _isListening ? 5.0 : 2.0,
                 ),
@@ -994,9 +1073,9 @@ class _ChatbotPageState extends State<ChatbotPage>
             ),
             child: ScaleTransition(
               scale:
-                  _isListening
-                      ? _micScaleAnimation
-                      : AlwaysStoppedAnimation(1.0),
+              _isListening
+                  ? _micScaleAnimation
+                  : AlwaysStoppedAnimation(1.0),
               child: CircleAvatar(
                 radius: 24,
                 backgroundColor: _isDarkMode ? Colors.grey[800] : Colors.white,
@@ -1085,9 +1164,9 @@ class _ChatbotPageState extends State<ChatbotPage>
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors:
-                          _isDarkMode
-                              ? [Colors.blueGrey[900]!, Colors.blueGrey[700]!]
-                              : [Colors.blueAccent, Colors.blue],
+                      _isDarkMode
+                          ? [Colors.blueGrey[900]!, Colors.blueGrey[700]!]
+                          : [Colors.blueAccent, Colors.blue],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
@@ -1140,9 +1219,9 @@ class _ChatbotPageState extends State<ChatbotPage>
                               padding: const EdgeInsets.all(12),
                               decoration: BoxDecoration(
                                 color:
-                                    _isDarkMode
-                                        ? Colors.blue[800]!.withOpacity(0.9)
-                                        : Colors.blue[50]!.withOpacity(0.9),
+                                _isDarkMode
+                                    ? Colors.blue[800]!.withOpacity(0.9)
+                                    : Colors.blue[50]!.withOpacity(0.9),
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: CircularProgressIndicator(strokeWidth: 2),
@@ -1164,14 +1243,14 @@ class _ChatbotPageState extends State<ChatbotPage>
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children:
-                            _getDynamicSuggestions()
-                                .map(
-                                  (s) => _buildSuggestionChip(
-                                    s['label']!,
-                                    s['query']!,
-                                  ),
-                                )
-                                .toList(),
+                        _getDynamicSuggestions()
+                            .map(
+                              (s) => _buildSuggestionChip(
+                            s['label']!,
+                            s['query']!,
+                          ),
+                        )
+                            .toList(),
                       ),
                     ),
                     const SizedBox(height: 8),
@@ -1190,15 +1269,15 @@ class _ChatbotPageState extends State<ChatbotPage>
                               hintStyle: TextStyle(
                                 fontFamily: 'Poppins',
                                 color:
-                                    _isDarkMode
-                                        ? Colors.grey[400]
-                                        : Colors.grey,
+                                _isDarkMode
+                                    ? Colors.grey[400]
+                                    : Colors.grey,
                               ),
                               filled: true,
                               fillColor:
-                                  _isDarkMode
-                                      ? Colors.grey[800]
-                                      : Colors.grey[100],
+                              _isDarkMode
+                                  ? Colors.grey[800]
+                                  : Colors.grey[100],
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30),
                                 borderSide: BorderSide.none,
