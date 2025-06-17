@@ -54,13 +54,13 @@ Through this project, I gained hands-on experience and deep understanding in the
 
 
 ### 🔐 Login Page with Animation  
-![Login Page](assets/screenshots/login.png)
+![Login Page](assets/screenshots/login.jpg)
 
 ### 🧠 Chatbot UI  
-![Chat UI](assets/screenshots/chat.png)
+![Chat UI](assets/screenshots/chat.jpg)
 
 ### 🎓 College FAQs  
-![FAQ Screenshot](assets/screenshots/faq.png)
+![FAQ Screenshot](assets/screenshots/faq.jpg)
 
 ---
 
