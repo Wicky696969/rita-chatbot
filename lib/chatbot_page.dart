@@ -649,7 +649,7 @@ class _ChatbotPageState extends State<ChatbotPage> with TickerProviderStateMixin
   }
 
   Future<String> getGeminiResponse(String userMessage) async {
-    final apiKey = 'AIzaSyDbbo4pQxT4Wy9Tn_H1nNf1zfvp9vG0os0';
+    final apiKey = 'YOUR API KEY ';
     if (apiKey.isEmpty) {
       return "API key not configured. Please try again later.";
     }
