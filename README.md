@@ -53,16 +53,19 @@ Through this project, I gained hands-on experience and deep understanding in the
 
 
 
-### 🔐 Login Page with Animation  
-![Login Page](assets/screenshots/login.jpg)
 
-### 🧠 Chatbot UI  
-![Chat UI](assets/screenshots/chat.jpg)
+> Glimpse of our elegant and animated UI.
 
-### 🎓 College FAQs  
-![FAQ Screenshot](assets/screenshots/faq.jpg)
+<div align="center">
 
----
+  <img src="assets/screenshots/login.jpg" alt="Login Page" width="350" style="border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); margin: 10px;"/>
+
+  <img src="assets/screenshots/chat.jpg" alt="Chat UI" width="350" style="border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); margin: 10px;"/>
+
+  <img src="assets/screenshots/faq.jpg" alt="FAQ Page" width="350" style="border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); margin: 10px;"/>
+
+</div>
+
 
 ## ⚙️ How to Set Up and Use Locally
 
